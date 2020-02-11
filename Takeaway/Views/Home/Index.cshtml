@@ -1,0 +1,1084 @@
+﻿@*@model SCStoreProgram.Models.ModelsView.DashBoard*@
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="page-content-wrapper">
+    <div class="page-content">
+        <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+        <div class="modal fade" id="portlet-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                        <h4 class="modal-title">Modal title</h4>
+                    </div>
+                    <div class="modal-body">
+                        Widget settings form goes here
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn blue">Save changes</button>
+                        <button type="button" class="btn default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+        <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+       
+     
+        <!-- BEGIN PAGE HEADER-->
+        <div class="page-bar">
+            <ul class="page-breadcrumb">
+                <li>
+                    الرئيسية
+                </li>
+            </ul>
+        </div>
+
+        @*<h3 class="page-title">
+                لوحة المراقبة <small>التقرير & الحالة</small>
+            </h3>*@
+        <!-- END PAGE HEADER-->
+
+        <div class="clearfix">
+        </div>
+
+        <!----------------------------------------->
+
+        <div class="row">
+            <div class="col-md-6 col-sm-6">
+                <!-- BEGIN PORTLET-->
+                <div class="portlet light ">
+                    @*<div class="portlet-title">
+                                       <div class="caption">
+                        <i class="icon-bar-chart font-green-sharp hide"></i>
+                        <span class="caption-subject font-green-sharp bold uppercase"></span>
+                        <span class="caption-helper"> </span>
+                    </div>
+                    <div class="actions">
+
+                    </div>
+                                    </div>*@
+                    <div class="portlet-body">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="dashboard-stat blue-madison">
+                                    <div class="visual">
+                                        <i class="fa fa-comments"></i>
+                                    </div>
+                                    <div class="details">
+                                        <div class="number">
+                                            @ViewBag.DailyIncome $
+                                        </div>
+                                        <div class="desc">
+                                            الدخل اليومى
+                                        </div>
+                                    </div>
+                                    <a class="more" href="javascript:;">
+                                        View more <i class="m-icon-swapright m-icon-white"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="dashboard-stat red-intense">
+                                    <div class="visual">
+                                        <i class="fa fa-bar-chart-o"></i>
+                                    </div>
+                                    <div class="details">
+                                        <div class="number">
+                                            @ViewBag.MonthlyIncome $
+                                        </div>
+                                        <div class="desc">
+                                            الدخل الشهرى
+                                        </div>
+                                    </div>
+                                    <a class="more" href="javascript:;">
+                                        View more <i class="m-icon-swapright m-icon-white"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="dashboard-stat green-haze">
+                                    <div class="visual">
+                                        <i class="fa fa-shopping-cart"></i>
+                                    </div>
+                                    <div class="details">
+                                        <div class="number">
+                                            @ViewBag.NewOrderD
+                                        </div>
+                                        <div class="desc">
+                                            الطلبات الجديدة لهذا اليوم
+                                        </div>
+                                    </div>
+                                    <a class="more" href="javascript:;">
+                                        View more <i class="m-icon-swapright m-icon-white"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="dashboard-stat purple-plum">
+                                    <div class="visual">
+                                        <i class="fa fa-globe"></i>
+                                    </div>
+                                    <div class="details">
+                                        <div class="number">
+                                            @ViewBag.MonthlyRegister
+                                        </div>
+                                        <div class="desc">
+                                            المطاعم الجديدة المسجلة لهذا الشهر
+                                        </div>
+                                    </div>
+                                    <a class="more" href="javascript:;">
+                                        View more <i class="m-icon-swapright m-icon-white"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- END PORTLET-->
+            </div>
+            <div class="col-md-6 col-sm-6">
+                <!-- BEGIN PORTLET-->
+
+                <div class="portlet light ">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="icon-bar-chart font-green-sharp hide"></i>
+                            <span class="caption-subject font-green-sharp bold uppercase">       اجراءات عاجلة   </span>
+                            <span class="caption-helper"> </span>
+                        </div>
+
+                    </div>
+
+
+                    <table class="table no-margin">
+                        <tbody>
+                            <tr>
+
+                                <td style="padding:0;">
+                                    <div class="Urgent-action text-center">
+                                        <a href="/Countries/Index">
+                                            <i class="fa fa-file-o fa-3x  "></i>
+                                            <p>
+                                                إضافة بلد
+                                            </p>
+                                        </a>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="Urgent-action text-center">
+                                        <a href="/Cities/Index">
+                                            <i class="fa fa-file-o fa-3x"></i>
+                                            <p>
+                                                اضافة مدينه
+                                            </p>
+                                        </a>
+                                    </div>
+                                </td>
+                                <td id="tour-create-invoice">
+                                    <div class="Urgent-action text-center">
+                                        <a href="/Regions/Index">
+                                            <i class="fa fa-file-o fa-3x"></i>
+                                            <p>
+
+                                                اضافه منطقه
+                                            </p>
+                                        </a>
+                                    </div>
+                                </td>
+                                <td colspan="2" rowspan="3" style="width:31%;">
+                                    <div class="Urgent-action text-center">
+                                        <p class="strong-r"> التقارير </p>
+                                        <a href="/RestaurantDailyIncomeReport/RestaurantDailyIncomeReport">
+
+                                            <p style="text-align:right;">
+                                                <i class="fa fa-file-text-o fa-1x  "></i>  تقرير اجمالى الدخل اليومى
+
+                                            </p>
+                                        </a>
+                                        <a href="/OrderReport/OrderReport">
+
+                                            <p style="text-align:right;">
+                                                <i class="fa fa-file-text-o fa-1x  "></i> تقرير الدخل خلال فترة
+
+                                            </p>
+                                        </a>
+                                        <a href="/RestaurantReport/OrderDetailsReport">
+
+                                            <p style="text-align:right;">
+                                                <i class="fa fa-file-text-o fa-1x  "></i>تقرير تفاصيل الطلبات
+                                            </p>
+                                        </a>
+                                        <a href="/RestaurantReport/RestaurantReport">
+
+                                            <p style="text-align:right;">
+                                                <i class="fa fa-file-text-o fa-1x  "></i> تقرير المطاعم
+
+                                            </p>
+                                        </a>
+                                    </div>
+
+
+
+                            </tr>
+                            <tr style="border-top:1px solid #ddd;">
+                                <td style="padding:0;">
+
+                                    <div class="Urgent-action text-center">
+                                        <a href="/Restaurant/Index">
+                                            <i class="fa fa-file-text-o fa-3x"></i>
+                                            <p>
+                                                اضافه مطعم
+                                            </p>
+                                        </a>
+                                    </div>
+
+                                <td>
+                                    <div class="Urgent-action text-center">
+                                        <a href="/ItemFoods/Index">
+                                            <i class="fa fa-file-text-o fa-3x"></i>
+                                            <p>
+
+                                                وجبات المطاعم
+
+                                            </p>
+                                        </a>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="Urgent-action text-center">
+                                        <a href="/FoodType/Index">
+                                            <i class="fa fa-file-text-o fa-3x"></i>
+                                            <p>
+
+                                                انواع الطعام
+
+                                            </p>
+                                        </a>
+                                    </div>
+
+
+
+                                </td>
+                            </tr>
+                            <tr style="border-top:1px solid #ddd;">
+                                <td style="padding:0;">
+                                    <div class="Urgent-action text-center">
+                                        <a href="/Orders/">
+                                            <i class="fa fa-credit-card fa-3x"></i>
+                                            <p>
+
+                                                الطلبات
+
+                                            </p>
+                                        </a>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="Urgent-action text-center">
+                                        <a href="/OrderStatus/">
+                                            <i class="fa fa-archive fa-3x"></i>
+                                            <p>
+
+                                                حاله الطلبات
+
+                                            </p>
+                                        </a>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="Urgent-action text-center">
+                                        <a href="/takeawayusers/Index">
+                                            <i class="fa fa-user fa-3x"></i>
+                                            <p>
+
+                                                المستخدمين
+
+                                            </p>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+
+
+
+
+
+
+
+                </div>
+
+                <!-- END PORTLET-->
+            </div>
+
+        </div>
+
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="portlet box grey-salsa">
+                        <div class="portlet-title">
+                            <div class="caption icon-users">
+                                احدث العروض
+                            </div>
+                            <div class="tools">
+                                <a href="javascript:;" class="collapse" data-original-title="" title=""></a>
+                            </div>
+                        </div>
+                        <div class="portlet-body">
+
+                            <div class="table-toolbar">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="btn-group">
+                                            @*@if (ViewBag.IsAdmin == 1)
+                                            {
+                                                <a id="AddNew" href="~/Size/Create" class="btn green"><i class="fa fa-plus">اضافة</i></a>
+                                            }*@
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-body">
+                                <table id="myTable" style="text-align: center;" class="table table-striped table-bordered table-hover">
+                                    <thead class="flip-content">
+
+                                        <tr class="heading">
+                                            <th style="text-align: center;"> المطعم</th>
+                                            <th style="text-align: center;"> الخصم</th>
+                                            <th style="text-align: center;">من</th>
+                                            <th style="text-align: center;">الى</th>
+                                     
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="portlet box grey-salsa">
+                    <div class="portlet-title">
+                        <div class="caption icon-users">
+                            تقييمات المطاعم
+                        </div>
+                        <div class="tools">
+                            <a href="javascript:;" class="collapse" data-original-title="" title=""></a>
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+
+                        <div class="table-toolbar">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="btn-group">
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-body">
+                            <table id="myTableRating" style="text-align: center;" class="table table-striped table-bordered table-hover">
+                                <thead class="flip-content">
+
+                                    <tr class="heading">
+                                        <th style="text-align: center;"> المطعم</th>
+                                        <th style="text-align: center;"> التقييم</th>
+                                        
+
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+          <div class="row">
+              <div class="col-md-12">
+                  <div class="portlet box grey-salsa">
+                      <div class="portlet-title">
+                          <div class="caption icon-users">
+                              الطلب
+                          </div>
+                          <div class="tools">
+                              <a href="javascript:;" class="collapse" data-original-title="" title=""></a>
+                          </div>
+                      </div>
+                      <div class="portlet-body">
+
+                          <div class="table-toolbar">
+                              <div class="row">
+                                  <div class="col-md-6">
+                                      <div class="btn-group">
+                                          @if (ViewBag.IsAdmin == 1)
+                                          {
+                                              <a id="AddNew" href="~/Orders/Create" class="btn green"><i class="fa fa-plus">اضافة</i></a>
+                                          }
+
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="form-body">
+                              <table id="OrderTable" style="text-align: center;" class="table table-striped table-bordered table-hover">
+                                  <thead class="flip-content">
+
+                                      <tr class="heading">
+                                          @*<th>التفاصيل</th>*@
+                                          <th style="display:none;" class="text-center">Id</th>
+                                          <th style="text-align: center;">اسم المستخدم</th>
+                                          <th style="text-align: center;">المطعم </th>
+                                          <th style="text-align: center;">حاله الطلب</th>
+                                          @*<th style="text-align: center;">اجمالى السعر</th>
+                                    <th style="text-align: center;">طريقه الدفع</th>*@
+                                          <th style="text-align: center;">تاريخ الطلب</th>
+                                          <th style="text-align: center;">تفعيل</th>
+                                          <th style="text-align: center;">تعديل</th>
+                                          <th style="text-align: center;">حذف</th>
+                                          <th style="text-align: center;">التفاصيل</th>
+                                      </tr>
+                                  </thead>
+                              </table>
+                              <!--Modal Popup for Order Details -->
+                              <div id="myModal" class="modal fade" role="dialog">
+                                  <div id="myPartialContainer">
+
+
+                                  </div>
+                              </div>
+
+                          </div>
+
+                      </div>
+
+                  </div>
+              </div>
+              </div>
+
+
+
+            <div class="clearfix">
+            </div>
+            @*<div class="row">
+                <div class="col-md-6 col-sm-6">
+
+                    <div class="portlet box red">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="fa fa-gift"></i>أعلى المصروفات
+                            </div>
+                            <div class="tools">
+                                <a href="#portlet-config" data-toggle="modal" class="config">
+                                </a>
+                                <a href="javascript:;" class="reload">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="portlet-body">
+                            <div id="ExpensesChart" style="width:100%; height:300px">
+
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+                <div class="col-md-6 col-sm-6">
+
+                    <div class="portlet box red">
+
+
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="fa fa-gift"></i>العملاء الأكثر نشاطا
+                            </div>
+                            <div class="tools">
+                                <a href="#portlet-config" data-toggle="modal" class="config">
+                                </a>
+                                <a href="javascript:;" class="reload">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="portlet-body">
+                            <div id="visualization" style="width:100%; height:300px">
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>*@
+
+            @*<div class="row">
+                <div class="col-md-6">
+                    <!-- BEGIN SAMPLE TABLE PORTLET-->
+                    <div class="portlet box purple">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="fa fa-cogs"></i>العروض الأخيرة
+                            </div>
+                            <div class="tools">
+                                <a href="javascript:;" class="collapse">
+                                </a>
+                                <a href="#portlet-config" data-toggle="modal" class="config">
+                                </a>
+                                <a href="javascript:;" class="reload">
+                                </a>
+                                <a href="" class="fullscreen">
+                                </a>
+                                <a href="javascript:;" class="remove">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="portlet-body">
+                            @Html.Partial("_LastInvoice", Model.ListLastPurInvNotPaid, new ViewDataDictionary { { "VariableName", "2" } });
+                        </div>
+                    </div>
+                    <!-- END SAMPLE TABLE PORTLET-->
+                </div>
+                <div class="col-md-6 col-sm-6">
+
+                    <div class="portlet box red">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="fa fa-gift"></i>أعلى الايرادات
+                            </div>
+                            <div class="tools">
+                                <a href="#portlet-config" data-toggle="modal" class="config">
+                                </a>
+                                <a href="javascript:;" class="reload">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="portlet-body">
+                            <div id="RevenuChart" style="width:100%; height:300px">
+
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>*@
+
+
+
+
+
+
+
+            @*<div class="row">
+                <div class="col-md-6">
+                    <!-- BEGIN SAMPLE TABLE PORTLET-->
+                    <div class="portlet box yellow">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="fa fa-cogs"></i>فوتير المبيعات الاخيرة
+                            </div>
+                            <div class="tools">
+                                <a href="javascript:;" class="collapse">
+                                </a>
+                                <a href="#portlet-config" data-toggle="modal" class="config">
+                                </a>
+                                <a href="javascript:;" class="reload">
+                                </a>
+                                <a href="" class="fullscreen">
+                                </a>
+                                <a href="javascript:;" class="remove">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="portlet-body">
+                            @Html.Partial("_LastInvoice", Model.ListLastSalesInvoice, new ViewDataDictionary { { "VariableName", "2" } });
+
+                        </div>
+                    </div>
+                    <!-- END SAMPLE TABLE PORTLET-->
+                </div>
+                <div class="col-md-6">
+                    <!-- BEGIN BORDERED TABLE PORTLET-->
+                    <div class="portlet box blue">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="fa fa-coffee"></i>فوتير المشتريات الاخيرة
+                            </div>
+                            <div class="tools">
+                                <a href="javascript:;" class="collapse">
+                                </a>
+                                <a href="#portlet-config" data-toggle="modal" class="config">
+                                </a>
+                                <a href="javascript:;" class="reload">
+                                </a>
+                                <a href="" class="fullscreen">
+                                </a>
+                                <a href="javascript:;" class="remove">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="portlet-body">
+                            @Html.Partial("_LastInvoice", Model.ListLastPurchaseInvoice, new ViewDataDictionary { { "VariableName", "1" } });
+                        </div>
+                    </div>
+                    <!-- END BORDERED TABLE PORTLET-->
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-6">
+                    <!-- BEGIN SAMPLE TABLE PORTLET-->
+                    <div class="portlet box yellow">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="fa fa-cogs"></i>فواتير المشتريات الغير مدفوعة
+                            </div>
+                            <div class="tools">
+                                <a href="javascript:;" class="collapse">
+                                </a>
+                                <a href="#portlet-config" data-toggle="modal" class="config">
+                                </a>
+                                <a href="javascript:;" class="reload">
+                                </a>
+                                <a href="" class="fullscreen">
+                                </a>
+                                <a href="javascript:;" class="remove">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="portlet-body">
+                            @Html.Partial("_LastInvoice", Model.ListLastPurInvNotPaid, new ViewDataDictionary { { "VariableName", "1" } });
+                        </div>
+                    </div>
+                    <!-- END SAMPLE TABLE PORTLET-->
+                </div>
+                <div class="col-md-6">
+                    <!-- BEGIN SAMPLE TABLE PORTLET-->
+                    <div class="portlet box yellow">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="fa fa-cogs"></i>فواتير المبيعات الغير مدفوعة
+                            </div>
+                            <div class="tools">
+                                <a href="javascript:;" class="collapse">
+                                </a>
+                                <a href="#portlet-config" data-toggle="modal" class="config">
+                                </a>
+                                <a href="javascript:;" class="reload">
+                                </a>
+                                <a href="" class="fullscreen">
+                                </a>
+                                <a href="javascript:;" class="remove">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="portlet-body">
+                            @Html.Partial("_LastInvoice", Model.ListLastPurInvNotPaid, new ViewDataDictionary { { "VariableName", "2" } });
+                        </div>
+                    </div>
+                    <!-- END SAMPLE TABLE PORTLET-->
+                </div>
+            </div>
+
+
+            <div class="row">
+
+                <div class="col-md-6">
+                    <!-- BEGIN SAMPLE TABLE PORTLET-->
+                    <div class="portlet box green">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="fa fa-cogs"></i>
+                                المقبوضات
+                            </div>
+                            <div class="tools">
+                                <a href="javascript:;" class="collapse">
+                                </a>
+                                <a href="#portlet-config" data-toggle="modal" class="config">
+                                </a>
+                                <a href="javascript:;" class="reload">
+                                </a>
+                                <a href="" class="fullscreen">
+                                </a>
+                                <a href="javascript:;" class="remove">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="portlet-body">
+                            @Html.Partial("_LastPaymentReceipts", Model.ListLastReceipts, new ViewDataDictionary { { "VariableName", "2" } });
+                        </div>
+                    </div>
+                    <!-- END SAMPLE TABLE PORTLET-->
+                </div>
+                <div class="col-md-6">
+                    <!-- BEGIN SAMPLE TABLE PORTLET-->
+                    <div class="portlet box green">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="fa fa-cogs"></i>
+                                المدفوعات
+                            </div>
+                            <div class="tools">
+                                <a href="javascript:;" class="collapse">
+                                </a>
+                                <a href="#portlet-config" data-toggle="modal" class="config">
+                                </a>
+                                <a href="javascript:;" class="reload">
+                                </a>
+                                <a href="" class="fullscreen">
+                                </a>
+                                <a href="javascript:;" class="remove">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="portlet-body">
+                            @Html.Partial("_LastPaymentReceipts", Model.ListLastPayment, new ViewDataDictionary { { "VariableName", "1" } });
+                        </div>
+                    </div>
+                    <!-- END SAMPLE TABLE PORTLET-->
+                </div>
+
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <!-- BEGIN SAMPLE TABLE PORTLET-->
+                    <div class="portlet box blue">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="fa fa-cogs"></i>تنبيهات المخزن
+                            </div>
+                            <div class="tools">
+                                <a href="javascript:;" class="collapse">
+                                </a>
+                                <a href="#portlet-config" data-toggle="modal" class="config">
+                                </a>
+                                <a href="javascript:;" class="reload">
+                                </a>
+                                <a href="" class="fullscreen">
+                                </a>
+                                <a href="javascript:;" class="remove">
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="portlet-body">
+                            @Html.Partial("_StoreReminder", Model.ListStoreReminder);
+
+                        </div>
+                    </div>
+                    <!-- END SAMPLE TABLE PORTLET-->
+                </div>
+
+            </div>*@
+        </div>
+
+</div>
+        </div>
+    </div>
+
+@section Scripts{
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/raty/2.7.0/jquery.raty.min.css" rel="stylesheet" />
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/raty/2.7.0/jquery.raty.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Pages/Home.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script>
+        function initRating(container) {
+            $('span.rating', container).raty({
+                half: true,
+                starHalf: 'https://cdnjs.cloudflare.com/ajax/libs/raty/2.7.0/images/star-half.png',
+                starOff: 'https://cdnjs.cloudflare.com/ajax/libs/raty/2.7.0/images/star-off.png',
+                starOn: 'https://cdnjs.cloudflare.com/ajax/libs/raty/2.7.0/images/star-on.png',
+                readOnly: true,
+                score: function () {
+                    return $(this).attr('data-score');
+                }
+            });
+        }
+        function LoadRestaurantRatingData() {
+            debugger;
+            table = $('#myTableRating').DataTable({
+                "ajax": {
+                    "url": "/Home/LoadRestaurantRatingData",
+                    "type": "GET",
+                    "datatype": "json",
+                },
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/Arabic.json"
+                },
+                "columns": [
+                        { "data": "RestaurantName", "autoWidth": true, "className": "text-center" },
+                        { "data": "Rate", "autoWidth": true, "className": "text-center" },
+
+
+
+                ],
+                drawCallback: function (settings) {
+                    var api = this.api();
+
+                    // Initialize custom control
+                    initRating(api.table().container());
+                },
+                responsive: true
+            });
+        }
+
+        function GetOrderDetails(Id) {
+            $.ajax({
+                url: '/Orders/DisplayOrderDetails/' + Id,
+                type: "GET",
+                dataType: "html",
+                contentType: "application/json",
+                success: function (response) {
+                    debugger;
+                    // Open this PopUp
+                    $('#myPartialContainer').html(response);
+                    // $.validator.unobtrusive.parse('#frmDisplayOrderDetails');
+
+                },
+                error: function () {
+                    alert('Error. Please try again.');
+                }
+            });
+
+        }
+
+        $(document).ready(function () {
+            LoadLatestOffersData();
+            LoadRestaurantRatingData();
+            LoadOrdersData();
+            var chartData = null;
+            var TopExpensesChart = null;
+            //$.ajax({
+            //    url: '/Home/GetSalesData',
+            //    type: 'GET',
+            //    dataType: 'json',
+            //    data: '',
+            //    success: function (d) {
+            //        chartData = d;
+            //    },
+            //    error: function () {
+            //        //alert('Error!');
+            //    }
+            //}).done(function () {
+            //    drawChart(chartData, 'visualization', 'العملاء الاكثر نشاطا', 'المبيعات', 'العملاء');
+            //});
+
+            //$.ajax({
+            //    url: '/Home/GetTopRevenu',
+            //    type: 'GET',
+            //    dataType: 'json',
+            //    data: '',
+            //    success: function (d) {
+            //        TopRevenuChart = d;
+            //    },
+            //    error: function () {
+            //        // alert('Error!');
+            //    }
+            //}).done(function () {
+            //    drawChart(TopRevenuChart, 'RevenuChart', 'اعلى الايرادات', 'القيمة', 'الايرادات');
+            //});
+
+            //$.ajax({
+            //    url: '/Home/GetTopExpenses',
+            //    type: 'GET',
+            //    dataType: 'json',
+            //    data: '',
+            //    success: function (d) {
+            //        TopExpensesChart = d;
+            //    },
+            //    error: function () {
+            //        // alert('Error!');
+            //    }
+            //}).done(function () {
+            //    drawPieChart(TopExpensesChart, 'ExpensesChart', 'اعلى المصروفات', 'القيمة', 'المصروفات');
+            //});
+
+            $('#gridT').attr('class', 'table table-hover');
+
+            $('#main').find("#nestedT").each(function () {
+                $(this).addClass("table table-hover");
+            });
+
+
+
+            var size = $("#main #gridT > thead > tr >th").size();
+            $("#main #gridT > thead > tr >th").last().remove();
+            $("#main #gridT > thead > tr").prepend("<th></th>");
+            $("#main #gridT > tbody > tr").each(function (i, el) {
+                $(this).prepend(
+                        $("<td></td>")
+                        .addClass("expandRecord")
+                        .addClass("recordHoverEffect")
+                        .attr('title', "Show Hide Details")
+                    );
+
+
+                var table = $("table", this).parent().html();
+
+                $(this).after("<tr><td></td><td style='padding:5px; margin:0px;' colspan='" + (size - 1) + "'>" + table + "</td></tr>");
+                $("table", this).parent().remove();
+
+                $(".recordHoverEffect", this).on("click", function () {
+                    $(this).parent().closest("tr").next().slideToggle(100);
+                    $(this).toggleClass("expandRecord collapseRecord");
+                });
+            });
+
+
+            $("#main #gridT > tbody > tr td.expandRecord").each(function (i, el) {
+                $(this).toggleClass("expandRecord collapseRecord");
+                $(this).parent().closest("tr").next().slideToggle(100);
+            });
+
+
+
+
+        })
+
+        function drawChart(d, ChartName, ChartTitle, xTitle, yTitle) {
+            var chartData = d;
+            var data = null;
+            data = google.visualization.arrayToDataTable(chartData);
+
+            var view = new google.visualization.DataView(data);
+            view.setColumns([0, {
+                type: 'number',
+                label: data.getColumnLabel(0),
+                calc: function () { return 0; }
+            },
+                {
+                    type: 'number',
+                    label: data.getColumnLabel(1),
+                    calc: function () { return 0; }
+                }
+            ]);
+
+            //var chart = new google.visualization.ColumnChart(document.getElementById('visualization'));
+            var chart = new google.visualization.ColumnChart(document.getElementById(ChartName));
+
+            var options = {
+                title: ChartTitle,
+                legend: 'bottom',
+                hAxis: {
+                    title: yTitle,
+                    format: '#'
+                },
+                vAxis: {
+                    minValue: 0,
+                    maxValue: 200000,
+
+                    title: xTitle
+                },
+                chartArea: {
+                    left: 100, top: 50, width: '100%', height: '50%',
+                },
+                animation: {
+                    duration: 100
+                }
+            };
+
+            var runFirstTime = google.visualization.events.addListener(chart, 'ready', function () {
+                google.visualization.events.removeListener(runFirstTime);
+                chart.draw(data, options);
+            });
+
+            chart.draw(view, options);
+        }
+
+        function drawPieChart(d, ChartName, ChartTitle, xTitle, yTitle) {
+            var chartData = d;
+            var data = null;
+            data = google.visualization.arrayToDataTable(chartData);
+
+            var view = new google.visualization.DataView(data);
+            view.setColumns([0, {
+                type: 'number',
+                label: data.getColumnLabel(0),
+                calc: function () { return 0; }
+            },
+                {
+                    type: 'number',
+                    label: data.getColumnLabel(1),
+                    calc: function () { return 0; }
+                }
+            ]);
+
+            //var chart = new google.visualization.ColumnChart(document.getElementById('visualization'));
+            var chart = new google.visualization.PieChart(document.getElementById(ChartName));
+
+            //    var options = {
+            //        legend: { position: 'right',alignment:'start', textStyle: { color: 'blue', fontSize: 16 } },
+
+            //    }
+
+            //chart.draw(data,options)
+
+            chart.draw(data,
+                             {
+                                 title: ChartTitle,
+                                 position: "top",
+                                 fontsize: "14px",
+                                 chartArea: { width: '50%' },
+                             });
+
+            //var options = {
+            //    title: ChartTitle,
+            //    legend: 'bottom',
+            //    hAxis: {
+            //        title: yTitle,
+            //        format: '#'
+            //    },
+            //    vAxis: {
+            //        minValue: 0,
+            //        maxValue: 200000,
+
+            //        title: xTitle
+            //    },
+            //    chartArea: {
+            //        left: 100, top: 50, width: '100%', height: '50%',
+            //    },
+            //    animation: {
+            //        duration: 100
+            //    }
+            //};
+
+            var runFirstTime = google.visualization.events.addListener(chart, 'ready', function () {
+                google.visualization.events.removeListener(runFirstTime);
+                chart.draw(data, options);
+            });
+
+            // chart.draw(view, options);
+        }
+        google.load('visualization', '1', { packages: ['corechart'] });
+
+    
+    </script>
+}

@@ -1,0 +1,292 @@
+﻿@model Takeaway.Models.ChangePasswordVM
+
+
+<div class="page-content" style="min-height: 1119px">
+
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="~/Home/index">الرئيسية</a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+
+            <li>
+                ادارة المستخدم
+            </li>
+        </ul>
+    </div>
+
+
+    <div class="row">
+        <div id="divMsg">@Html.Raw(ViewBag.Msg)</div>
+        <div id="bootstrap_alerts_demo">
+        </div>
+       
+        @Html.Hidden("HiddenRole",(object)ViewBag.RoleName)
+        <div class="col-md-12" id="orderDiv">
+           
+            <div class="portlet box grey-salsa">
+                <div class="portlet-title">
+                    <div class="caption icon-users">
+                        قائمة الطلبات
+                    </div>
+                    <div class="tools">
+                        <a href="javascript:;" class="collapse" data-original-title="" title=""></a>
+                    </div>
+                </div>
+                <div class="portlet-body">
+
+                    
+                    <div class="form-body">
+                        <table id="myTable" style="text-align: center;" class="table table-striped table-bordered table-hover">
+                            <thead class="flip-content">
+
+                                <tr class="heading">
+                                    <th style="text-align: center;visibility:hidden;">الكود</th>
+                                    @*<th style="text-align: center;">الوصف</th>*@
+                                    <th style="text-align: center;">اسم العميل</th>
+                                    <th style="text-align: center;">التاريخ</th>
+                                    <th style="text-align: center;">اسم المطعم</th>
+                                    <th style="text-align: center;">جاله الطلب</th>
+                                    @*<th style="text-align: center;">تفاصيل الطلب</th>*@
+                                    <th style="text-align: center;">ميعاد التوصيل</th>
+                                    @*<th style="text-align: center;"> طريقه الدفع</th>*@
+                                    <th style="text-align: center;">اجمالى السعر</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    
+                        
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        @*===========================================================*@
+        <div class="col-md-12" id="passwordDiv">
+
+            <div class="portlet box grey-salsa">
+                <div class="portlet-title">
+                    <div class="caption icon-users">
+                        تغيير كلمه المرور
+                    </div>
+                    <div class="tools">
+                        <a href="javascript:;" class="collapse" data-original-title="" title=""></a>
+                    </div>
+                </div>
+                <div class="portlet-body">
+
+
+                    <div class="form-body">
+                       
+                        @using (Html.BeginForm("ChangePassword", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                        {
+                            @Html.AntiForgeryToken()
+                           
+                            @Html.ValidationSummary("", new { @class = "text-danger" })
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.OldPassword, "كلمه المرور القديمة", new { @class = "col-md-2 control-label" })
+                                <div class="col-md-10">
+                                    @Html.PasswordFor(m => m.OldPassword, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.NewPassword, "كلمه المرور الجديدة", new { @class = "col-md-2 control-label" })
+                                <div class="col-md-10">
+                                    @Html.PasswordFor(m => m.NewPassword, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.ConfirmPassword, "تأكيد كلمه المرور ", new { @class = "col-md-2 control-label" })
+                                <div class="col-md-10">
+                                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="تغيير كلمه المرور" class="btn btn-default" />
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        @*===========================================================*@
+        <div class="col-md-12" id="emailDiv">
+            <div class="portlet box grey-salsa">
+                <div class="portlet-title">
+                    <div class="caption icon-users">
+                        تغيير البريد الالكترونى
+                    </div>
+                    <div class="tools">
+                        <a href="javascript:;" class="collapse" data-original-title="" title=""></a>
+                    </div>
+                </div>
+                <div class="portlet-body">
+
+
+                    <div class="form-body">
+
+                        @using (Html.BeginForm("ChangeEmail", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <h4>تغيير البريد الالكترونى</h4>
+                            <hr />
+                            @Html.ValidationSummary("", new { @class = "text-danger" })
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.OldEmail, "البريد الالكترونى القديم", new { @class = "col-md-2 control-label" })
+                                <div class="col-md-10">
+                                    @Html.TextBoxFor(m => m.OldEmail, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.NewEmail, "البريد الالكترونى الجديد", new { @class = "col-md-2 control-label" })
+                                <div class="col-md-10">
+                                    @Html.TextBoxFor(m => m.NewEmail, new { @class = "form-control" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="تغيير البريد الالكترونى" class="btn btn-default" />
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+ 
+        <div class="col-md-12" id="addressDiv">
+
+            <div class="portlet box grey-salsa">
+                <div class="portlet-title">
+                    <div class="caption icon-users">
+                        قائمة العناوين
+                    </div>
+                    <div class="tools">
+                        <a href="javascript:;" class="collapse" data-original-title="" title=""></a>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="row">
+                        <div class="form-group col-md-4"  style="width:20%;">
+                            @Html.Label("المنطقة", htmlAttributes: new { @class = "control-label col-md-4", @style = "width:90%" })
+                            <div class="input-group col-md-6" style="width:100%;">
+                                @Html.DropDownList("RegionN", ViewBag.RegionN as List<SelectListItem>, "اختر", new { @class = "form-control select2me" })
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4"  style="width:20%;">
+                            @Html.Label("العنوان", htmlAttributes: new { @class = "control-label col-md-4", @style = "width:90%" })
+                            <div class="input-group col-md-6" style="width:100%;">
+                                @Html.TextBox("Address", null, new{ @class = "form-control " })
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4"  style="width:20%;">
+                            @Html.Label("خط العرض", htmlAttributes: new { @class = "control-label col-md-4", @style = "width:90%" })
+                            <div class="input-group col-md-6" style="width:100%;">
+                                @Html.TextBox("GMapLutitude", null, new {@class = "form-control"})
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4"  style="width:20%;">
+                            @Html.Label("خط الطول", htmlAttributes: new { @class = "control-label col-md-4", @style = "width:90%" })
+                            <div class="input-group col-md-6" style="width:100%;">
+                                @Html.TextBox("GMapLogitude", null, new{@class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="col-md-offset-1 col-md-1">
+                            <input value="Add" id="btnAddEditUserData" name="btnAddUserData" type="button" class="btn blue-madison btn-default bt" style="margin-top:22px"/>
+                        </div>
+                    </div>
+
+                    <div id="tableholderUserData">
+
+                    </div>
+                    @*<div class="col-md-offset-1 col-md-1">*@
+                        <input value="Save" id="btnSaveUserData" name="btnSaveUserData" type="button" class="btn blue-madison btn-default bt" />
+                    @*</div>*@
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="row">
+      
+
+
+    </div>
+
+    </div>
+
+<style>
+    tr.even {
+        background-color: #F5F5F5 !important;
+        text-align: center;
+    }
+
+    .dataTables_filter input[type="search"] {
+        font-size: 14px;
+        font-weight: normal;
+        color: #333;
+        background-color: #fff;
+        border: 1px solid #989898;
+        box-shadow: none;
+        transition: border-color ease-in-out .15s, box-shadow;
+    }
+
+    .dataTables_length select {
+        font-size: 14px;
+        font-weight: normal;
+        color: #333;
+        background-color: #fff;
+        border: 1px solid #989898;
+        box-shadow: none;
+        transition: border-color ease-in-out .15s, box-shadow;
+    }
+</style>
+
+@section Scripts{
+
+    <script src="~/Scripts/Pages/Manage.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            LoadData();
+            debugger;
+            if ($('#HiddenRole').val() == "User") {
+               
+                LoadUserData($("#HiddenUserID").val());
+                $('#addressDiv').css('display', 'table');
+            }
+            else if ($('#HiddenRole').val() == "Restaurant")
+            {
+                $('#orderDiv').css('display', 'none');
+                $('#addressDiv').css('display', 'none');
+            }
+            else {
+                $('#addressDiv').css('display', 'none');
+            }
+
+            var Msg = '@ViewBag.Msg';
+
+            if (Msg == 3) {
+                ShowMsg('تم تغيير كلمه المرور.', MessageType.Success, 5);
+            }
+            else if (Msg == 4) {
+                ShowMsg('تم تغيير البريد الالكترونى', MessageType.Success, 5);
+            }
+            else if (Msg == 1) {
+                ShowMsg('لم تتم العملية الرجاء المحاولة مرة اخري. ', MessageType.Error, 5);
+            }
+        });
+    </script>
+}

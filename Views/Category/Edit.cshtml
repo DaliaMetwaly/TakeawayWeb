@@ -1,0 +1,168 @@
+﻿@model Takeaway.Models.Category
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="page-content" style="min-height: 1119px">
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="~/Home/index">الرئيسية</a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+            <li>
+                <a href="/Category/Index">قوائم الطعام</a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+            <li>
+                تعديل قائمه الطعام
+            </li>
+        </ul>
+    </div>
+    <div id="divMsg">@Html.Raw(ViewBag.Msg)</div>
+    <div class="row">
+        <div class="col-md-12">
+            @*<div id="bootstrap_alerts_demo">
+                </div>*@
+            <div class="portlet box grey-salsa">
+                <div class="portlet-title">
+                    <div class="caption">
+                        تعديل قائمه الطعام
+                    </div>
+                    <div class="tools">
+                        <a href="javascript:;" class="collapse" data-original-title="" title=""></a>
+                    </div>
+                </div>
+                <div class="portlet-body form">
+
+                    <!-- BEGIN FORM-->
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(false, "", new { @class = "Metronic-alerts alert alert-danger fade in" })
+                        @Html.HiddenFor(model => model.ID)
+                        <div class="row">
+                            <div class="col-md-9 ">
+                                <div class="form-body">
+
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.CategoryName, htmlAttributes: new { @class = "col-md-4 control-label" })
+                                        <div class="input-group col-md-4">
+                                            @Html.EditorFor(model => model.CategoryName, new { htmlAttributes = new { placeholder = "إدخل الحجم بالعربى ", @class = "form-control" } })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.CategoryName, "", new { @class = "text-danger" })
+                                                @***@
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.CategoryNameEn, htmlAttributes: new { @class = "col-md-4 control-label" })
+                                        <div class="input-group col-md-4">
+                                            @Html.EditorFor(model => model.CategoryNameEn, new { htmlAttributes = new { placeholder = "إدخل الحجم بالانجليزى ", @class = "form-control" } })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.CategoryNameEn, "", new { @class = "text-danger" })
+                                                @***@
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.DescriptionAr, htmlAttributes: new { @class = "col-md-4 control-label" })
+                                        <div class="input-group col-md-4">
+                                            @Html.EditorFor(model => model.DescriptionAr, new { htmlAttributes = new { placeholder = "إدخل الحجم بالانجليزى ", @class = "form-control" } })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.DescriptionAr, "", new { @class = "text-danger" })
+                                                @***@
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.DescriptionEn, htmlAttributes: new { @class = "col-md-4 control-label" })
+                                        <div class="input-group col-md-4">
+                                            @Html.EditorFor(model => model.DescriptionEn, new { htmlAttributes = new { placeholder = "إدخل الحجم بالانجليزى ", @class = "form-control" } })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.DescriptionEn, "", new { @class = "text-danger" })
+                                                @***@
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.RestaurantID, htmlAttributes: new { @class = "col-md-4 control-label" })
+                                        <div class="input-group col-md-4">
+                                            @Html.DropDownListFor(model => model.RestaurantID, ViewBag.RestaurantID as List<SelectListItem>, new { @class = "form-control select2me" })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.RestaurantID, "", new { @class = "text-danger" })
+                                                @***@
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group" style="display:none;">
+                                        <div class="col-md-4">
+
+                                        </div>
+                                        <div class="input-group col-md-4">
+                                            <div class="md-checkbox">
+                                                @Html.CheckBoxFor(model => model.IsActive, new { @class = "md-check" })
+                                                <label for="IsActive">
+                                                    التفعيل
+                                                    <span class="inc"></span>
+                                                    <span class="check"></span>
+                                                    <span class="box"></span>
+                                                </label>
+                                            </div>
+                                            <span class="input-group-addon input-circle-right">
+                                            </span>
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="form-actions fluid">
+                            <div class="row">
+                                <div class="col-md-offset-3 col-md-9">
+                                    <input type="submit" value="حفظ" class="btn green " />
+                                    <a href="~/Category/Index" class="btn default">للخلف</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    <!-- END FORM-->
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+
+    <script>
+
+    </script>
+}
+
+
+
+
+
+
+
+
+
+

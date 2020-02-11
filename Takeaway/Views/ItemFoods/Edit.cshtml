@@ -1,0 +1,875 @@
+﻿
+@model Takeaway.Models.ItemfoodViewModel
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="page-content" style="min-height: 1119px">
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="~/Home/index">الرئيسية</a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+            <li>
+                <a href="/ItemFoods/Index"> الوجبات  </a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+            <li>
+                تعديل وجبة
+            </li>
+        </ul>
+    </div>
+    <div id="divMsg">@Html.Raw(ViewBag.Msg)</div>
+    <div class="row">
+        <div class="col-md-12">
+            @*<div id="bootstrap_alerts_demo">
+                </div>*@
+            <div class="portlet box grey-salsa">
+                <div class="portlet-title">
+                    <div class="caption">
+                        تعديل وجبة
+                    </div>
+                    <div class="tools">
+                        <a href="javascript:;" class="collapse" data-original-title="" title=""></a>
+                    </div>
+                </div>
+                <div class="portlet-body form">
+
+                    <!-- BEGIN FORM-->
+
+                    @using (Html.BeginForm("Edit", "ItemFoods", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(false, "", new { @class = "Metronic-alerts alert alert-danger fade in" })
+                      @Html.HiddenFor(model => model.ID)
+                          <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-body">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.FoodName, htmlAttributes: new { @class = "col-md-3 control-label" })
+                                        <div class="input-group col-md-4">
+                                            @Html.EditorFor(model => model.FoodName, new { htmlAttributes = new { placeholder = "إدخل الوجبة ", @class = "form-control" } })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.FoodName, "", new { @class = "text-danger" })
+                                                @***@
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.FoodNameEn, htmlAttributes: new { @class = "col-md-3 control-label" })
+                                        <div class="input-group col-md-4">
+                                            @Html.EditorFor(model => model.FoodNameEn, new { htmlAttributes = new { placeholder = "  Food Name ", @class = "form-control" } })
+
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.FoodNameEn, "", new { @class = "text-danger" })
+                                                @***@
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "col-md-3 control-label" })
+                                        <div class="input-group col-md-4">
+                                            @Html.TextAreaFor(model => model.Description,  htmlAttributes : new { placeholder = "إدخل الملاحظات", @class = "form-control", cols = "105"  })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                                                @***@
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.DescriptionEn, htmlAttributes: new { @class = "col-md-3 control-label" })
+                                        <div class="input-group col-md-4">
+                                            @Html.TextAreaFor(model => model.DescriptionEn, htmlAttributes :new { placeholder = " Notes", @class = "form-control", cols = "105"  })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.DescriptionEn, "", new { @class = "text-danger" })
+                                                @***@
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    @*<div class="form-group">
+                                        @Html.LabelFor(model => model.NotforSale, htmlAttributes: new { @class = "col-md-3 control-label" })
+                                        <div class="input-group col-md-4">
+                                            @Html.EditorFor(model => model.NotforSale, new { @class = "form-control" })
+                                            <span class="input-group-addon input-circle-right">
+                                               
+                                            </span>
+                                        </div>
+                                    </div>*@
+                                   
+                                    <div class="form-group">
+                                        <div class="col-md-3">
+
+                                        </div>
+                                        <div class="input-group col-md-4">
+                                            <div class="md-checkbox">
+                                                @Html.CheckBoxFor(model => model.NotforSale, new { @class = "md-check" })
+                                                <label for="NotforSale">
+                                                    ليست للبيع
+                                                    <span class="inc"></span>
+                                                    <span class="check"></span>
+                                                    <span class="box"></span>
+                                                </label>
+                                            </div>
+                                            <span class="input-group-addon input-circle-right">
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "col-md-3 control-label" })
+                                        <div class="input-group col-md-4">
+                                            @Html.EditorFor(model => model.Price, new { htmlAttributes = new { placeholder = "  Price  ", @class = "form-control"} })
+
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+                                                @***@
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.SizeID, "الحجم", new { @class = "col-md-3 control-label " })
+                                        <div class="input-group col-md-4">
+                                            @Html.DropDownListFor(model => model.SizeID, ViewBag.SizeID as List<SelectListItem>, " اختر  الصنف ", new { @class = "form-control select2me" })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.SizeID, null, new { @class = "text-danger" })
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.Label("المطعم", new { @class = "col-md-3 control-label " })
+                                        <div class="input-group col-md-4">
+                                            @Html.DropDownList("RestaurantID", ViewBag.RestaurantID as List<SelectListItem>, " اختر  المطعم ", new { @class = "form-control select2me" })
+                                            <span class="input-group-addon input-circle-right">
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    @*<div class="form-group">
+                                        @Html.LabelFor(model => model.CategoryID, new { @class = "col-md-4 control-label " })
+                                        <div class="input-group col-md-6">
+                                            @Html.DropDownListFor(model => model.CategoryID, new SelectList(string.Empty, "Value", "Text"), " اختر الصنف ", new { @class = "form-control select2me" })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.CategoryID, null, new { @class = "text-danger" })
+                                            </span>
+                                        </div>
+                                    </div>*@
+
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.CategoryID, new { @class = "col-md-3 control-label " })
+                                        <div class="input-group col-md-4">
+                                            @Html.DropDownListFor(model => model.CategoryID, ViewBag.CategoryID as List<SelectListItem>, " اختر  الصنف ", new { @class = "form-control select2me" })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.CategoryID, null, new { @class = "text-danger" })
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.CategoryTypeID, new { @class = "col-md-3 control-label " })
+                                        <div class="input-group col-md-4">
+                                            @Html.DropDownListFor(model => model.CategoryTypeID, ViewBag.CategoryTypeID as List<SelectListItem>, " اختر نوع الصنف ", new { @class = "form-control select2me" })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.CategoryTypeID, null, new { @class = "text-danger" })
+                                            </span>
+                                        </div>
+                                    </div>
+
+
+                                    @*<div class="form-group" id="_Drink" style="display:none">
+
+
+                                        @Html.Label("Drinks", new { @class = "col-md-3 control-label " })
+                                        <div class="input-group col-md-6">
+                                            @Html.DropDownList("DrinkID", ViewBag.DrinkID as List<SelectListItem>, " اختر المشروب ", new { @class = "form-control select2me" })
+                                            <span class="input-group-addon input-circle-right">
+                                            </span>
+                                        </div>
+                                      
+                                        <div id="tableholder" class="row">
+                                            <div class="col-md-6 col-sm-6">
+
+                                            </div>
+
+
+                                            <table id="myTable" style="text-align: center;" class="table table-striped table-bordered table-hover">
+                                                <thead class="flip-content">
+
+                                                    <tr class="heading">
+
+                                                        <th style="text-align: center;">اسم المشروب </th>
+                                                      
+                                                        <th style="text-align: center;">حذف</th>
+
+
+
+                                                    </tr>
+
+                                                </thead>
+                                            </table>
+                                        </div>
+                                    </div>*@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                    <div id="_Drink" style="display:none;">
+                                        <div class="portlet box grey">
+                                            <div class="portlet-title">
+                                                <div class="caption">
+                                                    <i class="fa fa-gift"></i>  مشروبات
+                                                </div>
+                                                <div class="tools">
+                                                    <a href="" class="collapse">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="portlet-body">
+                                                <div class="form-body">
+                                                    <div class="cold-md-12">
+
+                                                        <div class="row">
+
+                                                            <div class="form-group" id="_addDrink">
+
+                                                                @Html.Label("Drinks", "مشروبات", new { @class = "col-md-3 control-label " })
+                                                                <div class="input-group col-md-6">
+                                                                    @Html.DropDownList("DrinkID", ViewBag.DrinkID as List<SelectListItem>, " اختر المشروب ", new { @class = "form-control select2me" })
+                                                                    <span class="input-group-addon input-circle-right">
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+
+
+
+                                                        </div>
+
+                                                        <div id="tableholder" class="row">
+                                                           
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+                                        </div>
+
+
+                                    </div>
+
+                                    @*==================================================================*@
+                                    @*<div class="form-group" id="_Addition" style="display:none">
+
+                                        @Html.Label("Addition", new { @class = "col-md-3 control-label " })
+                                        <div class="input-group col-md-6">
+                                            @Html.DropDownList("AdditionID", ViewBag.AdditionID as List<SelectListItem>, " اختر الاضافة ", new { @class = "form-control select2me" })
+                                            <span class="input-group-addon input-circle-right">
+                                            </span>
+                                        </div>
+                                        
+                                        <div id="tableholder2" class="row">
+                                            <div class="col-md-6 col-sm-6">
+
+                                            </div>
+
+
+                                            <table id="myTable2" style="text-align: center;" class="table table-striped table-bordered table-hover">
+                                                <thead class="flip-content">
+
+                                                    <tr class="heading">
+
+                                                        <th style="text-align: center;">اسم الاضافة </th>
+
+                                                        <th style="text-align: center;">حذف</th>
+
+
+
+
+                                                    </tr>
+
+                                                </thead>
+                                            </table>
+                                        </div>
+                                    </div>*@
+
+                                    @*===================================================================*@
+                                    <div id="_Addition" style="display:none;">
+                                        <div class="portlet box grey">
+                                            <div class="portlet-title">
+                                                <div class="caption">
+                                                    <i class="fa fa-gift"></i>  اضافات
+                                                </div>
+                                                <div class="tools">
+                                                    <a href="" class="collapse">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="portlet-body">
+                                                <div class="form-body">
+                                                    <div class="cold-md-12">
+
+                                                        <div class="row">
+                                                            <div class="form-group" id="_addAddition">
+
+                                                                @Html.Label("Addition", "اضافات", new { @class = "col-md-3 control-label " })
+                                                                <div class="input-group col-md-6">
+                                                                    @Html.DropDownList("AdditionID", ViewBag.AdditionID as List<SelectListItem>, " اختر الاضافة ", new { @class = "form-control select2me" })
+                                                                    <span class="input-group-addon input-circle-right">
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div id="tableholder2" class="row">
+                                                     
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+                                        </div>
+
+
+                                    </div>
+
+
+
+
+
+
+
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-3" })
+                                        <div class="input-group col-md-6">
+                                            <img id="newimg" src="" style="width:100%;height:200px;" />
+                                            @Html.TextBoxFor(model => model.imgpath, new { type = "file", @onchange = "onFileSelected(event)", @accept = "image/*" })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
+                                                @***@
+                                            </span>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="form-group" style="display:none;">
+                                        @Html.LabelFor(model => model.IsActive, htmlAttributes: new { @class = "col-md-3 control-label" })
+                                        <div class="input-group col-md-4">
+                                            @Html.EditorFor(model => model.IsActive, new { @class = "form-control" })
+                                            <span class="input-group-addon input-circle-right">
+                                               
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    @*<div class="form-group">
+                                        <div class="col-md-4">
+
+                                        </div>
+                                        <div class="input-group col-md-4">
+                                            <div class="md-checkbox">
+                                                @Html.CheckBoxFor(model => model.IsActive, new { @class = "md-check" })
+                                                <label for="IsActive">
+                                                    التفعيل
+                                                    <span class="inc"></span>
+                                                    <span class="check"></span>
+                                                    <span class="box"></span>
+                                                </label>
+                                            </div>
+                                            <span class="input-group-addon input-circle-right">
+                                            </span>
+                                        </div>
+                                    </div>*@
+
+
+                                    <div class="form-group">
+                                        <div class="col-md-4">
+
+                                        </div>
+                                        <div class="input-group col-md-4">
+                                            <div class="md-checkbox">
+                                                @Html.CheckBoxFor(model => model.IsCooking, new { @class = "md-check" })
+                                                <label for="IsCooking">
+                                                    التسويه
+                                                    <span class="inc"></span>
+                                                    <span class="check"></span>
+                                                    <span class="box"></span>
+                                                </label>
+                                            </div>
+                                            <span class="input-group-addon input-circle-right">
+                                            </span>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="form-actions fluid">
+                            <div class="row">
+                                <div class="col-md-offset-3 col-md-9">
+                                    <input type="submit" value="حفظ" class="btn green " />
+                                    <a href="../Index" class="btn default">للخلف</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    <!-- END FORM-->
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    tr.even {
+        background-color: #F5F5F5 !important;
+        text-align: center;
+    }
+
+    .dataTables_filter input[type="search"] {
+        font-size: 14px;
+        font-weight: normal;
+        color: #333;
+        background-color: #fff;
+        border: 1px solid #989898;
+        box-shadow: none;
+        transition: border-color ease-in-out .15s, box-shadow;
+    }
+
+    .dataTables_length select {
+        font-size: 14px;
+        font-weight: normal;
+        color: #333;
+        background-color: #fff;
+        border: 1px solid #989898;
+        box-shadow: none;
+        transition: border-color ease-in-out .15s, box-shadow;
+    }
+</style>
+@section Scripts{
+
+    <script>
+       var table;
+       var DrinksList = [];
+       var AdditionList = [];
+       $("#NotforSale").click(function() {
+           if ($('#NotforSale').is(':checked')) {
+               $('#Price').attr("disabled", true);
+               $('#Price').val(0.0);
+
+           } else {
+               $('#Price').attr("disabled", false);
+
+           }
+       });
+
+
+
+        $(document).ready(function () {
+
+            table=  $('#myTable').DataTable({
+                "ajax": {
+                    url: "@Url.Action("LoadDrinks")?DrinkId=" + 1,
+                "type": "GET",
+                "datatype": "json",
+            },
+                            "language": {
+                                "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/Arabic.json"
+                            },
+                            "columns": [
+                                            { "data": "DrinkName", "autoWidth": true, "className": "text-center", },
+                                            { "data": "Deleted", "className": "text-center", "sortable": false },
+                            ],
+                            });
+       
+                var imgpath = '@ViewBag.tempimgpath';
+                var imgtag = document.getElementById("newimg");
+                //$("#newimg").src = imgpath;
+                imgtag.src = imgpath;
+         
+
+        function onFileSelected(event) {
+            var selectedFile = event.target.files[0];
+            var reader = new FileReader();
+
+            var imgtag = document.getElementById("newimg");
+            imgtag.title = selectedFile.name;
+
+            reader.onload = function (event) {
+                imgtag.src = event.target.result;
+            };
+
+            reader.readAsDataURL(selectedFile);
+        }
+
+
+        $("#RestaurantID").change(function () {
+
+            $("#CategoryID").empty();
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("Get_Category")', // we are calling json method
+                dataType: 'json',
+                data: { id: $("#RestaurantID").val() },
+                success: function (_Category) {
+                    // states contains the JSON formatted list
+                    // of states passed from the controller
+                    $.each(_Category, function (i, Category) {
+                        $("#CategoryID").append('<option value="' + Category.Value + '">' + Category.Text + '</option>');
+                    }); // here we are adding option for States
+                },
+                error: function (ex) {
+                    $("#CategoryID").append('<option value="' + null + '">' + "اختر الصنف" + '</option>');
+
+                }
+            });
+            return false;
+        });
+
+            $('#_Drink').hide();
+            $('#_Addition').hide();
+            var catid = '@Model.ID';
+            $.ajax({
+                url: '/ItemFoods/addtempDrinks',
+                contentType: "application/json; charset=utf-8",
+                datatype: 'Json',
+                type: "Get",
+                async: false,
+                data: { Id: catid },  @*JSON.stringify('@Model.ID')*@
+                    success: function (Data) {
+                        DrinksList = Data; @*JSON.stringify(Data)*@
+                        if (DrinksList.length != 0) {
+                            $('#_Drink').show();
+                            $('#_Addition').show();
+                        }
+                    },
+            error: function () {
+                alert('Error.' + Data.length);
+            }
+        });
+            DrinkListtable();
+
+            
+            $.ajax({
+                url: '/ItemFoods/addtempAdditiion',
+                contentType: "application/json; charset=utf-8",
+                datatype: 'Json',
+                type: "Get",
+                async: false,
+                data: { Id: catid },  @*JSON.stringify('@Model.ID')*@
+                    success: function (Data) {
+                        AdditionList = Data; @*JSON.stringify(Data)*@
+                        if (AdditionList.length!=0) {
+                        $('#_Addition').show();
+                        $('#_Drink').show();
+
+                        }
+
+
+                },
+            error: function () {
+                alert('Error.' + Data.length);
+            }
+        });
+            AdditionListtable();
+
+
+           
+            $("#CategoryTypeID").change(function () {
+                var selection = $(this).val();
+                if (selection == 1) {
+                    $('#_Drink').show();
+                    $('#_Addition').show();
+
+                    $("#DrinkID").change(function () {
+                        creatDrinkListdata();
+                        DrinkListtable();
+                        $.ajax({
+                            url: '/ItemFoods/addtempDrinks',
+                            contentType: "application/json; charset=utf-8",
+                            type: "Post",
+                            async: false,
+                            data: JSON.stringify(DrinksList),
+                            success: function (response) {
+                                //check is successfully save to database
+                                //  alert("Done:" + response.text);
+                            },
+                            error: function () {
+                                alert('Error.' + DrinksList.length);
+
+                            }
+                        });
+                });
+
+
+                    $("#AdditionID").change(function () {
+                        creatAdditionListdata();
+                        AdditionListtable();
+                        $.ajax({
+                            url: '/ItemFoods/addtempAdditions',
+                            contentType: "application/json; charset=utf-8",
+                            type: "Post",
+                            async: false,
+                            data: JSON.stringify(AdditionList),
+                            success: function (response) {
+                                //check is successfully save to database
+                                //  alert("Done:" + response.text);
+                            },
+                            error: function () {
+                                alert('Error.' + AdditionList.length);
+
+                            }
+                        });
+
+                             });
+
+                }
+                else {
+                    $('#_Drink').hide();
+                    $('#_Addition').hide();
+                }
+            });
+
+            if ($("#CategoryTypeID").val() == "1") {
+                $('#_Drink').show();
+                $('#_Addition').show();
+
+               // creatDrinkListdata();
+                DrinkListtable();
+                $.ajax({
+                    url: '/ItemFoods/addtempDrinks',
+                    contentType: "application/json; charset=utf-8",
+                    type: "Post",
+                    async: false,
+                    data: JSON.stringify(DrinksList),
+                    success: function (response) {
+                        //check is successfully save to database
+                        //  alert("Done:" + response.text);
+                    },
+                    error: function () {
+                        alert('Error.DrinksList' + DrinksList.length);
+
+                    }
+                });
+
+              //  creatAdditionListdata();
+                AdditionListtable();
+                $.ajax({
+                    url: '/ItemFoods/addtempAdditions',
+                    contentType: "application/json; charset=utf-8",
+                    type: "Post",
+                    async: false,
+                    data: JSON.stringify(AdditionList),
+                    success: function (response) {
+                        //check is successfully save to database
+                        //  alert("Done:" + response.text);
+                    },
+                    error: function () {
+                        alert('Error.AdditionList' + AdditionList.length);
+
+                    }
+                });
+
+              
+
+
+                $("#DrinkID").change(function () {
+                    creatDrinkListdata();
+                    DrinkListtable();
+                    $.ajax({
+                        url: '/ItemFoods/addtempDrinks',
+                        contentType: "application/json; charset=utf-8",
+                        type: "Post",
+                        async: false,
+                        data: JSON.stringify(DrinksList),
+                        success: function (response) {
+                            //check is successfully save to database
+                            //  alert("Done:" + response.text);
+                        },
+                        error: function () {
+                            alert('Error.' + DrinksList.length);
+
+                        }
+                    });
+                });
+
+
+                $("#AdditionID").change(function () {
+                    creatAdditionListdata();
+                    AdditionListtable();
+                    $.ajax({
+                        url: '/ItemFoods/addtempAdditions',
+                        contentType: "application/json; charset=utf-8",
+                        type: "Post",
+                        async: false,
+                        data: JSON.stringify(AdditionList),
+                        success: function (response) {
+                            //check is successfully save to database
+                            //  alert("Done:" + response.text);
+                        },
+                        error: function () {
+                            alert('Error.' + AdditionList.length);
+
+                        }
+                    });
+
+                });
+
+
+            }
+
+
+        });
+
+       
+       $(document).on('click', '#deletecat', function () {
+
+           var ItemIndex = $(this).closest('tr').index();
+           var realindex = ItemIndex - 1;
+           DrinksList.splice(realindex, 1);
+           DrinkListtable();
+
+           $.ajax({
+               url: '/ItemFoods/addtempDrinks',
+               contentType: "application/json; charset=utf-8",
+               type: "Post",
+               async: false,
+               data: JSON.stringify(DrinksList),
+               success: function (response) {
+                   //check is successfully save to database
+                   //  alert("Done:" + response.text);
+               },
+               error: function () {
+                   alert('Error.' + DrinksList.length);
+
+               }
+           });
+
+
+       });
+       $(document).on('click', '#deleteAddition', function () {
+
+           var ItemIndex = $(this).closest('tr').index();
+           var realindex = ItemIndex - 1;
+           AdditionList.splice(realindex, 1);
+           AdditionListtable();
+
+           $.ajax({
+               url: '/ItemFoods/addtempAdditions',
+               contentType: "application/json; charset=utf-8",
+               type: "Post",
+               async: false,
+               data: JSON.stringify(AdditionList),
+               success: function (response) {
+                   //check is successfully save to database
+                   //  alert("Done:" + response.text);
+               },
+               error: function () {
+                   alert('Error.' + DrinksList.length);
+
+               }
+           });
+
+
+       });
+
+       function creatDrinkListdata() {
+
+           DrinksList.push({
+               Id: $("#DrinkID option:selected").val(),
+               DrinkName: $("#DrinkID option:selected").text(),
+             
+           });
+       }
+
+
+
+       function DrinkListtable() {
+           table.destroy();
+
+           $("#tblcategories").remove();
+           $("#myTable").remove();
+           var myTable = "<table id='tblcategories' class='table table-striped table-bordered table-hover dataTable no-footer'><tr><td style='width: 100px; color: red;'>الاسم</td>";
+           myTable += "<td style='width: 100px; color: red; text-align: right;'>حذف</td></tr>";
+
+
+           for (var i = 0; i < DrinksList.length; i++) {
+               myTable += "<tr><td style='width: 100px;'>" + DrinksList[i].DrinkName + "</td>";
+               myTable += "<td style='width: 100px; text-align: right;'><input type='button' id='deletecat' class='removebutton btn default btn-xs black' value='حذف'/></td></tr>";
+           }
+           myTable += "</table>";
+
+           $("#tableholder").append(myTable);
+
+
+       }
+
+       function creatAdditionListdata() {
+
+           AdditionList.push({
+               Id: $("#AdditionID option:selected").val(),
+               AdditonName: $("#AdditionID option:selected").text(),
+             
+           });
+       }
+
+
+       function AdditionListtable() {
+           table.destroy();
+
+           $("#tblcategories2").remove();
+           $("#myTable2").remove();
+           var myTable = "<table id='tblcategories2' class='table table-striped table-bordered table-hover dataTable no-footer'><tr><td style='width: 100px; color: red;'>الاسم</td>";
+           myTable += "<td style='width: 100px; color: red; text-align: right;'>حذف</td></tr>";
+
+
+           for (var i = 0; i < AdditionList.length; i++) {
+               myTable += "<tr><td style='width: 100px;'>" + AdditionList[i].AdditonName + "</td>";
+               myTable += "<td style='width: 100px; text-align: right;'><input type='button' id='deleteAddition' class='removebutton btn default btn-xs black' value='حذف'/></td></tr>";
+           }
+           myTable += "</table>";
+
+           $("#tableholder2").append(myTable);
+
+
+       }
+    </script>
+}
+
+

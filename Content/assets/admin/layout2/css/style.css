@@ -1,0 +1,24 @@
+
+@font-face{
+    font-family: Flat_regular;
+    src: url('JF_Flat_regular.ttf');
+}
+*{
+    font-family:'Flat_regular';
+	margin:0px;
+	padding:0px;
+	text-decoration:none;
+	direction:rtl;
+	outline:none; 
+}
+
+#ExpensesChart text{
+
+
+    direction:ltr;
+
+}
+
+#visualization text{
+    direction :ltr;
+}

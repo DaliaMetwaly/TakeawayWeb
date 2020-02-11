@@ -1,0 +1,161 @@
+﻿@model Takeaway.Models.Cobone
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="page-content" style="min-height: 1119px">
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="~/Home/index">الرئيسية</a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+            <li>
+                <a href="/Cobone/Index"> الكوبونات</a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+            <li>
+                اضافة كوبون
+            </li>
+        </ul>
+    </div>
+    <div id="divMsg">@Html.Raw(ViewBag.Msg)</div>
+    <div class="row">
+        <div class="col-md-12">
+            @*<div id="bootstrap_alerts_demo">
+                </div>*@
+            <div class="portlet box grey-salsa">
+                <div class="portlet-title">
+                    <div class="caption">
+                        اضافة كوبون
+                    </div>
+                    <div class="tools">
+                        <a href="javascript:;" class="collapse" data-original-title="" title=""></a>
+                    </div>
+                </div>
+                <div class="portlet-body form">
+
+                    <!-- BEGIN FORM-->
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(false, "", new { @class = "Metronic-alerts alert alert-danger fade in" })
+
+                        <div class="row">
+                            <div class="col-md-9 ">
+                                <div class="form-body">
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.CoboneNameAr, "اسم الكوبون بالعربية", htmlAttributes: new { @class = "col-md-4 control-label" })
+                                        <div class="input-group col-md-4">
+                                            @Html.EditorFor(model => model.CoboneNameAr, new { htmlAttributes = new { placeholder = "إدخل اسم الكوبون بالعربية", @class = "form-control" } })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.CoboneNameAr, "", new { @class = "text-danger" })
+                                                @***@
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.CoboneNameEn, "اسم الكوبون بالأنجليزية", htmlAttributes: new { @class = "col-md-4 control-label" })
+                                        <div class="input-group col-md-4">
+
+                                            @Html.EditorFor(model => model.CoboneNameEn, new { htmlAttributes = new { placeholder = "إدخل اسم الكوبون بالأنجليزية", @class = "form-control" } })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.CoboneNameEn, "", new { @class = "text-danger" })
+                                                @***@
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.CoboneTypeID, "نوع الكوبون", new { @class = "col-md-4 control-label " })
+                                        <div class="input-group col-md-4">
+                                            @Html.DropDownListFor(model => model.CoboneTypeID, ViewBag.CoboneTypeID as List<SelectListItem>, "إختار نوع الكوبون", new { @class = "form-control select2me" })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.CoboneTypeID, null, new { @class = "text-danger" })
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.CoboneTypeValue, "قيمة الكوبون", htmlAttributes: new { @class = "col-md-4 control-label" })
+                                        <div class="input-group col-md-4">
+                                            @Html.EditorFor(model => model.CoboneTypeValue, new { htmlAttributes = new { placeholder = "إدخل قيمة الكوبون ", @class = "form-control" } })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.CoboneTypeValue, "", new { @class = "text-danger" })
+
+                                            </span>
+                                        </div>
+                                    </div>
+                                  
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Duration, "الفترة باليوم", htmlAttributes: new { @class = "col-md-4 control-label" })
+                                        <div class="input-group col-md-4">
+                                            @Html.TextBoxFor(model => model.Duration, new { placeholder = "إدخل الفترة باليوم ", @class = "form-control" })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.Duration, "", new { @class = "text-danger" })
+                                                @***@
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    @*<div class="form-group">
+                                        <div class="col-md-4">
+
+                                        </div>
+                                        <div class="input-group col-md-4">
+                                            <div class="md-checkbox">
+                                                @Html.CheckBoxFor(model => model.IsActive, new { @class = "md-check" })
+                                                <label for="IsActive">
+                                                    التفعيل
+                                                    <span class="inc"></span>
+                                                    <span class="check"></span>
+                                                    <span class="box"></span>
+                                                </label>
+                                            </div>
+                                            <span class="input-group-addon input-circle-right">
+                                            </span>
+                                        </div>
+                                    </div>*@
+
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="form-actions fluid">
+                            <div class="row">
+                                <div class="col-md-offset-3 col-md-9">
+                                    <input type="submit" value="حفظ" class="btn green " />
+                                    <a href="Index" class="btn default">للخلف</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    <!-- END FORM-->
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+
+    <script>
+        $("#Duration").keypress(function (e) {
+            
+            if (isNaN(this.value)) {
+                alert("إدخل نجوم المطعم بالأرقام");
+                return false;
+            }
+        });
+       
+    </script>
+}

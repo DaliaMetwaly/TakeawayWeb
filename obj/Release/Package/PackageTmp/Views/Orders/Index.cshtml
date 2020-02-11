@@ -1,0 +1,225 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="page-content" style="min-height: 1119px">
+
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="~/Orders/index">الرئيسية</a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+
+            <li>
+               الطلب
+            </li>
+        </ul>
+    </div>
+
+    <div class="row">
+        <p>
+            @*<a id="btn_Create" href="/Orders/Create" class="btn green">إضافة</a>*@
+        </p>
+        <div id="bootstrap_alerts_demo">
+        </div>
+        <div class="col-md-12">
+            <div class="portlet box grey-salsa">
+                <div class="portlet-title">
+                    <div class="caption icon-users">
+                        الطلب
+                    </div>
+                    <div class="tools">
+                        <a href="javascript:;" class="collapse" data-original-title="" title=""></a>
+                    </div>
+                </div>
+                <div class="portlet-body">
+
+                    <div class="table-toolbar">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="btn-group">
+                                    @if (ViewBag.IsAdmin == 1)
+                                    {
+                                        @*<a id="AddNew" href="~/Orders/Create" class="btn green"><i class="fa fa-plus">اضافة</i></a>*@
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-body">
+                        @Html.Hidden("roleName", (object)ViewBag.roleName)
+                        <table id="OrderTable" style="text-align: center;" class="table table-striped table-bordered table-hover">
+                            <thead class="flip-content">
+
+                                <tr class="heading">
+                                    @*<th>التفاصيل</th>*@
+                                    <th style="display:none;" class="text-center">Id</th>
+                                    <th style="text-align: center;">اسم المستخدم</th>
+                                    <th style="text-align: center;">المطعم </th>
+                                    <th style="text-align: center;">حاله الطلب</th>
+                                    @*<th style="text-align: center;">اجمالى السعر</th>
+                                    <th style="text-align: center;">طريقه الدفع</th>*@
+                                    <th style="text-align: center;">تاريخ الطلب</th>
+                                    @if(ViewBag.roleName == 1) {
+                                    <th style="text-align: center;">تفعيل</th>
+                                    <th  style="text-align: center;">تعديل</th>
+                                    <th  style="text-align: center;">حذف</th> 
+                                    }
+                                    <th style="text-align: center;">التفاصيل</th>
+                                </tr>
+                            </thead>
+                        </table>
+                        <!--Modal Popup for Order Details -->
+                        <div id="myModal" class="modal fade" role="dialog">
+                            <div id="myPartialContainer">
+
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    tr.even {
+        background-color: #F5F5F5 !important;
+        text-align: center;
+    }
+
+    .dataTables_filter input[type="search"] {
+        font-size: 14px;
+        font-weight: normal;
+        color: #333;
+        background-color: #fff;
+        border: 1px solid #989898;
+        box-shadow: none;
+        transition: border-color ease-in-out .15s, box-shadow;
+    }
+
+    .dataTables_length select {
+        font-size: 14px;
+        font-weight: normal;
+        color: #333;
+        background-color: #fff;
+        border: 1px solid #989898;
+        box-shadow: none;
+        transition: border-color ease-in-out .15s, box-shadow;
+    }
+</style>
+
+
+@section Scripts{
+
+    <script src="~/Scripts/Pages/Orders.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            LoadData();
+            var Msg = '@ViewBag.Msg';
+            if (Msg == 3) {
+                ShowMsg('حسنا تم اضافة  طلب   وكل شيء يبدو جيدا.', MessageType.Success, 5);
+            }
+            else if (Msg == 2) {
+                ShowMsg('لم يتم الحذف,الرجاء المحاولة مرة اخري', MessageType.Success, 5);
+            }
+            else if (Msg == 4) {
+                ShowMsg('حسنا تم تعديل بيانات  الطلب  وكل شيء يبدو جيدا. ', MessageType.Success, 5);
+            }
+            else if (Msg == 1) {
+                ShowMsg('حسنا تم الحذف  وكل شيء يبدو جيدا. ', MessageType.Success, 5);
+            }
+
+
+            //$('#OrderTable tbody').on('click', 'td.details-control', function () {
+            //    //$('.details-control').click(function () {
+            //    var tr = $(this).closest('tr');
+            //    var row = table.row(tr);
+
+            //    if (row.child.isShown()) {
+            //        // This row is already open - close it
+            //        row.child.hide();
+            //        tr.removeClass('shown');
+            //    }
+            //    else {
+            //        var transactionId = tr.find('.id').text();
+            //        $.ajax({
+            //            url: '/Orders/GetIndexDetails/' + transactionId,
+            //            type: "GET",
+
+            //            dataType: "JSON",
+            //            contentType: "application/json",
+            //            success: function (response) {
+            //                // Open this row
+            //                row.child(format(response)).show();
+            //                tr.addClass('shown');
+            //            },
+            //            error: function () {
+            //                alert('Error. Please try again.');
+            //            }
+            //        });
+            //    }
+
+
+
+            //});
+
+        });
+
+
+
+        function Delete(Id) {
+            var URL = '/Orders/DeleteConfirmed/' + Id;
+            DeleteRecord(URL, function (flag) {
+                if (parseInt(ResultType.Success) == flag) {
+                    ShowMsg('حسنا تم الحذف  وكل شيء يبدو جيدا. ', MessageType.Success, 5);
+                    table.destroy();
+                    LoadData();
+                }
+                else if (parseInt(ResultType.Error) == flag) {
+                    ShowMsg('لم يتم الحذف,الرجاء المحاولة مرة اخري.', MessageType.Error, 5);
+                }
+            });
+        }
+
+        function GetOrderDetails(Id)
+        {
+            $.ajax({
+                url: '/Orders/DisplayOrderDetails/' + Id,
+                type: "GET",
+                dataType: "html",
+                contentType: "application/json",
+                success: function (response) {
+                    debugger;
+                    // Open this PopUp
+                    $('#myPartialContainer').html(response);
+                   // $.validator.unobtrusive.parse('#frmDisplayOrderDetails');
+                    
+                },
+                error: function () {
+                    alert('Error. Please try again.');
+                }
+            });
+
+        }
+    </script>
+}
+
+
+
+
+
+
+
+
+
+

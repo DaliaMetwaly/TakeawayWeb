@@ -1,0 +1,283 @@
+﻿@*@model Takeaway.Models.MinDistancePriceVM*@
+@{
+    ViewBag.Title = "Create";
+}
+
+
+<div class="page-content" style="min-height: 1119px">
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="~/Home/index">الرئيسية</a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+            <li>
+                <a href="/MinDistancePrice/Index"> الحد الأدنى للمطعم</a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+            <li>
+                اضافة الحد الأدنى للمطعم
+            </li>
+        </ul>
+    </div>
+    <div id="divMsg">@Html.Raw(ViewBag.Msg)</div>
+    <div class="row">
+        <div class="col-md-12">
+            @*<div id="bootstrap_alerts_demo">
+                </div>*@
+            <div class="portlet box grey-salsa">
+                <div class="portlet-title">
+                    <div class="caption">
+                        اضافة الحد الأدنى للمطعم
+                    </div>
+                    <div class="tools">
+                        <a href="javascript:;" class="collapse" data-original-title="" title=""></a>
+                    </div>
+                </div>
+                <div class="portlet-body form">
+
+                    <!-- BEGIN FORM-->
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(false, "", new { @class = "Metronic-alerts alert alert-danger fade in" })
+
+                        <div class="row">
+                            <div class="col-md-10 ">
+                                <div class="form-body">
+
+
+                                    <div id="RestaurantDiv" class="form-group" >
+                                        @Html.Label(" المطعم", " المطعم", new { @class = "col-md-2 control-label " })
+                                        <div class="input-group col-md-4">
+                                            @Html.DropDownList("RestaurantID", ViewBag.RestaurantID as List<SelectListItem>, " إختار المطعم", new { @class = "form-control select2me" })
+                                            <span class="input-group-addon input-circle-right">
+                                                @*@Html.ValidationMessageFor(model => model.SubjectID, null, new { @class = "text-danger" })*@
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div id="RestaurantDiv" class="form-group">
+                                        @Html.Label("عنوان المطعم", "عنوان المطعم", new { @class = "col-md-2 control-label " })
+                                        <div class="input-group col-md-4">
+                                            @Html.DropDownList("RestaurantDataID", ViewBag.RestDataID as SelectList, " إختار عنوان المطعم", new { @class = "form-control select2me" })
+                                            <span class="input-group-addon input-circle-right">
+                                                @*@Html.ValidationMessageFor(model => model.SubjectID, null, new { @class = "text-danger" })*@
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div id="RegionDiv" class="form-group">
+                                        @Html.Label("المنطقه", "المنطقه", new { @class = "col-md-2 control-label " })
+                                        <div class="input-group col-md-4">
+                                            @Html.DropDownList("RegionID", ViewBag.RegionID as List<SelectListItem>, "إختار المنطقه", new { @class = "form-control select2me" })
+                                            <span class="input-group-addon input-circle-right">
+                                                @*@Html.ValidationMessageFor(model => model.SubjectID, null, new { @class = "text-danger" })*@
+                                            </span>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        @Html.Label("تكلفه التوصيل", "تكلفه التوصيل", new { @class = "col-md-2 control-label " })
+                                        <div class="input-group col-md-4">
+                                            @Html.TextBox("deliveryFeeValue",null, new { @class = "form-control" })
+                                            <span class="input-group-addon input-circle-right">
+                                                @*@Html.ValidationMessageFor(model => model.deliveryFeeValue1, "", new { @class = "text-danger" })*@
+
+                                            </span>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        @Html.Label("الحد الادنى للمطعم", "الحد الادنى للمطعم", new { @class = "col-md-2 control-label " })
+                                        <div class="input-group col-md-4">
+                                            @Html.TextBox("minDistance",null, new{  @class = "form-control" })
+                                            <span class="input-group-addon input-circle-right">
+                                                @*@Html.ValidationMessageFor(model => model.deliveryFeeValue1, "", new { @class = "text-danger" })*@
+
+                                            </span>
+                                        </div>
+                                    </div>
+
+
+
+
+
+                                    @*<div class="form-group">
+                                        @Html.LabelFor(model => model.DistanceID2, "5 => 10", htmlAttributes: new { @class = "col-md-2 control-label" })
+                                        <div class="input-group col-md-6">
+                                            @Html.EditorFor(model => model.deliveryFeeValue2, new { htmlAttributes = new { placeholder = "إدخل تكلفة التوصيل ", @class = "form-control" } })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.deliveryFeeValue2, "", new { @class = "text-danger" })
+
+                                            </span>
+                                            @Html.EditorFor(model => model.minPrice2, new { htmlAttributes = new { placeholder = "إدخل حد الادنى للمطعم ", @class = "form-control" } })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.minPrice2, "", new { @class = "text-danger" })
+
+                                            </span>
+                                        </div>
+                                       
+                                    </div>
+                                    
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.DistanceID3, "10 => 15", htmlAttributes: new { @class = "col-md-2 control-label" })
+                                        <div class="input-group col-md-6">
+                                            @Html.EditorFor(model => model.deliveryFeeValue3, new { htmlAttributes = new { placeholder = "إدخل تكلفة التوصيل ", @class = "form-control" } })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.deliveryFeeValue3, "", new { @class = "text-danger" })
+
+                                            </span>
+                                            @Html.EditorFor(model => model.minPrice3, new { htmlAttributes = new { placeholder = "إدخل حد الادنى للمطعم ", @class = "form-control" } })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.minPrice3, "", new { @class = "text-danger" })
+
+                                            </span>
+                                        </div>
+                                       
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.DistanceID4, "15 => 20", htmlAttributes: new { @class = "col-md-2 control-label" })
+                                        <div class="input-group col-md-6">
+                                            @Html.EditorFor(model => model.deliveryFeeValue4, new { htmlAttributes = new { placeholder = "إدخل تكلفة التوصيل ", @class = "form-control" } })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.deliveryFeeValue4, "", new { @class = "text-danger" })
+
+                                            </span>
+                                            @Html.EditorFor(model => model.minPrice4, new { htmlAttributes = new { placeholder = "إدخل حد الادنى للمطعم ", @class = "form-control" } })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.minPrice4, "", new { @class = "text-danger" })
+
+                                            </span>
+                                        </div>
+                                        
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.DistanceID5, "20 => 25", htmlAttributes: new { @class = "col-md-2 control-label" })
+                                        <div class="input-group col-md-6">
+                                            @Html.EditorFor(model => model.deliveryFeeValue5, new { htmlAttributes = new { placeholder = "إدخل تكلفة التوصيل ", @class = "form-control" } })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.deliveryFeeValue5, "", new { @class = "text-danger" })
+
+                                            </span>
+                                            @Html.EditorFor(model => model.minPrice5, new { htmlAttributes = new { placeholder = "إدخل حد الادنى للمطعم ", @class = "form-control" } })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.minPrice5, "", new { @class = "text-danger" })
+
+                                            </span>
+                                        </div>
+                                       
+                                    </div>*@
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-offset-5 col-md-1" style="margin-right:44%;">
+                                <input value="اَضافه" id="btnAddDistance" name="btnAddUserData" type="button" class="btn blue-madison btn-default bt" style="margin-top:22px" />
+                            </div>
+                        </div>
+
+                        <div id="tableholderUserData" class="row">
+
+                        </div>
+                        <div class="form-actions fluid">
+                            <div class="row">
+                                <div class="col-md-offset-3 col-md-9">
+                                    <input type="submit" value="حفظ" class="btn green " />
+                                    <a href="Index" class="btn default">للخلف</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    <!-- END FORM-->
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+<script type="text/javascript" src="~/Scripts/Pages/MinDistancePrice.js"></script>
+    <script>
+       
+       $(function () {
+           $("#RestaurantID").change(function () {
+               debugger;
+               var selectedValue = $(this).val();
+               $.ajax({
+                   url: '/Orders/GetRestaurantDataList',
+                   type: "POST",
+                   data: { RestId: selectedValue },
+                   error: function (xhr, ajaxOptions, thrownError) {
+                       debugger;
+                   },
+                   success: function (result) {
+                       var CityDdl = $('#RestaurantDataID');
+                       CityDdl.empty();
+                       CityDdl.append();
+                       debugger;
+                      
+                       for (i = 0; i < result.data.length; i++) {
+                           debugger;
+                           CityDdl.append(
+                                $('<option/>', {
+                                    value: result.data[i].ID,
+                                    html: result.data[i].Name
+                                }));
+                       };
+                      
+                       $('#RestaurantDataID').val(result.data[0].ID).change();
+                       
+
+                   }
+               });
+           });
+      
+
+
+
+           $("#RestaurantDataID").change(function () {
+            debugger;
+            var selectedValue = $(this).val();
+            $.ajax({
+                url: '/MinDistancePrice/GetRegionList',
+                type: "POST",
+                data: { id: selectedValue },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    debugger
+                },
+                success: function (result) {
+                    var RegionDdl = $('#RegionID');
+                    RegionDdl.empty();
+                    debugger
+
+                    for (i = 0; i < result.data.length; i++) {
+                        debugger
+                        RegionDdl.append(
+                             $('<option/>', {
+                                 value: result.data[i].ID,
+                                 html: result.data[i].Name
+                             }));
+                    };
+                    //alert($('#RestaurantDataID option:selected').val());
+                    //alert($('#RestaurantDataID option:selected').text());
+                    $('#RegionID').val(result.data[0].ID).change();
+                }
+            });
+       });
+       });
+</script>
+}

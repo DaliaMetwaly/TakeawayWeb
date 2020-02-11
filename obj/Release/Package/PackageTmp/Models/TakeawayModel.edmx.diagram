@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="92a957da7b7b4835880d714272c2cd30" Name="Diagram1" ZoomLevel="72">
+        <EntityTypeShape EntityType="TakeawayModel.AspNetUserRole" Width="1.5" PointX="6.75" PointY="9.125" />
+        <EntityTypeShape EntityType="TakeawayModel.AspNetUser" Width="1.5" PointX="4.5" PointY="12.125" />
+        <EntityTypeShape EntityType="TakeawayModel.Category" Width="1.5" PointX="11.25" PointY="31.75" />
+        <EntityTypeShape EntityType="TakeawayModel.CategoryType" Width="1.5" PointX="0.75" PointY="5" />
+        <EntityTypeShape EntityType="TakeawayModel.ChainRestaurant" Width="1.5" PointX="6.75" PointY="25.875" />
+        <EntityTypeShape EntityType="TakeawayModel.Cobone" Width="1.5" PointX="12.75" PointY="5.5" />
+        <EntityTypeShape EntityType="TakeawayModel.CoboneType" Width="1.5" PointX="10.5" PointY="5.875" />
+        <EntityTypeShape EntityType="TakeawayModel.CoboneUser" Width="1.5" PointX="15" PointY="10.25" />
+        <EntityTypeShape EntityType="TakeawayModel.CookingCategory" Width="1.5" PointX="14.25" PointY="23.25" />
+        <EntityTypeShape EntityType="TakeawayModel.Country" Width="1.5" PointX="6.75" PointY="32.5" />
+        <EntityTypeShape EntityType="TakeawayModel.Cuisine" Width="1.5" PointX="12" PointY="27" />
+        <EntityTypeShape EntityType="TakeawayModel.CuisineRestaurant" Width="1.5" PointX="14.25" PointY="19.125" />
+        <EntityTypeShape EntityType="TakeawayModel.DeliveryWay" Width="1.5" PointX="6.75" PointY="23" />
+        <EntityTypeShape EntityType="TakeawayModel.FoodType" Width="1.5" PointX="0.75" PointY="0.875" />
+        <EntityTypeShape EntityType="TakeawayModel.ItemFoodDetail" Width="1.5" PointX="3" PointY="5" />
+        <EntityTypeShape EntityType="TakeawayModel.ItemFoodRate" Width="1.5" PointX="17.25" PointY="11.625" />
+        <EntityTypeShape EntityType="TakeawayModel.ItemFoodType" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="TakeawayModel.NotificationMsg" Width="1.5" PointX="6.75" PointY="5.75" />
+        <EntityTypeShape EntityType="TakeawayModel.NotificationUser" Width="1.5" PointX="9" PointY="9.875" />
+        <EntityTypeShape EntityType="TakeawayModel.OrderStatu" Width="1.5" PointX="9" PointY="13.125" />
+        <EntityTypeShape EntityType="TakeawayModel.Package" Width="1.5" PointX="9" PointY="25.875" />
+        <EntityTypeShape EntityType="TakeawayModel.PackageRestaurant" Width="1.5" PointX="11.25" PointY="23.125" />
+        <EntityTypeShape EntityType="TakeawayModel.RateType" Width="1.5" PointX="12" PointY="10.25" />
+        <EntityTypeShape EntityType="TakeawayModel.Region" Width="1.5" PointX="0.75" PointY="18.5" />
+        <EntityTypeShape EntityType="TakeawayModel.RestaurantAppointment" Width="1.5" PointX="11.25" PointY="35.375" />
+        <EntityTypeShape EntityType="TakeawayModel.Restaurant" Width="1.5" PointX="9" PointY="16.25" />
+        <EntityTypeShape EntityType="TakeawayModel.RestaurantStatu" Width="1.5" PointX="6.75" PointY="29.25" />
+        <EntityTypeShape EntityType="TakeawayModel.Size" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="TakeawayModel.User" Width="1.5" PointX="6.75" PointY="11.75" />
+        <EntityTypeShape EntityType="TakeawayModel.UserComment" Width="1.5" PointX="11.25" PointY="38.75" />
+        <EntityTypeShape EntityType="TakeawayModel.UserData" Width="1.5" PointX="3" PointY="18.875" />
+        <AssociationConnector Association="TakeawayModel.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="TakeawayModel.FK_User_AspNetUsers" />
+        <AssociationConnector Association="TakeawayModel.FK_Category_Restaurants" />
+        <AssociationConnector Association="TakeawayModel.FK_ItemFoodDetails_CategoryType" />
+        <AssociationConnector Association="TakeawayModel.FK_Restaurants_ChainRestaurants" />
+        <AssociationConnector Association="TakeawayModel.FK_Cobone_CoboneType" />
+        <AssociationConnector Association="TakeawayModel.FK_CoboneUser_Cobone" />
+        <AssociationConnector Association="TakeawayModel.FK_CoboneUser_User" />
+        <AssociationConnector Association="TakeawayModel.FK_Restaurants_Countries" />
+        <AssociationConnector Association="TakeawayModel.FK_CuisineRestaurant_Cuisine" />
+        <AssociationConnector Association="TakeawayModel.FK_CuisineRestaurant_Restaurants" />
+        <AssociationConnector Association="TakeawayModel.FK_Restaurants_DeliveryWay" />
+        <AssociationConnector Association="TakeawayModel.FK_ItemFoodType_FoodType" />
+        <AssociationConnector Association="TakeawayModel.FK_ItemFoodRate_RateType" />
+        <AssociationConnector Association="TakeawayModel.FK_ItemFoodRate_User" />
+        <AssociationConnector Association="TakeawayModel.FK_NotificationUser_NotificationMsg" />
+        <AssociationConnector Association="TakeawayModel.FK_NotificationUser_User" />
+        <AssociationConnector Association="TakeawayModel.FK_PackageRestaurant_Package" />
+        <AssociationConnector Association="TakeawayModel.FK_PackageRestaurant_Restaurants" />
+        <AssociationConnector Association="TakeawayModel.FK_Restaurants_Regions" />
+        <AssociationConnector Association="TakeawayModel.FK_UserData_Regions" />
+        <AssociationConnector Association="TakeawayModel.FK_RestaurantAppointment_Restaurants" />
+        <AssociationConnector Association="TakeawayModel.FK_Restaurants_RestaurantStatus" />
+        <AssociationConnector Association="TakeawayModel.FK_Restaurants_User" />
+        <AssociationConnector Association="TakeawayModel.FK_UserComment_Restaurants" />
+        <AssociationConnector Association="TakeawayModel.FK_UserData_User" />
+        <EntityTypeShape EntityType="TakeawayModel.MinDistancePrice" Width="1.5" PointX="11.25" PointY="13.75" />
+        <AssociationConnector Association="TakeawayModel.FK_MinDistancePrice_Regions" />
+        <AssociationConnector Association="TakeawayModel.FK_MinDistancePrice_Restaurants" />
+        <EntityTypeShape EntityType="TakeawayModel.RestaurantRate" Width="1.5" PointX="14.25" PointY="14.75" />
+        <AssociationConnector Association="TakeawayModel.FK_RestaurantRate_RateType" />
+        <AssociationConnector Association="TakeawayModel.FK_RestaurantRate_Restaurants" />
+        <AssociationConnector Association="TakeawayModel.FK_RestaurantRate_User" />
+        <EntityTypeShape EntityType="TakeawayModel.RestaurantData" Width="1.5" PointX="17.25" PointY="23.5" />
+        <AssociationConnector Association="TakeawayModel.FK_RestaurantData_Regions" />
+        <AssociationConnector Association="TakeawayModel.FK_RestaurantData_Restaurant" />
+        <AssociationConnector Association="TakeawayModel.FK_MinDistancePrice_RestaurantData" />
+        <EntityTypeShape EntityType="TakeawayModel.Offer" Width="1.5" PointX="0.75" PointY="8.75" />
+        <EntityTypeShape EntityType="TakeawayModel.Order" Width="1.5" PointX="19.5" PointY="17.375" />
+        <AssociationConnector Association="TakeawayModel.FK_Order_OrderStatus" />
+        <AssociationConnector Association="TakeawayModel.FK_Order_RestaurantData" />
+        <AssociationConnector Association="TakeawayModel.FK_Order_User" />
+        <EntityTypeShape EntityType="TakeawayModel.OrderDetail" Width="1.5" PointX="21.75" PointY="19.625" />
+        <AssociationConnector Association="TakeawayModel.FK_OrderDetails_CookingCategory" />
+        <AssociationConnector Association="TakeawayModel.FK_OrderDetails_Order" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

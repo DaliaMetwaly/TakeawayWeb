@@ -1,0 +1,238 @@
+﻿@model Takeaway.Models.OrderReportVM
+
+@using ReportViewerForMvc;
+
+<div class="page-content" style="min-height: 1119px">
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="~/Home/index">الرئيسية</a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+
+            <li>
+                تقرير الطلبات
+            </li>
+        </ul>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            @*<div id="bootstrap_alerts_demo">
+                </div>*@
+            <div class="portlet box grey-salsa">
+                <div class="portlet-title">
+                    <div class="caption">
+                        تقرير الطلبات
+                    </div>
+                    <div class="tools">
+                        <a href="javascript:;" class="collapse" data-original-title="" title=""></a>
+                    </div>
+                </div>
+                <div class="portlet-body form">
+
+                    @using (@Html.BeginForm())
+                    {
+                        <div class="form-group">
+
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-2">
+                                @Html.Label("", "المطعم")
+                                </div>
+                                <div class="input-group col-md-4">
+                                    @Html.DropDownList("RestaurantID", ViewBag.RestaurantID as List<SelectListItem>, "إختار المطعم", new {  @class = "form-control select2me" })
+                                    <span class="input-group-addon input-circle-right">
+
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-2">
+                                    @Html.Label("", "الفرع")
+                                </div>
+                                <div class="input-group col-md-4">
+                                    @Html.DropDownList("RegionID", ViewBag.RegionID as List<SelectListItem>, "إختار الفرع", new { @class = "form-control select2me" })
+                                    <span class="input-group-addon input-circle-right">
+
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-2">
+                                    @Html.Label("", "العملاء")
+                                </div>
+                                <div class="input-group col-md-4">
+                                    @Html.DropDownList("UserID", ViewBag.UserID as List<SelectListItem>, "إختار العميل", new { @class = "form-control select2me" })
+                                    <span class="input-group-addon input-circle-right">
+
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-2">
+                                    @Html.Label("", "حاله المطعم")
+                                </div>
+                                <div class="input-group col-md-4">
+                                    @Html.DropDownList("OrderStatusID", ViewBag.OrderStatusID as List<SelectListItem>, "إختار حاله المطعم", new { @class = "form-control select2me" })
+                                    <span class="input-group-addon input-circle-right">
+
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.Label("", "تاريخ البدايه", new { @class = "col-md-2 control-label " })
+                                <div class="input-group col-md-4">
+                                    @Html.Editor("From", new { htmlAttributes = new { placeholder = "تاريخ البدايه", @class = "form-control ", data_val = "false"} })
+                                    <span class="input-group-addon input-circle-right">
+                                        <i class="fa fa-calendar"></i>
+                                       </span>
+                                </div>
+
+                            </div>
+
+                                    <div class="form-group">
+                                        @Html.Label("", "تاريخ النهايه", new { @class = "col-md-2 control-label " })
+                                        <div class="input-group col-md-4">
+                                            @Html.Editor("To", new { htmlAttributes = new { placeholder = "تاريخ النهايه", @class = "form-control ", data_val = "false" } })
+                                            <span class="input-group-addon input-circle-right">
+                                                <i class="fa fa-calendar"></i>
+                                                    </span>
+                                        </div>
+                                    </div>
+                        <div class="form-body">
+                            @Html.AntiForgeryToken()
+
+
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                            <div class="row">
+                                <div class="col-md-12 ">
+                                    <div class="form-body">
+
+                                        <button class="btn blue btn-block margin-top-20">التقرير <i class="m-icon-swapright m-icon-white"></i></button>
+
+                                        <div class="form-group " style="margin-left:0 !important">
+
+                                        </div>
+
+                                        <div class="form-group ">
+                                            <div class="col-md-9">
+                                                @if (Model != null)
+                                                {
+                                                    @Html.ReportViewer(
+           new
+           {
+               ProcessingMode = 0, //ProcessingMode.Local
+               SizeToReportContent = true,
+           },
+           new
+           {
+               EnableExternalImages = true,
+               ReportPath = Request.MapPath(Request.ApplicationPath) + @"Models/ReportViewers/OrderReport.rdlc"
+           },
+           new
+           {
+               //CompanyName = ViewBag.CompanyName,
+               // FileName = new Uri(Server.MapPath("~/images/YachtMedia/am1.png")).AbsoluteUri,
+
+               Count = Model.Counts,
+           },
+           new
+           {
+               Name = "OrderDataSet",
+               Value = Model.OrderList
+           },
+            new
+            { scrolling = "yes", style = "border: none;Height:100%; Width:100%;" })
+                                                }
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    <!-- END FORM-->
+
+
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+
+    <script>
+        $(function () {
+            $('#From').datepicker(
+                {
+                    //inline: true,
+                    dateFormat: 'mm/dd/yy',
+                    //orientation: 'right ',
+
+                    autoclose: true
+                }
+            );
+        });
+        $(function () {
+            $('#To').datepicker(
+                {
+                    // inline: true,
+                    dateFormat: 'mm/dd/yy',
+                    orientation: 'right ',
+
+                    // isRTL: true,
+                    autoclose: true,
+                    todayHighlight: true
+                }
+            );
+        });
+        $(function () {
+          
+            $("#RestaurantID").change(function () {
+                debugger;
+                var selectedValue = $(this).val();
+
+
+                //$('#RestaurantDiv').hide();
+                $.ajax({
+                    url: '/OrderReport/GetRegion',
+                    type: "POST",
+                    data: { id: selectedValue },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        //alert(xhr.status);
+                        //alert(thrownError);
+                    },
+                    success: function (result) {
+                        BindSubjectddl(result);
+                    }
+                });
+
+
+            });
+        });
+
+        function BindSubjectddl(result) {
+            var SubjectIDDdl = $('#RegionID');
+            SubjectIDDdl.empty();
+
+            for (i = 0; i < result.data.length; i++) {
+                SubjectIDDdl.append(
+                     $('<option/>', {
+                         value: result.data[i].ID,
+                         html: result.data[i].Name
+                     }));
+            };
+            $('#RegionID').val(result.data[0].ID).change();
+        }
+    </script>
+}

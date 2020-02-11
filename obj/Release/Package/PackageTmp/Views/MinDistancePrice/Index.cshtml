@@ -1,0 +1,167 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="page-content" style="min-height: 1119px">
+
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="~/MinDistancePrice/index">الرئيسية</a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+
+            <li>
+                الحد الأدنى للمطعم
+            </li>
+        </ul>
+    </div>
+
+    <div class="row">
+        <p>
+            <a id="btn_Create" href="/MinDistancePrice/Create" class="btn green">إضافة</a>
+        </p>
+        <div id="bootstrap_alerts_demo">
+        </div>
+        <div class="col-md-12">
+            <div class="portlet box grey-salsa">
+                <div class="portlet-title">
+                    <div class="caption icon-users">
+                        قائمة الحد الأدنى للمطعم
+                    </div>
+                    <div class="tools">
+                        <a href="javascript:;" class="collapse" data-original-title="" title=""></a>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="form-body">
+                        <table id="myTable" style="text-align: center;" class="table table-striped table-bordered table-hover">
+                            <thead class="flip-content">
+
+                                <tr class="heading">
+                                    <th style="text-align: center;">التفاصيل</th>
+                                    <th style="display:none;" class="text-center">ID</th>
+                                    <th style="text-align: center;"> المطعم</th>
+                                   <th style="text-align: center;"> صاحب المطعم</th>
+                                   <th style="text-align: center;">عنوان المطعم الرئيسى</th>
+                                    <th style="text-align: center;">تفعيل</th>
+                                    <th style="text-align: center;">تعديل</th>
+                                    <th style="text-align: center;">حذف</th>
+                                      </tr>
+                            </thead>
+                        </table>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    tr.even {
+        background-color: #F5F5F5 !important;
+        text-align: center;
+    }
+
+    .dataTables_filter input[type="search"] {
+        font-size: 14px;
+        font-weight: normal;
+        color: #333;
+        background-color: #fff;
+        border: 1px solid #989898;
+        box-shadow: none;
+        transition: border-color ease-in-out .15s, box-shadow;
+    }
+
+    .dataTables_length select {
+        font-size: 14px;
+        font-weight: normal;
+        color: #333;
+        background-color: #fff;
+        border: 1px solid #989898;
+        box-shadow: none;
+        transition: border-color ease-in-out .15s, box-shadow;
+    }
+</style>
+
+
+@section Scripts{
+
+    <script src="~/Scripts/Pages/MinDistancePrice.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            LoadData();
+            var Msg = '@ViewBag.Msg';
+            if (Msg == 3) {
+                ShowMsg('حسنا تم اضافه الحد الادنى للمطاعم  وكل شيء يبدو جيدا.', MessageType.Success, 5);
+            }
+            else if (Msg == 2) {
+                ShowMsg('لم يتم الحذف,الرجاء المحاولة مرة اخري', MessageType.Success, 5);
+            }
+            else if (Msg == 4) {
+                ShowMsg('حسنا تم تعديل الحد الادنى للمطاعم وكل شيء يبدو جيدا. ', MessageType.Success, 5);
+            }
+            else if (Msg == 1) {
+                ShowMsg('حسنا تم الحذف  وكل شيء يبدو جيدا. ', MessageType.Success, 5);
+            }
+           
+
+            $('#myTable tbody').on('click', 'td.details-control', function () {
+                //$('.details-control').click(function () {
+                var tr = $(this).closest('tr');
+                var row = table.row(tr);
+
+                if (row.child.isShown()) {
+                    // This row is already open - close it
+                    row.child.hide();
+                    tr.removeClass('shown');
+                }
+                else {
+                    var transactionId = tr.find('.id').text();
+                    $.ajax({
+                        url: '/MinDistancePrice/GetDetails/' + transactionId,
+                        type: "GET",
+
+                        dataType: "JSON",
+                        contentType: "application/json",
+                        success: function (response) {
+                            // Open this row
+                            row.child(format(response)).show();
+                            tr.addClass('shown');
+                        },
+                        error: function () {
+                            alert('Error. Please try again.');
+                        }
+                    });
+                }
+
+
+
+            });
+        });
+
+
+        function Delete(Id) {
+            var URL = '/MinDistancePrice/DeleteConfirmed/' + Id;
+            debugger;
+            DeleteRecord(URL, function (flag) {
+                if (parseInt(ResultType.Success) == flag) {
+                    ShowMsg('حسنا تم الحذف  وكل شيء يبدو جيدا. ', MessageType.Success, 5);
+                    table.destroy();
+                    LoadData();
+                }
+                else if (parseInt(ResultType.Error) == flag) {
+                    debugger;
+                    ShowMsg('لم يتم الحذف,الرجاء المحاولة مرة اخري.', MessageType.Error, 5);
+                }
+            });
+        }
+      
+    </script>
+}
+

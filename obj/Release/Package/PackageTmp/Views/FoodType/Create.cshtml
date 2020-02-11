@@ -1,0 +1,124 @@
+﻿@model Takeaway.Models.FoodType
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="page-content" style="min-height: 1119px">
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="~/Home/index">الرئيسية</a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+            <li>
+                <a href="/FoodType/Index">تصنيف البحث</a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+            <li>
+                اضافة تصنيف بحث
+            </li>
+        </ul>
+    </div>
+    <div id="divMsg">@Html.Raw(ViewBag.Msg)</div>
+    <div class="row">
+        <div class="col-md-12">
+            @*<div id="bootstrap_alerts_demo">
+                </div>*@
+            <div class="portlet box grey-salsa">
+                <div class="portlet-title">
+                    <div class="caption">
+                        اضافة تصنيف بحث 
+                    </div>
+                    <div class="tools">
+                        <a href="javascript:;" class="collapse" data-original-title="" title=""></a>
+                    </div>
+                </div>
+                <div class="portlet-body form">
+
+                    <!-- BEGIN FORM-->
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(false, "", new { @class = "Metronic-alerts alert alert-danger fade in" })
+                        <div class="row">
+                            <div class="col-md-9 ">
+                                <div class="form-body">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.FoodTypeNameAr, htmlAttributes: new { @class = "col-md-4 control-label" })
+                                        <div class="input-group col-md-4">
+                                            @Html.EditorFor(model => model.FoodTypeNameAr, new { htmlAttributes = new { placeholder = "إدخل تصنيف البحث ", @class = "form-control" } })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.FoodTypeNameAr, "", new { @class = "text-danger" })
+                                                @***@
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.FoodTypeNameEn, htmlAttributes: new { @class = "col-md-4 control-label" })
+                                        <div class="input-group col-md-4">
+                                            @Html.EditorFor(model => model.FoodTypeNameEn, new { htmlAttributes = new { placeholder = "Search Category", @class = "form-control" } })
+
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.FoodTypeNameEn, "", new { @class = "text-danger" })
+                                                @***@
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    @*<div class="form-group">
+                                            @Html.LabelFor(model => model.IsActive, htmlAttributes: new { @class = "col-md-4 control-label" })
+                                            <div class="input-group col-md-4">
+                                                @Html.EditorFor(model => model.IsActive, new { @class = "form-control" })
+                                                <span class="input-group-addon input-circle-right">
+
+                                                </span>
+                                            </div>
+                                        </div>*@
+
+                                    @*<div class="form-group">
+                                        @Html.LabelFor(model => model.IsActive,  htmlAttributes: new { @class = "col-md-4 control-label" })
+                                        <div class="input-group col-md-4">
+                                            @Html.EditorFor(model => model.IsActive, new { @class = "form-control" })
+                                            <span class="input-group-addon input-circle-right">
+                                                
+                                            </span>
+                                        </div>
+                                    </div>*@
+
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="form-actions fluid">
+                            <div class="row">
+                                <div class="col-md-offset-3 col-md-9">
+                                    <input type="submit" value="حفظ" class="btn green " />
+                                    <a href="Index" class="btn default">للخلف</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    <!-- END FORM-->
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+
+    <script>
+
+    </script>
+}
+
+

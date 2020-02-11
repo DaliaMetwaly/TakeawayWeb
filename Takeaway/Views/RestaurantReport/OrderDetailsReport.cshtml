@@ -1,0 +1,113 @@
+﻿@model Takeaway.Models.OrderDetailsReportVM
+
+@using ReportViewerForMvc;
+
+
+<div class="page-content" style="min-height: 1119px">
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="~/Home/index">الرئيسية</a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+
+            <li>
+                تقرير تفاصيل الطلبات
+            </li>
+        </ul>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            @*<div id="bootstrap_alerts_demo">
+                </div>*@
+            <div class="portlet box grey-salsa">
+                <div class="portlet-title">
+                    <div class="caption">
+                        تقرير تفاصيل الطلبات
+                    </div>
+                    <div class="tools">
+                        <a href="javascript:;" class="collapse" data-original-title="" title=""></a>
+                    </div>
+                </div>
+                <div class="portlet-body form">
+
+                    @using (@Html.BeginForm())
+                    {
+
+                        <div class="form-body">
+                            @Html.AntiForgeryToken()
+
+
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                            <div class="row">
+                                <div class="col-md-12 ">
+                                    <div class="form-body">
+
+
+
+
+
+                                        @*<hr>*@
+                                        <button class="btn blue btn-block margin-top-20">التقرير <i class="m-icon-swapright m-icon-white"></i></button>
+                                        @*<hr />
+                                            <div class="form-group " style="margin-left:0 !important">
+
+                                            </div>
+                                            <hr />*@
+                                        <div class="form-group ">
+                                            <div class="col-md-9">
+                                                @if (Model != null)
+                                                {
+                                                    @Html.ReportViewer(
+           new
+           {
+               ProcessingMode = 0, //ProcessingMode.Local
+               SizeToReportContent = true,
+           },
+           new
+           {
+               EnableExternalImages = true,
+               ReportPath = Request.MapPath(Request.ApplicationPath) + @"Models/ReportViewers/OrderDetailsReport.rdlc"
+           },
+           new
+           {
+               //CompanyName = ViewBag.CompanyName,
+               // FileName = new Uri(Server.MapPath("~/images/YachtMedia/am1.png")).AbsoluteUri,
+
+               //RestaurantCounts = Model.RestaurantCounts,
+           },
+           new
+           {
+               Name = "OrderDetailsDataSet",
+               Value = Model.UserOrderList
+           },
+            new
+            { scrolling = "yes", style = "border: none;Height:100%; Width:100%;" })
+                                                }
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    <!-- END FORM-->
+
+
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

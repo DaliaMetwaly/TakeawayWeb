@@ -1,0 +1,273 @@
+﻿@model Takeaway.Models.Offer
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="page-content" style="min-height: 1119px">
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="~/Home/index">الرئيسية</a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+            <li>
+                <a href="/Offer/Index"> العروض</a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+            <li>
+                تعديل عرض
+            </li>
+        </ul>
+    </div>
+    <div id="divMsg">@Html.Raw(ViewBag.Msg)</div>
+    <div class="row">
+        <div class="col-md-12">
+            @*<div id="bootstrap_alerts_demo">
+                </div>*@
+            <div class="portlet box grey-salsa">
+                <div class="portlet-title">
+                    <div class="caption">
+                        تعديل عرض
+                    </div>
+                    <div class="tools">
+                        <a href="javascript:;" class="collapse" data-original-title="" title=""></a>
+                    </div>
+                </div>
+                <div class="portlet-body form">
+
+                    <!-- BEGIN FORM-->
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(false, "", new { @class = "Metronic-alerts alert alert-danger fade in" })
+
+                        <div class="row">
+                            <div class="col-md-9 ">
+                                <div class="form-body">
+                                   
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.OfferType, "نوع العرض", new { @class = "col-md-4 control-label " })
+                                        <div class="input-group col-md-4">
+                                            @Html.DropDownListFor(model => model.OfferType, ViewBag.OfferType as List<SelectListItem>, new { @class = "form-control select2me" })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.OfferType, null, new { @class = "text-danger" })
+                                            </span>
+                                        </div>
+                                    </div>
+                                    @if (Model.OfferType == 1)
+                                    {
+                                        <div id="RestaurantDiv" class="form-group" style="display:none">
+                                            @Html.Label(" المطعم", " المطعم", new { @class = "col-md-4 control-label " })
+                                            <div class="input-group col-md-4">
+                                                @Html.DropDownList("Restaurant", ViewBag.Restaurant as List<SelectListItem>, " إختار المطعم", new { @class = "form-control select2me" })
+                                                <span class="input-group-addon input-circle-right">
+                                                    @*@Html.ValidationMessageFor(model => model.SubjectID, null, new { @class = "text-danger" })*@
+                                                </span>
+                                            </div>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div id="RestaurantDiv" class="form-group">
+                                            @Html.Label(" المطعم", " المطعم", new { @class = "col-md-4 control-label " })
+                                            <div class="input-group col-md-4">
+                                                @Html.DropDownList("Restaurant", ViewBag.Restaurant as List<SelectListItem>, " إختار المطعم", new { @class = "form-control select2me" })
+                                                <span class="input-group-addon input-circle-right">
+                                                    @*@Html.ValidationMessageFor(model => model.SubjectID, null, new { @class = "text-danger" })*@
+                                                </span>
+                                            </div>
+                                        </div>
+                                    }
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.SubjectID, " العرض", new { @class = "col-md-4 control-label " })
+                                        <div class="input-group col-md-4">
+                                            @Html.DropDownListFor(model => model.SubjectID, ViewBag.SubjectID as List<SelectListItem>, " إختار العرض", new { @class = "form-control select2me" })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.SubjectID, null, new { @class = "text-danger" })
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.FeeType, "نوع الخصم", new { @class = "col-md-4 control-label " })
+                                        <div class="input-group col-md-4">
+                                            @Html.DropDownListFor(model => model.FeeType, ViewBag.FeeType as List<SelectListItem>, "إختار نوع الخصم", new { @class = "form-control select2me" })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.FeeType, null, new { @class = "text-danger" })
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.FeeValue, "قيمة الخصم", htmlAttributes: new { @class = "col-md-4 control-label" })
+                                        <div class="input-group col-md-4">
+                                            @Html.EditorFor(model => model.FeeValue, new { htmlAttributes = new { placeholder = "إدخل قيمة الخصم ", @class = "form-control" } })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.FeeValue, "", new { @class = "text-danger" })
+
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.StartDate, "تاريخ البدايه", new { @class = "col-md-4 control-label " })
+                                        <div class="input-group col-md-4">
+                                            @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { placeholder = "تاريخ البدايه", @class = "form-control ", data_val = "false"} })
+                                            <span class="input-group-addon input-circle-right">
+                                                <i class="fa fa-calendar"></i>
+                                                @Html.ValidationMessageFor(model => model.StartDate, null, new { @class = "text-danger" })
+                                            </span>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.EndDate, "تاريخ النهايه", new { @class = "col-md-4 control-label " })
+                                        <div class="input-group col-md-4">
+                                            @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { placeholder = "تاريخ النهايه", @class = "form-control ", data_val = "false" } })
+                                            <span class="input-group-addon input-circle-right">
+                                                <i class="fa fa-calendar"></i>
+                                                @Html.ValidationMessageFor(model => model.EndDate, null, new { @class = "text-danger" })
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group" style="display:none;">
+                                        <div class="col-md-4">
+
+                                        </div>
+                                        <div class="input-group col-md-4">
+                                            <div class="md-checkbox">
+                                                @Html.CheckBoxFor(model => model.IsActive, new { @class = "md-check" })
+                                                <label for="IsActive">
+                                                    التفعيل
+                                                    <span class="inc"></span>
+                                                    <span class="check"></span>
+                                                    <span class="box"></span>
+                                                </label>
+                                            </div>
+                                            <span class="input-group-addon input-circle-right">
+                                            </span>
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="form-actions fluid">
+                            <div class="row">
+                                <div class="col-md-offset-3 col-md-9">
+                                    <input type="submit" value="حفظ" class="btn green " />
+                                    <a href="/Offer/Index" class="btn default">للخلف</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    <!-- END FORM-->
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+
+    <script>
+        $(function () {
+            $('#StartDate').datepicker(
+                {
+                    //inline: true,
+                    dateFormat: 'yy-mm-dd',
+                    //orientation: 'right ',
+
+                    autoclose: true
+                }
+            );
+        });
+        $(function () {
+            $('#EndDate').datepicker(
+                {
+                    // inline: true,
+                    dateFormat: 'yy-mm-dd',
+                    orientation: 'right ',
+
+                    // isRTL: true,
+                    autoclose: true,
+                    todayHighlight: true
+                }
+            );
+        });
+        $(function () {
+            $("#StartDate").val('@Model.StartDate.ToString("yyyy-MM-dd")');
+            $("#EndDate").val('@Model.EndDate.ToString("yyyy-MM-dd")');
+            $("#OfferType").val('@Model.OfferType')
+            $("#OfferType").change(function () {
+                debugger;
+                var SubjectIDDdl = $('#SubjectID');
+                var selectedValue = $(this).val();
+                if (selectedValue == 2) {
+                    $('#RestaurantDiv').show();
+                    SubjectIDDdl.empty();
+
+                }
+                if (selectedValue == 1) {
+                    $('#RestaurantDiv').hide();
+                $.ajax({
+                    url: '/Offer/GetSubjectList',
+                    type: "POST",
+                    data: { id: selectedValue },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        //alert(xhr.status);
+                        //alert(thrownError);
+                    },
+                    success: function (result) {
+                        BindSubjectddl(result);
+                        
+                    }
+                });
+                }
+            });
+            $("#Restaurant").change(function () {
+                debugger;
+                var selectedValue = $(this).val();
+                $.ajax({
+                    url: '/Offer/GetfoodList',
+                    type: "POST",
+                    data: { id: selectedValue },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        //alert(xhr.status);
+                        //alert(thrownError);
+                    },
+                    success: function (result) {
+                        BindSubjectddl(result);
+                    }
+                });
+
+
+            });
+        });
+        function BindSubjectddl(result) {
+            var SubjectIDDdl = $('#SubjectID');
+            SubjectIDDdl.empty();
+
+            for (i = 0; i < result.data.length; i++) {
+                SubjectIDDdl.append(
+                     $('<option/>', {
+                         value: result.data[i].ID,
+                         html: result.data[i].Name
+                     }));
+            };
+            $('#SubjectID').val(result.data[0].ID).change();
+        }
+       //
+    </script>
+}

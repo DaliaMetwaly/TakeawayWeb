@@ -1,0 +1,72 @@
+﻿@model Takeaway.Models.Region
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Region</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.RegionEn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RegionEn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RegionAr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RegionAr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CountryID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CountryID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NotesAr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NotesAr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NotesEn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NotesEn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.City.CityEn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.City.CityEn)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

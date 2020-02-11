@@ -1,0 +1,3283 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TakeawayModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="CategoryNameEn" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="DescriptionAr" Type="nvarchar(max)" />
+          <Property Name="DescriptionEn" Type="nvarchar(max)" />
+          <Property Name="RestaurantID" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDetete" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CategoryType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryTypeName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CategoryTypeNameEn" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDetete" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ChainRestaurants">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ChainRestaurants_En" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ChainRestaurants_ar" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="RoleID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDetete" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cities">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CityEn" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="CityAr" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="CountryID" Type="int" Nullable="false" />
+          <Property Name="RegionID" Type="int" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cobone">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CoboneNameAr" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CoboneNameEn" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CoboneTypeID" Type="int" Nullable="false" />
+          <Property Name="CoboneTypeValue" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Duration" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CoboneType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CoboneTypeNameAr" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CoboneTypeNameEn" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CoboneUser">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CoboneID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="nvarchar" MaxLength="128" />
+          <Property Name="CoboneSerial" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="isUsed" Type="tinyint" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CookingCategory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CookingCatNameAR" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="CookingCatNameEN" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Countries">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountryEng" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CountryAr" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDetete" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cuisine">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CuisineAr" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CuisineEn" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DescriptionAr" Type="nvarchar(max)" />
+          <Property Name="DescriptionEn" Type="nvarchar(max)" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDetete" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CuisineRestaurant">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CuisineID" Type="int" Nullable="false" />
+          <Property Name="RestaurantID" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDetete" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DeliveryWay">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DeliveryNameAr" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="DeliveryNameEn" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDetete" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FoodType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FoodTypeNameAr" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="FoodTypeNameEn" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDetete" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ItemFood">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FoodName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="FoodNameEn" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="DescriptionEn" Type="nvarchar(max)" />
+          <Property Name="CategoryID" Type="int" Nullable="false" />
+          <Property Name="CategoryTypeID" Type="int" Nullable="false" />
+          <Property Name="NotforSale" Type="bit" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Image" Type="varchar(max)" />
+          <Property Name="SizeID" Type="int" />
+          <Property Name="IsCooking" Type="bit" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDetete" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ItemFoodDetails">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemFoodID" Type="bigint" Nullable="false" />
+          <Property Name="AddItemFoodID" Type="bigint" Nullable="false" />
+          <Property Name="CategoryTypeID" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDetete" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ItemFoodRate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ItemFoodID" Type="bigint" Nullable="false" />
+          <Property Name="UserRate" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="250" />
+          <Property Name="RateType" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDetete" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ItemFoodType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemFoodID" Type="bigint" Nullable="false" />
+          <Property Name="FoodTypeID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MinDistancePrice">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RestaurantID" Type="int" Nullable="false" />
+          <Property Name="RestaurantDataID" Type="int" Nullable="false" />
+          <Property Name="RegionID" Type="int" Nullable="false" />
+          <Property Name="minPrice" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="deliveryFeeValue" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="CreatedUser" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NotificationMsg">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="message" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UserCategory" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NotificationUser">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NotificationID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="isSend" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Offer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubjectID" Type="bigint" Nullable="false" />
+          <Property Name="OfferType" Type="int" Nullable="false" />
+          <Property Name="FeeType" Type="int" Nullable="false" />
+          <Property Name="FeeValue" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" Nullable="false" />
+          <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DeliveryUserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RestaurantDataID" Type="int" Nullable="false" />
+          <Property Name="OrderStatusID" Type="int" Nullable="false" />
+          <Property Name="TotalPrice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="FeeValue" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="OrderDate" Type="datetime" Nullable="false" />
+          <Property Name="Delivery_estimation" Type="time" Precision="7" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDetete" Type="bit" Nullable="false" />
+          <Property Name="RestOfferID" Type="int" />
+          <Property Name="IsSent" Type="bit" />
+        </EntityType>
+        <EntityType Name="OrderDetails">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemFoodID" Type="bigint" Nullable="false" />
+          <Property Name="ItemFoodParentID" Type="bigint" />
+          <Property Name="OrderID" Type="int" Nullable="false" />
+          <Property Name="CookingCatID" Type="int" />
+          <Property Name="ItemPrice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="ItemCount" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDetete" Type="bit" Nullable="false" />
+          <Property Name="ItemOfferID" Type="int" />
+        </EntityType>
+        <EntityType Name="OrderStatus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderStatus_ar" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OrderStatus_En" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsDone" Type="bit" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDetete" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Package">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PackageNameAr" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PackageNameEn" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PackagePrice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="PackagePeriod" Type="int" Nullable="false" />
+          <Property Name="PackageStartDate" Type="datetime" Nullable="false" />
+          <Property Name="PackageEndDate" Type="datetime" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDetete" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PackageRestaurant">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PackageID" Type="int" Nullable="false" />
+          <Property Name="RestaurantID" Type="int" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RateType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="RateNameAr" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RateNameEn" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Regions">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RegionEn" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RegionAr" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CityID" Type="int" />
+          <Property Name="CountryID" Type="int" />
+          <Property Name="NotesAr" Type="nvarchar(max)" />
+          <Property Name="NotesEn" Type="nvarchar(max)" />
+          <Property Name="PostalCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDetete" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RestaurantAppointment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RestaurantID" Type="int" Nullable="false" />
+          <Property Name="Day" Type="int" Nullable="false" />
+          <Property Name="OpeningTime" Type="time" Precision="7" Nullable="false" />
+          <Property Name="CloseTime" Type="time" Precision="7" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RestaurantData">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RestaurantID" Type="int" Nullable="false" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Region_id" Type="int" Nullable="false" />
+          <Property Name="MapLatitude" Type="nvarchar" MaxLength="100" />
+          <Property Name="MapLongitude" Type="nvarchar" MaxLength="100" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDetete" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RestaurantRate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RestaurantID" Type="int" Nullable="false" />
+          <Property Name="UserRate" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="RateType" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDetete" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Restaurants">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RestaurantNameEn" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RestaurantName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RestaurantDescrption" Type="nvarchar" MaxLength="500" />
+          <Property Name="RestaurantDescrptionEn" Type="nvarchar" MaxLength="500" />
+          <Property Name="RestaurantPhone" Type="nchar" MaxLength="12" />
+          <Property Name="ChainRestaurants_id" Type="int" />
+          <Property Name="DeliveryWayID" Type="int" Nullable="false" />
+          <Property Name="RestaurantStatus" Type="int" Nullable="false" />
+          <Property Name="Date_Created" Type="datetime" Nullable="false" />
+          <Property Name="Date_modified" Type="datetime" Nullable="false" />
+          <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="MembershipExpired" Type="datetime" />
+          <Property Name="MapLatitude" Type="nvarchar" MaxLength="100" />
+          <Property Name="MapLongitude" Type="nvarchar" MaxLength="100" />
+          <Property Name="Logo" Type="nvarchar" MaxLength="150" />
+          <Property Name="Stars" Type="int" Nullable="false" />
+          <Property Name="Country_Id" Type="int" />
+          <Property Name="City_Id" Type="int" />
+          <Property Name="Region_Id" Type="int" />
+          <Property Name="Address" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="RestaurantStatus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RestaurantStatusAr" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="RestaurantStatusEn" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="DescriptionAr" Type="nvarchar(max)" />
+          <Property Name="DescriptionEn" Type="nvarchar(max)" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDetete" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Size">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SizeEN" Type="nvarchar" MaxLength="200" />
+          <Property Name="SizeAR" Type="nvarchar" MaxLength="200" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ContactPhone" Type="nchar" MaxLength="12" />
+          <Property Name="ContactEmail" Type="nvarchar" MaxLength="50" />
+          <Property Name="ContactName" Type="nvarchar" MaxLength="50" />
+          <Property Name="IP_Address" Type="varchar" MaxLength="30" />
+          <Property Name="RegisterDate" Type="datetime" />
+          <Property Name="LastLogin" Type="datetime" />
+          <Property Name="UserCategory" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDetete" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserComment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RestaurantID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Comment" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDetete" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserData">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Region_id" Type="int" Nullable="false" />
+          <Property Name="MapLatitude" Type="nvarchar" MaxLength="100" />
+          <Property Name="MapLongitude" Type="nvarchar" MaxLength="100" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDetete" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Category_Restaurants">
+          <End Role="Restaurants" Type="Self.Restaurants" Multiplicity="1" />
+          <End Role="Category" Type="Self.Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurants">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Category">
+              <PropertyRef Name="RestaurantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cities_Countries">
+          <End Role="Countries" Type="Self.Countries" Multiplicity="1" />
+          <End Role="Cities" Type="Self.Cities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Cities">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cobone_CoboneType">
+          <End Role="CoboneType" Type="Self.CoboneType" Multiplicity="1" />
+          <End Role="Cobone" Type="Self.Cobone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoboneType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Cobone">
+              <PropertyRef Name="CoboneTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoboneUser_Cobone">
+          <End Role="Cobone" Type="Self.Cobone" Multiplicity="1" />
+          <End Role="CoboneUser" Type="Self.CoboneUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cobone">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CoboneUser">
+              <PropertyRef Name="CoboneID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoboneUser_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="CoboneUser" Type="Self.CoboneUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CoboneUser">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CuisineRestaurant_Cuisine">
+          <End Role="Cuisine" Type="Self.Cuisine" Multiplicity="1" />
+          <End Role="CuisineRestaurant" Type="Self.CuisineRestaurant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cuisine">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CuisineRestaurant">
+              <PropertyRef Name="CuisineID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CuisineRestaurant_Restaurants">
+          <End Role="Restaurants" Type="Self.Restaurants" Multiplicity="1" />
+          <End Role="CuisineRestaurant" Type="Self.CuisineRestaurant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurants">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CuisineRestaurant">
+              <PropertyRef Name="RestaurantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemFood_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="ItemFood" Type="Self.ItemFood" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ItemFood">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemFood_CategoryType">
+          <End Role="CategoryType" Type="Self.CategoryType" Multiplicity="1" />
+          <End Role="ItemFood" Type="Self.ItemFood" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoryType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ItemFood">
+              <PropertyRef Name="CategoryTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemFood_ItemFood">
+          <End Role="ItemFood" Type="Self.ItemFood" Multiplicity="1" />
+          <End Role="ItemFood1" Type="Self.ItemFood" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ItemFood">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ItemFood1">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemFood_Size">
+          <End Role="Size" Type="Self.Size" Multiplicity="0..1" />
+          <End Role="ItemFood" Type="Self.ItemFood" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Size">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ItemFood">
+              <PropertyRef Name="SizeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemFoodDetails_CategoryType">
+          <End Role="CategoryType" Type="Self.CategoryType" Multiplicity="1" />
+          <End Role="ItemFoodDetails" Type="Self.ItemFoodDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoryType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ItemFoodDetails">
+              <PropertyRef Name="CategoryTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemFoodDetails_ItemFood">
+          <End Role="ItemFood" Type="Self.ItemFood" Multiplicity="1" />
+          <End Role="ItemFoodDetails" Type="Self.ItemFoodDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemFood">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ItemFoodDetails">
+              <PropertyRef Name="ItemFoodID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemFoodRate_ItemFood">
+          <End Role="ItemFood" Type="Self.ItemFood" Multiplicity="1" />
+          <End Role="ItemFoodRate" Type="Self.ItemFoodRate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemFood">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ItemFoodRate">
+              <PropertyRef Name="ItemFoodID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemFoodRate_RateType">
+          <End Role="RateType" Type="Self.RateType" Multiplicity="1" />
+          <End Role="ItemFoodRate" Type="Self.ItemFoodRate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RateType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ItemFoodRate">
+              <PropertyRef Name="RateType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemFoodRate_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="ItemFoodRate" Type="Self.ItemFoodRate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ItemFoodRate">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemFoodType_FoodType">
+          <End Role="FoodType" Type="Self.FoodType" Multiplicity="1" />
+          <End Role="ItemFoodType" Type="Self.ItemFoodType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FoodType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ItemFoodType">
+              <PropertyRef Name="FoodTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemFoodType_ItemFood">
+          <End Role="ItemFood" Type="Self.ItemFood" Multiplicity="1" />
+          <End Role="ItemFoodType" Type="Self.ItemFoodType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemFood">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ItemFoodType">
+              <PropertyRef Name="ItemFoodID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MinDistancePrice_Regions">
+          <End Role="Regions" Type="Self.Regions" Multiplicity="1" />
+          <End Role="MinDistancePrice" Type="Self.MinDistancePrice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Regions">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MinDistancePrice">
+              <PropertyRef Name="RegionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MinDistancePrice_RestaurantData">
+          <End Role="RestaurantData" Type="Self.RestaurantData" Multiplicity="1" />
+          <End Role="MinDistancePrice" Type="Self.MinDistancePrice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RestaurantData">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MinDistancePrice">
+              <PropertyRef Name="RestaurantDataID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MinDistancePrice_Restaurants">
+          <End Role="Restaurants" Type="Self.Restaurants" Multiplicity="1" />
+          <End Role="MinDistancePrice" Type="Self.MinDistancePrice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurants">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MinDistancePrice">
+              <PropertyRef Name="RestaurantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NotificationUser_NotificationMsg">
+          <End Role="NotificationMsg" Type="Self.NotificationMsg" Multiplicity="1" />
+          <End Role="NotificationUser" Type="Self.NotificationUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NotificationMsg">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="NotificationUser">
+              <PropertyRef Name="NotificationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NotificationUser_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="NotificationUser" Type="Self.NotificationUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="NotificationUser">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_OrderStatus">
+          <End Role="OrderStatus" Type="Self.OrderStatus" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderStatus">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="OrderStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_RestaurantData">
+          <End Role="RestaurantData" Type="Self.RestaurantData" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RestaurantData">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="RestaurantDataID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="DeliveryUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetails_CookingCategory">
+          <End Role="CookingCategory" Type="Self.CookingCategory" Multiplicity="0..1" />
+          <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CookingCategory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="CookingCatID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetails_ItemFood">
+          <End Role="ItemFood" Type="Self.ItemFood" Multiplicity="1" />
+          <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemFood">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="ItemFoodID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetails_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PackageRestaurant_Package">
+          <End Role="Package" Type="Self.Package" Multiplicity="1" />
+          <End Role="PackageRestaurant" Type="Self.PackageRestaurant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Package">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PackageRestaurant">
+              <PropertyRef Name="PackageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PackageRestaurant_Restaurants">
+          <End Role="Restaurants" Type="Self.Restaurants" Multiplicity="1" />
+          <End Role="PackageRestaurant" Type="Self.PackageRestaurant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurants">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PackageRestaurant">
+              <PropertyRef Name="RestaurantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Regions_Cities">
+          <End Role="Cities" Type="Self.Cities" Multiplicity="0..1" />
+          <End Role="Regions" Type="Self.Regions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cities">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Regions">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RestaurantAppointment_Restaurants">
+          <End Role="Restaurants" Type="Self.Restaurants" Multiplicity="1" />
+          <End Role="RestaurantAppointment" Type="Self.RestaurantAppointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurants">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RestaurantAppointment">
+              <PropertyRef Name="RestaurantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RestaurantData_Regions">
+          <End Role="Regions" Type="Self.Regions" Multiplicity="1" />
+          <End Role="RestaurantData" Type="Self.RestaurantData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Regions">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RestaurantData">
+              <PropertyRef Name="Region_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RestaurantData_Restaurant">
+          <End Role="Restaurants" Type="Self.Restaurants" Multiplicity="1" />
+          <End Role="RestaurantData" Type="Self.RestaurantData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurants">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RestaurantData">
+              <PropertyRef Name="RestaurantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RestaurantRate_RateType">
+          <End Role="RateType" Type="Self.RateType" Multiplicity="1" />
+          <End Role="RestaurantRate" Type="Self.RestaurantRate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RateType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RestaurantRate">
+              <PropertyRef Name="RateType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RestaurantRate_Restaurants">
+          <End Role="Restaurants" Type="Self.Restaurants" Multiplicity="1" />
+          <End Role="RestaurantRate" Type="Self.RestaurantRate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurants">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RestaurantRate">
+              <PropertyRef Name="RestaurantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RestaurantRate_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="RestaurantRate" Type="Self.RestaurantRate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RestaurantRate">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Restaurants_ChainRestaurants">
+          <End Role="ChainRestaurants" Type="Self.ChainRestaurants" Multiplicity="0..1" />
+          <End Role="Restaurants" Type="Self.Restaurants" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChainRestaurants">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Restaurants">
+              <PropertyRef Name="ChainRestaurants_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Restaurants_Cities">
+          <End Role="Cities" Type="Self.Cities" Multiplicity="0..1" />
+          <End Role="Restaurants" Type="Self.Restaurants" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cities">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Restaurants">
+              <PropertyRef Name="City_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Restaurants_Countries">
+          <End Role="Countries" Type="Self.Countries" Multiplicity="0..1" />
+          <End Role="Restaurants" Type="Self.Restaurants" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Restaurants">
+              <PropertyRef Name="Country_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Restaurants_DeliveryWay">
+          <End Role="DeliveryWay" Type="Self.DeliveryWay" Multiplicity="1" />
+          <End Role="Restaurants" Type="Self.Restaurants" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeliveryWay">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Restaurants">
+              <PropertyRef Name="DeliveryWayID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Restaurants_Regions">
+          <End Role="Regions" Type="Self.Regions" Multiplicity="0..1" />
+          <End Role="Restaurants" Type="Self.Restaurants" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Regions">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Restaurants">
+              <PropertyRef Name="Region_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Restaurants_RestaurantStatus">
+          <End Role="RestaurantStatus" Type="Self.RestaurantStatus" Multiplicity="1" />
+          <End Role="Restaurants" Type="Self.Restaurants" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RestaurantStatus">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Restaurants">
+              <PropertyRef Name="RestaurantStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Restaurants_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Restaurants" Type="Self.Restaurants" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Restaurants">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserComment_Restaurants">
+          <End Role="Restaurants" Type="Self.Restaurants" Multiplicity="1" />
+          <End Role="UserComment" Type="Self.UserComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurants">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserComment">
+              <PropertyRef Name="RestaurantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserData_Regions">
+          <End Role="Regions" Type="Self.Regions" Multiplicity="1" />
+          <End Role="UserData" Type="Self.UserData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Regions">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserData">
+              <PropertyRef Name="Region_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserData_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UserData" Type="Self.UserData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserData">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TakeawayModelStoreContainer">
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CategoryType" EntityType="Self.CategoryType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChainRestaurants" EntityType="Self.ChainRestaurants" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cities" EntityType="Self.Cities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cobone" EntityType="Self.Cobone" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CoboneType" EntityType="Self.CoboneType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CoboneUser" EntityType="Self.CoboneUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CookingCategory" EntityType="Self.CookingCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Countries" EntityType="Self.Countries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cuisine" EntityType="Self.Cuisine" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CuisineRestaurant" EntityType="Self.CuisineRestaurant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DeliveryWay" EntityType="Self.DeliveryWay" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FoodType" EntityType="Self.FoodType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ItemFood" EntityType="Self.ItemFood" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ItemFoodDetails" EntityType="Self.ItemFoodDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ItemFoodRate" EntityType="Self.ItemFoodRate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ItemFoodType" EntityType="Self.ItemFoodType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MinDistancePrice" EntityType="Self.MinDistancePrice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NotificationMsg" EntityType="Self.NotificationMsg" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NotificationUser" EntityType="Self.NotificationUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Offer" EntityType="Self.Offer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderDetails" EntityType="Self.OrderDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderStatus" EntityType="Self.OrderStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Package" EntityType="Self.Package" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PackageRestaurant" EntityType="Self.PackageRestaurant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RateType" EntityType="Self.RateType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Regions" EntityType="Self.Regions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RestaurantAppointment" EntityType="Self.RestaurantAppointment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RestaurantData" EntityType="Self.RestaurantData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RestaurantRate" EntityType="Self.RestaurantRate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Restaurants" EntityType="Self.Restaurants" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RestaurantStatus" EntityType="Self.RestaurantStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Size" EntityType="Self.Size" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserComment" EntityType="Self.UserComment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserData" EntityType="Self.UserData" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Category_Restaurants" Association="Self.FK_Category_Restaurants">
+            <End Role="Restaurants" EntitySet="Restaurants" />
+            <End Role="Category" EntitySet="Category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cities_Countries" Association="Self.FK_Cities_Countries">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="Cities" EntitySet="Cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cobone_CoboneType" Association="Self.FK_Cobone_CoboneType">
+            <End Role="CoboneType" EntitySet="CoboneType" />
+            <End Role="Cobone" EntitySet="Cobone" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoboneUser_Cobone" Association="Self.FK_CoboneUser_Cobone">
+            <End Role="Cobone" EntitySet="Cobone" />
+            <End Role="CoboneUser" EntitySet="CoboneUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoboneUser_User" Association="Self.FK_CoboneUser_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="CoboneUser" EntitySet="CoboneUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CuisineRestaurant_Cuisine" Association="Self.FK_CuisineRestaurant_Cuisine">
+            <End Role="Cuisine" EntitySet="Cuisine" />
+            <End Role="CuisineRestaurant" EntitySet="CuisineRestaurant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CuisineRestaurant_Restaurants" Association="Self.FK_CuisineRestaurant_Restaurants">
+            <End Role="Restaurants" EntitySet="Restaurants" />
+            <End Role="CuisineRestaurant" EntitySet="CuisineRestaurant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemFood_Category" Association="Self.FK_ItemFood_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="ItemFood" EntitySet="ItemFood" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemFood_CategoryType" Association="Self.FK_ItemFood_CategoryType">
+            <End Role="CategoryType" EntitySet="CategoryType" />
+            <End Role="ItemFood" EntitySet="ItemFood" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemFood_ItemFood" Association="Self.FK_ItemFood_ItemFood">
+            <End Role="ItemFood" EntitySet="ItemFood" />
+            <End Role="ItemFood1" EntitySet="ItemFood" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemFood_Size" Association="Self.FK_ItemFood_Size">
+            <End Role="Size" EntitySet="Size" />
+            <End Role="ItemFood" EntitySet="ItemFood" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemFoodDetails_CategoryType" Association="Self.FK_ItemFoodDetails_CategoryType">
+            <End Role="CategoryType" EntitySet="CategoryType" />
+            <End Role="ItemFoodDetails" EntitySet="ItemFoodDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemFoodDetails_ItemFood" Association="Self.FK_ItemFoodDetails_ItemFood">
+            <End Role="ItemFood" EntitySet="ItemFood" />
+            <End Role="ItemFoodDetails" EntitySet="ItemFoodDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemFoodRate_ItemFood" Association="Self.FK_ItemFoodRate_ItemFood">
+            <End Role="ItemFood" EntitySet="ItemFood" />
+            <End Role="ItemFoodRate" EntitySet="ItemFoodRate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemFoodRate_RateType" Association="Self.FK_ItemFoodRate_RateType">
+            <End Role="RateType" EntitySet="RateType" />
+            <End Role="ItemFoodRate" EntitySet="ItemFoodRate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemFoodRate_User" Association="Self.FK_ItemFoodRate_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="ItemFoodRate" EntitySet="ItemFoodRate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemFoodType_FoodType" Association="Self.FK_ItemFoodType_FoodType">
+            <End Role="FoodType" EntitySet="FoodType" />
+            <End Role="ItemFoodType" EntitySet="ItemFoodType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemFoodType_ItemFood" Association="Self.FK_ItemFoodType_ItemFood">
+            <End Role="ItemFood" EntitySet="ItemFood" />
+            <End Role="ItemFoodType" EntitySet="ItemFoodType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MinDistancePrice_Regions" Association="Self.FK_MinDistancePrice_Regions">
+            <End Role="Regions" EntitySet="Regions" />
+            <End Role="MinDistancePrice" EntitySet="MinDistancePrice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MinDistancePrice_RestaurantData" Association="Self.FK_MinDistancePrice_RestaurantData">
+            <End Role="RestaurantData" EntitySet="RestaurantData" />
+            <End Role="MinDistancePrice" EntitySet="MinDistancePrice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MinDistancePrice_Restaurants" Association="Self.FK_MinDistancePrice_Restaurants">
+            <End Role="Restaurants" EntitySet="Restaurants" />
+            <End Role="MinDistancePrice" EntitySet="MinDistancePrice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NotificationUser_NotificationMsg" Association="Self.FK_NotificationUser_NotificationMsg">
+            <End Role="NotificationMsg" EntitySet="NotificationMsg" />
+            <End Role="NotificationUser" EntitySet="NotificationUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NotificationUser_User" Association="Self.FK_NotificationUser_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="NotificationUser" EntitySet="NotificationUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_OrderStatus" Association="Self.FK_Order_OrderStatus">
+            <End Role="OrderStatus" EntitySet="OrderStatus" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_RestaurantData" Association="Self.FK_Order_RestaurantData">
+            <End Role="RestaurantData" EntitySet="RestaurantData" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_User" Association="Self.FK_Order_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetails_CookingCategory" Association="Self.FK_OrderDetails_CookingCategory">
+            <End Role="CookingCategory" EntitySet="CookingCategory" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetails_ItemFood" Association="Self.FK_OrderDetails_ItemFood">
+            <End Role="ItemFood" EntitySet="ItemFood" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetails_Order" Association="Self.FK_OrderDetails_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PackageRestaurant_Package" Association="Self.FK_PackageRestaurant_Package">
+            <End Role="Package" EntitySet="Package" />
+            <End Role="PackageRestaurant" EntitySet="PackageRestaurant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PackageRestaurant_Restaurants" Association="Self.FK_PackageRestaurant_Restaurants">
+            <End Role="Restaurants" EntitySet="Restaurants" />
+            <End Role="PackageRestaurant" EntitySet="PackageRestaurant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Regions_Cities" Association="Self.FK_Regions_Cities">
+            <End Role="Cities" EntitySet="Cities" />
+            <End Role="Regions" EntitySet="Regions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RestaurantAppointment_Restaurants" Association="Self.FK_RestaurantAppointment_Restaurants">
+            <End Role="Restaurants" EntitySet="Restaurants" />
+            <End Role="RestaurantAppointment" EntitySet="RestaurantAppointment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RestaurantData_Regions" Association="Self.FK_RestaurantData_Regions">
+            <End Role="Regions" EntitySet="Regions" />
+            <End Role="RestaurantData" EntitySet="RestaurantData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RestaurantData_Restaurant" Association="Self.FK_RestaurantData_Restaurant">
+            <End Role="Restaurants" EntitySet="Restaurants" />
+            <End Role="RestaurantData" EntitySet="RestaurantData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RestaurantRate_RateType" Association="Self.FK_RestaurantRate_RateType">
+            <End Role="RateType" EntitySet="RateType" />
+            <End Role="RestaurantRate" EntitySet="RestaurantRate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RestaurantRate_Restaurants" Association="Self.FK_RestaurantRate_Restaurants">
+            <End Role="Restaurants" EntitySet="Restaurants" />
+            <End Role="RestaurantRate" EntitySet="RestaurantRate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RestaurantRate_User" Association="Self.FK_RestaurantRate_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="RestaurantRate" EntitySet="RestaurantRate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Restaurants_ChainRestaurants" Association="Self.FK_Restaurants_ChainRestaurants">
+            <End Role="ChainRestaurants" EntitySet="ChainRestaurants" />
+            <End Role="Restaurants" EntitySet="Restaurants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Restaurants_Cities" Association="Self.FK_Restaurants_Cities">
+            <End Role="Cities" EntitySet="Cities" />
+            <End Role="Restaurants" EntitySet="Restaurants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Restaurants_Countries" Association="Self.FK_Restaurants_Countries">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="Restaurants" EntitySet="Restaurants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Restaurants_DeliveryWay" Association="Self.FK_Restaurants_DeliveryWay">
+            <End Role="DeliveryWay" EntitySet="DeliveryWay" />
+            <End Role="Restaurants" EntitySet="Restaurants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Restaurants_Regions" Association="Self.FK_Restaurants_Regions">
+            <End Role="Regions" EntitySet="Regions" />
+            <End Role="Restaurants" EntitySet="Restaurants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Restaurants_RestaurantStatus" Association="Self.FK_Restaurants_RestaurantStatus">
+            <End Role="RestaurantStatus" EntitySet="RestaurantStatus" />
+            <End Role="Restaurants" EntitySet="Restaurants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Restaurants_User" Association="Self.FK_Restaurants_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Restaurants" EntitySet="Restaurants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_AspNetUsers" Association="Self.FK_User_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserComment_Restaurants" Association="Self.FK_UserComment_Restaurants">
+            <End Role="Restaurants" EntitySet="Restaurants" />
+            <End Role="UserComment" EntitySet="UserComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserData_Regions" Association="Self.FK_UserData_Regions">
+            <End Role="Regions" EntitySet="Regions" />
+            <End Role="UserData" EntitySet="UserData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserData_User" Association="Self.FK_UserData_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserData" EntitySet="UserData" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TakeawayModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="TakeawayEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ItemFoods" EntityType="TakeawayModel.ItemFood" />
+          <EntitySet Name="Cities" EntityType="TakeawayModel.City" />
+          <AssociationSet Name="FK_ItemFood_ItemFood" Association="TakeawayModel.FK_ItemFood_ItemFood">
+            <End Role="ItemFood" EntitySet="ItemFoods" />
+            <End Role="ItemFood1" EntitySet="ItemFoods" />
+          </AssociationSet>
+          <EntitySet Name="AspNetUsers" EntityType="TakeawayModel.AspNetUser" />
+          <EntitySet Name="Categories" EntityType="TakeawayModel.Category" />
+          <EntitySet Name="CategoryTypes" EntityType="TakeawayModel.CategoryType" />
+          <EntitySet Name="ChainRestaurants" EntityType="TakeawayModel.ChainRestaurant" />
+          <EntitySet Name="Cobones" EntityType="TakeawayModel.Cobone" />
+          <EntitySet Name="CoboneTypes" EntityType="TakeawayModel.CoboneType" />
+          <EntitySet Name="CoboneUsers" EntityType="TakeawayModel.CoboneUser" />
+          <EntitySet Name="CookingCategories" EntityType="TakeawayModel.CookingCategory" />
+          <EntitySet Name="Countries" EntityType="TakeawayModel.Country" />
+          <EntitySet Name="Cuisines" EntityType="TakeawayModel.Cuisine" />
+          <EntitySet Name="CuisineRestaurants" EntityType="TakeawayModel.CuisineRestaurant" />
+          <EntitySet Name="DeliveryWays" EntityType="TakeawayModel.DeliveryWay" />
+          <EntitySet Name="FoodTypes" EntityType="TakeawayModel.FoodType" />
+          <EntitySet Name="ItemFoodDetails" EntityType="TakeawayModel.ItemFoodDetail" />
+          <EntitySet Name="ItemFoodRates" EntityType="TakeawayModel.ItemFoodRate" />
+          <EntitySet Name="ItemFoodTypes" EntityType="TakeawayModel.ItemFoodType" />
+          <EntitySet Name="MinDistancePrices" EntityType="TakeawayModel.MinDistancePrice" />
+          <EntitySet Name="NotificationMsgs" EntityType="TakeawayModel.NotificationMsg" />
+          <EntitySet Name="NotificationUsers" EntityType="TakeawayModel.NotificationUser" />
+          <EntitySet Name="Offers" EntityType="TakeawayModel.Offer" />
+          <EntitySet Name="Orders" EntityType="TakeawayModel.Order" />
+          <EntitySet Name="OrderDetails" EntityType="TakeawayModel.OrderDetail" />
+          <EntitySet Name="OrderStatus" EntityType="TakeawayModel.OrderStatu" />
+          <EntitySet Name="Packages" EntityType="TakeawayModel.Package" />
+          <EntitySet Name="PackageRestaurants" EntityType="TakeawayModel.PackageRestaurant" />
+          <EntitySet Name="RateTypes" EntityType="TakeawayModel.RateType" />
+          <EntitySet Name="Regions" EntityType="TakeawayModel.Region" />
+          <EntitySet Name="RestaurantAppointments" EntityType="TakeawayModel.RestaurantAppointment" />
+          <EntitySet Name="RestaurantDatas" EntityType="TakeawayModel.RestaurantData" />
+          <EntitySet Name="RestaurantRates" EntityType="TakeawayModel.RestaurantRate" />
+          <EntitySet Name="Restaurants" EntityType="TakeawayModel.Restaurant" />
+          <EntitySet Name="RestaurantStatus" EntityType="TakeawayModel.RestaurantStatu" />
+          <EntitySet Name="Sizes" EntityType="TakeawayModel.Size" />
+          <EntitySet Name="Users" EntityType="TakeawayModel.User" />
+          <EntitySet Name="UserComments" EntityType="TakeawayModel.UserComment" />
+          <EntitySet Name="UserDatas" EntityType="TakeawayModel.UserData" />
+          <AssociationSet Name="FK_User_AspNetUsers" Association="TakeawayModel.FK_User_AspNetUsers">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Category_Restaurants" Association="TakeawayModel.FK_Category_Restaurants">
+            <End Role="Restaurant" EntitySet="Restaurants" />
+            <End Role="Category" EntitySet="Categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemFood_Category" Association="TakeawayModel.FK_ItemFood_Category">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="ItemFood" EntitySet="ItemFoods" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemFood_CategoryType" Association="TakeawayModel.FK_ItemFood_CategoryType">
+            <End Role="CategoryType" EntitySet="CategoryTypes" />
+            <End Role="ItemFood" EntitySet="ItemFoods" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemFoodDetails_CategoryType" Association="TakeawayModel.FK_ItemFoodDetails_CategoryType">
+            <End Role="CategoryType" EntitySet="CategoryTypes" />
+            <End Role="ItemFoodDetail" EntitySet="ItemFoodDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Restaurants_ChainRestaurants" Association="TakeawayModel.FK_Restaurants_ChainRestaurants">
+            <End Role="ChainRestaurant" EntitySet="ChainRestaurants" />
+            <End Role="Restaurant" EntitySet="Restaurants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cities_Countries" Association="TakeawayModel.FK_Cities_Countries">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="City" EntitySet="Cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Regions_Cities" Association="TakeawayModel.FK_Regions_Cities">
+            <End Role="City" EntitySet="Cities" />
+            <End Role="Region" EntitySet="Regions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Restaurants_Cities" Association="TakeawayModel.FK_Restaurants_Cities">
+            <End Role="City" EntitySet="Cities" />
+            <End Role="Restaurant" EntitySet="Restaurants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cobone_CoboneType" Association="TakeawayModel.FK_Cobone_CoboneType">
+            <End Role="CoboneType" EntitySet="CoboneTypes" />
+            <End Role="Cobone" EntitySet="Cobones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoboneUser_Cobone" Association="TakeawayModel.FK_CoboneUser_Cobone">
+            <End Role="Cobone" EntitySet="Cobones" />
+            <End Role="CoboneUser" EntitySet="CoboneUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoboneUser_User" Association="TakeawayModel.FK_CoboneUser_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="CoboneUser" EntitySet="CoboneUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetails_CookingCategory" Association="TakeawayModel.FK_OrderDetails_CookingCategory">
+            <End Role="CookingCategory" EntitySet="CookingCategories" />
+            <End Role="OrderDetail" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Restaurants_Countries" Association="TakeawayModel.FK_Restaurants_Countries">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="Restaurant" EntitySet="Restaurants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CuisineRestaurant_Cuisine" Association="TakeawayModel.FK_CuisineRestaurant_Cuisine">
+            <End Role="Cuisine" EntitySet="Cuisines" />
+            <End Role="CuisineRestaurant" EntitySet="CuisineRestaurants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CuisineRestaurant_Restaurants" Association="TakeawayModel.FK_CuisineRestaurant_Restaurants">
+            <End Role="Restaurant" EntitySet="Restaurants" />
+            <End Role="CuisineRestaurant" EntitySet="CuisineRestaurants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Restaurants_DeliveryWay" Association="TakeawayModel.FK_Restaurants_DeliveryWay">
+            <End Role="DeliveryWay" EntitySet="DeliveryWays" />
+            <End Role="Restaurant" EntitySet="Restaurants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemFoodType_FoodType" Association="TakeawayModel.FK_ItemFoodType_FoodType">
+            <End Role="FoodType" EntitySet="FoodTypes" />
+            <End Role="ItemFoodType" EntitySet="ItemFoodTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemFood_Size" Association="TakeawayModel.FK_ItemFood_Size">
+            <End Role="Size" EntitySet="Sizes" />
+            <End Role="ItemFood" EntitySet="ItemFoods" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemFoodDetails_ItemFood" Association="TakeawayModel.FK_ItemFoodDetails_ItemFood">
+            <End Role="ItemFood" EntitySet="ItemFoods" />
+            <End Role="ItemFoodDetail" EntitySet="ItemFoodDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemFoodRate_ItemFood" Association="TakeawayModel.FK_ItemFoodRate_ItemFood">
+            <End Role="ItemFood" EntitySet="ItemFoods" />
+            <End Role="ItemFoodRate" EntitySet="ItemFoodRates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemFoodType_ItemFood" Association="TakeawayModel.FK_ItemFoodType_ItemFood">
+            <End Role="ItemFood" EntitySet="ItemFoods" />
+            <End Role="ItemFoodType" EntitySet="ItemFoodTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetails_ItemFood" Association="TakeawayModel.FK_OrderDetails_ItemFood">
+            <End Role="ItemFood" EntitySet="ItemFoods" />
+            <End Role="OrderDetail" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemFoodRate_RateType" Association="TakeawayModel.FK_ItemFoodRate_RateType">
+            <End Role="RateType" EntitySet="RateTypes" />
+            <End Role="ItemFoodRate" EntitySet="ItemFoodRates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemFoodRate_User" Association="TakeawayModel.FK_ItemFoodRate_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="ItemFoodRate" EntitySet="ItemFoodRates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MinDistancePrice_Regions" Association="TakeawayModel.FK_MinDistancePrice_Regions">
+            <End Role="Region" EntitySet="Regions" />
+            <End Role="MinDistancePrice" EntitySet="MinDistancePrices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MinDistancePrice_RestaurantData" Association="TakeawayModel.FK_MinDistancePrice_RestaurantData">
+            <End Role="RestaurantData" EntitySet="RestaurantDatas" />
+            <End Role="MinDistancePrice" EntitySet="MinDistancePrices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MinDistancePrice_Restaurants" Association="TakeawayModel.FK_MinDistancePrice_Restaurants">
+            <End Role="Restaurant" EntitySet="Restaurants" />
+            <End Role="MinDistancePrice" EntitySet="MinDistancePrices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NotificationUser_NotificationMsg" Association="TakeawayModel.FK_NotificationUser_NotificationMsg">
+            <End Role="NotificationMsg" EntitySet="NotificationMsgs" />
+            <End Role="NotificationUser" EntitySet="NotificationUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NotificationUser_User" Association="TakeawayModel.FK_NotificationUser_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="NotificationUser" EntitySet="NotificationUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_OrderStatus" Association="TakeawayModel.FK_Order_OrderStatus">
+            <End Role="OrderStatu" EntitySet="OrderStatus" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_RestaurantData" Association="TakeawayModel.FK_Order_RestaurantData">
+            <End Role="RestaurantData" EntitySet="RestaurantDatas" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_User" Association="TakeawayModel.FK_Order_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetails_Order" Association="TakeawayModel.FK_OrderDetails_Order">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="OrderDetail" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PackageRestaurant_Package" Association="TakeawayModel.FK_PackageRestaurant_Package">
+            <End Role="Package" EntitySet="Packages" />
+            <End Role="PackageRestaurant" EntitySet="PackageRestaurants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PackageRestaurant_Restaurants" Association="TakeawayModel.FK_PackageRestaurant_Restaurants">
+            <End Role="Restaurant" EntitySet="Restaurants" />
+            <End Role="PackageRestaurant" EntitySet="PackageRestaurants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RestaurantRate_RateType" Association="TakeawayModel.FK_RestaurantRate_RateType">
+            <End Role="RateType" EntitySet="RateTypes" />
+            <End Role="RestaurantRate" EntitySet="RestaurantRates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RestaurantData_Regions" Association="TakeawayModel.FK_RestaurantData_Regions">
+            <End Role="Region" EntitySet="Regions" />
+            <End Role="RestaurantData" EntitySet="RestaurantDatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Restaurants_Regions" Association="TakeawayModel.FK_Restaurants_Regions">
+            <End Role="Region" EntitySet="Regions" />
+            <End Role="Restaurant" EntitySet="Restaurants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserData_Regions" Association="TakeawayModel.FK_UserData_Regions">
+            <End Role="Region" EntitySet="Regions" />
+            <End Role="UserData" EntitySet="UserDatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RestaurantAppointment_Restaurants" Association="TakeawayModel.FK_RestaurantAppointment_Restaurants">
+            <End Role="Restaurant" EntitySet="Restaurants" />
+            <End Role="RestaurantAppointment" EntitySet="RestaurantAppointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RestaurantData_Restaurant" Association="TakeawayModel.FK_RestaurantData_Restaurant">
+            <End Role="Restaurant" EntitySet="Restaurants" />
+            <End Role="RestaurantData" EntitySet="RestaurantDatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RestaurantRate_Restaurants" Association="TakeawayModel.FK_RestaurantRate_Restaurants">
+            <End Role="Restaurant" EntitySet="Restaurants" />
+            <End Role="RestaurantRate" EntitySet="RestaurantRates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RestaurantRate_User" Association="TakeawayModel.FK_RestaurantRate_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="RestaurantRate" EntitySet="RestaurantRates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Restaurants_RestaurantStatus" Association="TakeawayModel.FK_Restaurants_RestaurantStatus">
+            <End Role="RestaurantStatu" EntitySet="RestaurantStatus" />
+            <End Role="Restaurant" EntitySet="Restaurants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Restaurants_User" Association="TakeawayModel.FK_Restaurants_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Restaurant" EntitySet="Restaurants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserComment_Restaurants" Association="TakeawayModel.FK_UserComment_Restaurants">
+            <End Role="Restaurant" EntitySet="Restaurants" />
+            <End Role="UserComment" EntitySet="UserComments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserData_User" Association="TakeawayModel.FK_UserData_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserData" EntitySet="UserDatas" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="ItemFood">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FoodName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FoodNameEn" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DescriptionEn" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+          <Property Name="CategoryTypeID" Type="Int32" Nullable="false" />
+          <Property Name="NotforSale" Type="Boolean" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDetete" Type="Boolean" Nullable="false" />
+          <Property Name="SizeID" Type="Int32" />
+          <Property Name="IsCooking" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ItemFood1" Relationship="TakeawayModel.FK_ItemFood_ItemFood" FromRole="ItemFood" ToRole="ItemFood1" />
+          <NavigationProperty Name="ItemFood2" Relationship="TakeawayModel.FK_ItemFood_ItemFood" FromRole="ItemFood1" ToRole="ItemFood" />
+          <NavigationProperty Name="Category" Relationship="TakeawayModel.FK_ItemFood_Category" FromRole="ItemFood" ToRole="Category" />
+          <NavigationProperty Name="CategoryType" Relationship="TakeawayModel.FK_ItemFood_CategoryType" FromRole="ItemFood" ToRole="CategoryType" />
+          <NavigationProperty Name="Size" Relationship="TakeawayModel.FK_ItemFood_Size" FromRole="ItemFood" ToRole="Size" />
+          <NavigationProperty Name="ItemFoodDetails" Relationship="TakeawayModel.FK_ItemFoodDetails_ItemFood" FromRole="ItemFood" ToRole="ItemFoodDetail" />
+          <NavigationProperty Name="ItemFoodRates" Relationship="TakeawayModel.FK_ItemFoodRate_ItemFood" FromRole="ItemFood" ToRole="ItemFoodRate" />
+          <NavigationProperty Name="ItemFoodTypes" Relationship="TakeawayModel.FK_ItemFoodType_ItemFood" FromRole="ItemFood" ToRole="ItemFoodType" />
+          <NavigationProperty Name="OrderDetails" Relationship="TakeawayModel.FK_OrderDetails_ItemFood" FromRole="ItemFood" ToRole="OrderDetail" />
+          </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CityEn" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CityAr" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CountryID" Type="Int32" Nullable="false" />
+          <Property Name="RegionID" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Country" Relationship="TakeawayModel.FK_Cities_Countries" FromRole="City" ToRole="Country" />
+          <NavigationProperty Name="Regions" Relationship="TakeawayModel.FK_Regions_Cities" FromRole="City" ToRole="Region" />
+          <NavigationProperty Name="Restaurants" Relationship="TakeawayModel.FK_Restaurants_Cities" FromRole="City" ToRole="Restaurant" />
+          </EntityType>
+        <Association Name="FK_ItemFood_ItemFood">
+          <End Type="TakeawayModel.ItemFood" Role="ItemFood" Multiplicity="1" />
+          <End Type="TakeawayModel.ItemFood" Role="ItemFood1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ItemFood">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ItemFood1">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="TakeawayModel.FK_User_AspNetUsers" FromRole="AspNetUser" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryNameEn" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="DescriptionAr" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DescriptionEn" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RestaurantID" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDetete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Restaurant" Relationship="TakeawayModel.FK_Category_Restaurants" FromRole="Category" ToRole="Restaurant" />
+          <NavigationProperty Name="ItemFoods" Relationship="TakeawayModel.FK_ItemFood_Category" FromRole="Category" ToRole="ItemFood" />
+        </EntityType>
+        <EntityType Name="CategoryType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryTypeName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryTypeNameEn" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDetete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ItemFoods" Relationship="TakeawayModel.FK_ItemFood_CategoryType" FromRole="CategoryType" ToRole="ItemFood" />
+          <NavigationProperty Name="ItemFoodDetails" Relationship="TakeawayModel.FK_ItemFoodDetails_CategoryType" FromRole="CategoryType" ToRole="ItemFoodDetail" />
+        </EntityType>
+        <EntityType Name="ChainRestaurant">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ChainRestaurants_En" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ChainRestaurants_ar" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="RoleID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDetete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Restaurants" Relationship="TakeawayModel.FK_Restaurants_ChainRestaurants" FromRole="ChainRestaurant" ToRole="Restaurant" />
+        </EntityType>
+        <EntityType Name="Cobone">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CoboneNameAr" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CoboneNameEn" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CoboneTypeID" Type="Int32" Nullable="false" />
+          <Property Name="CoboneTypeValue" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Duration" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="CoboneType" Relationship="TakeawayModel.FK_Cobone_CoboneType" FromRole="Cobone" ToRole="CoboneType" />
+          <NavigationProperty Name="CoboneUsers" Relationship="TakeawayModel.FK_CoboneUser_Cobone" FromRole="Cobone" ToRole="CoboneUser" />
+        </EntityType>
+        <EntityType Name="CoboneType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CoboneTypeNameAr" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CoboneTypeNameEn" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Cobones" Relationship="TakeawayModel.FK_Cobone_CoboneType" FromRole="CoboneType" ToRole="Cobone" />
+        </EntityType>
+        <EntityType Name="CoboneUser">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CoboneID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CoboneSerial" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="isUsed" Type="Byte" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Cobone" Relationship="TakeawayModel.FK_CoboneUser_Cobone" FromRole="CoboneUser" ToRole="Cobone" />
+          <NavigationProperty Name="User" Relationship="TakeawayModel.FK_CoboneUser_User" FromRole="CoboneUser" ToRole="User" />
+        </EntityType>
+        <EntityType Name="CookingCategory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CookingCatNameAR" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CookingCatNameEN" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="OrderDetails" Relationship="TakeawayModel.FK_OrderDetails_CookingCategory" FromRole="CookingCategory" ToRole="OrderDetail" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryEng" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CountryAr" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDetete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Cities" Relationship="TakeawayModel.FK_Cities_Countries" FromRole="Country" ToRole="City" />
+          <NavigationProperty Name="Restaurants" Relationship="TakeawayModel.FK_Restaurants_Countries" FromRole="Country" ToRole="Restaurant" />
+        </EntityType>
+        <EntityType Name="Cuisine">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CuisineAr" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CuisineEn" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DescriptionAr" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DescriptionEn" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDetete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="CuisineRestaurants" Relationship="TakeawayModel.FK_CuisineRestaurant_Cuisine" FromRole="Cuisine" ToRole="CuisineRestaurant" />
+        </EntityType>
+        <EntityType Name="CuisineRestaurant">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CuisineID" Type="Int32" Nullable="false" />
+          <Property Name="RestaurantID" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDetete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Cuisine" Relationship="TakeawayModel.FK_CuisineRestaurant_Cuisine" FromRole="CuisineRestaurant" ToRole="Cuisine" />
+          <NavigationProperty Name="Restaurant" Relationship="TakeawayModel.FK_CuisineRestaurant_Restaurants" FromRole="CuisineRestaurant" ToRole="Restaurant" />
+        </EntityType>
+        <EntityType Name="DeliveryWay">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeliveryNameAr" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DeliveryNameEn" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDetete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Restaurants" Relationship="TakeawayModel.FK_Restaurants_DeliveryWay" FromRole="DeliveryWay" ToRole="Restaurant" />
+        </EntityType>
+        <EntityType Name="FoodType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FoodTypeNameAr" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FoodTypeNameEn" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDetete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ItemFoodTypes" Relationship="TakeawayModel.FK_ItemFoodType_FoodType" FromRole="FoodType" ToRole="ItemFoodType" />
+        </EntityType>
+        <EntityType Name="ItemFoodDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemFoodID" Type="Int64" Nullable="false" />
+          <Property Name="AddItemFoodID" Type="Int64" Nullable="false" />
+          <Property Name="CategoryTypeID" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDetete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="CategoryType" Relationship="TakeawayModel.FK_ItemFoodDetails_CategoryType" FromRole="ItemFoodDetail" ToRole="CategoryType" />
+          <NavigationProperty Name="ItemFood" Relationship="TakeawayModel.FK_ItemFoodDetails_ItemFood" FromRole="ItemFoodDetail" ToRole="ItemFood" />
+        </EntityType>
+        <EntityType Name="ItemFoodRate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ItemFoodID" Type="Int64" Nullable="false" />
+          <Property Name="UserRate" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="RateType" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDetete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ItemFood" Relationship="TakeawayModel.FK_ItemFoodRate_ItemFood" FromRole="ItemFoodRate" ToRole="ItemFood" />
+          <NavigationProperty Name="RateType1" Relationship="TakeawayModel.FK_ItemFoodRate_RateType" FromRole="ItemFoodRate" ToRole="RateType" />
+          <NavigationProperty Name="User" Relationship="TakeawayModel.FK_ItemFoodRate_User" FromRole="ItemFoodRate" ToRole="User" />
+        </EntityType>
+        <EntityType Name="ItemFoodType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemFoodID" Type="Int64" Nullable="false" />
+          <Property Name="FoodTypeID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="FoodType" Relationship="TakeawayModel.FK_ItemFoodType_FoodType" FromRole="ItemFoodType" ToRole="FoodType" />
+          <NavigationProperty Name="ItemFood" Relationship="TakeawayModel.FK_ItemFoodType_ItemFood" FromRole="ItemFoodType" ToRole="ItemFood" />
+        </EntityType>
+        <EntityType Name="MinDistancePrice">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RestaurantID" Type="Int32" Nullable="false" />
+          <Property Name="RestaurantDataID" Type="Int32" Nullable="false" />
+          <Property Name="RegionID" Type="Int32" Nullable="false" />
+          <Property Name="minPrice" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="deliveryFeeValue" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="CreatedUser" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Region" Relationship="TakeawayModel.FK_MinDistancePrice_Regions" FromRole="MinDistancePrice" ToRole="Region" />
+          <NavigationProperty Name="RestaurantData" Relationship="TakeawayModel.FK_MinDistancePrice_RestaurantData" FromRole="MinDistancePrice" ToRole="RestaurantData" />
+          <NavigationProperty Name="Restaurant" Relationship="TakeawayModel.FK_MinDistancePrice_Restaurants" FromRole="MinDistancePrice" ToRole="Restaurant" />
+        </EntityType>
+        <EntityType Name="NotificationMsg">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="message" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UserCategory" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="NotificationUsers" Relationship="TakeawayModel.FK_NotificationUser_NotificationMsg" FromRole="NotificationMsg" ToRole="NotificationUser" />
+        </EntityType>
+        <EntityType Name="NotificationUser">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NotificationID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="isSend" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="NotificationMsg" Relationship="TakeawayModel.FK_NotificationUser_NotificationMsg" FromRole="NotificationUser" ToRole="NotificationMsg" />
+          <NavigationProperty Name="User" Relationship="TakeawayModel.FK_NotificationUser_User" FromRole="NotificationUser" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Offer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubjectID" Type="Int64" Nullable="false" />
+          <Property Name="OfferType" Type="Int32" Nullable="false" />
+          <Property Name="FeeType" Type="Int32" Nullable="false" />
+          <Property Name="FeeValue" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UserID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeliveryUserID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="RestaurantDataID" Type="Int32" Nullable="false" />
+          <Property Name="OrderStatusID" Type="Int32" Nullable="false" />
+          <Property Name="TotalPrice" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="FeeValue" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Delivery_estimation" Type="Time" Precision="7" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDetete" Type="Boolean" Nullable="false" />
+          <Property Name="RestOfferID" Type="Int32" />
+          <Property Name="IsSent" Type="Boolean" />
+          <NavigationProperty Name="OrderStatu" Relationship="TakeawayModel.FK_Order_OrderStatus" FromRole="Order" ToRole="OrderStatu" />
+          <NavigationProperty Name="RestaurantData" Relationship="TakeawayModel.FK_Order_RestaurantData" FromRole="Order" ToRole="RestaurantData" />
+          <NavigationProperty Name="User" Relationship="TakeawayModel.FK_Order_User" FromRole="Order" ToRole="User" />
+          <NavigationProperty Name="OrderDetails" Relationship="TakeawayModel.FK_OrderDetails_Order" FromRole="Order" ToRole="OrderDetail" />
+        </EntityType>
+        <EntityType Name="OrderDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemFoodID" Type="Int64" Nullable="false" />
+          <Property Name="ItemFoodParentID" Type="Int64" />
+          <Property Name="OrderID" Type="Int32" Nullable="false" />
+          <Property Name="CookingCatID" Type="Int32" />
+          <Property Name="ItemPrice" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="ItemCount" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDetete" Type="Boolean" Nullable="false" />
+          <Property Name="ItemOfferID" Type="Int32" />
+          <NavigationProperty Name="CookingCategory" Relationship="TakeawayModel.FK_OrderDetails_CookingCategory" FromRole="OrderDetail" ToRole="CookingCategory" />
+          <NavigationProperty Name="ItemFood" Relationship="TakeawayModel.FK_OrderDetails_ItemFood" FromRole="OrderDetail" ToRole="ItemFood" />
+          <NavigationProperty Name="Order" Relationship="TakeawayModel.FK_OrderDetails_Order" FromRole="OrderDetail" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="OrderStatu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderStatus_ar" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OrderStatus_En" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsDone" Type="Boolean" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDetete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Orders" Relationship="TakeawayModel.FK_Order_OrderStatus" FromRole="OrderStatu" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Package">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PackageNameAr" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PackageNameEn" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PackagePrice" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="PackagePeriod" Type="Int32" Nullable="false" />
+          <Property Name="PackageStartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PackageEndDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDetete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="PackageRestaurants" Relationship="TakeawayModel.FK_PackageRestaurant_Package" FromRole="Package" ToRole="PackageRestaurant" />
+        </EntityType>
+        <EntityType Name="PackageRestaurant">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PackageID" Type="Int32" Nullable="false" />
+          <Property Name="RestaurantID" Type="Int32" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Package" Relationship="TakeawayModel.FK_PackageRestaurant_Package" FromRole="PackageRestaurant" ToRole="Package" />
+          <NavigationProperty Name="Restaurant" Relationship="TakeawayModel.FK_PackageRestaurant_Restaurants" FromRole="PackageRestaurant" ToRole="Restaurant" />
+        </EntityType>
+        <EntityType Name="RateType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="RateNameAr" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RateNameEn" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ItemFoodRates" Relationship="TakeawayModel.FK_ItemFoodRate_RateType" FromRole="RateType" ToRole="ItemFoodRate" />
+          <NavigationProperty Name="RestaurantRates" Relationship="TakeawayModel.FK_RestaurantRate_RateType" FromRole="RateType" ToRole="RestaurantRate" />
+        </EntityType>
+        <EntityType Name="Region">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RegionEn" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RegionAr" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CityID" Type="Int32" />
+          <Property Name="CountryID" Type="Int32" />
+          <Property Name="NotesAr" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NotesEn" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PostalCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDetete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="City" Relationship="TakeawayModel.FK_Regions_Cities" FromRole="Region" ToRole="City" />
+          <NavigationProperty Name="MinDistancePrices" Relationship="TakeawayModel.FK_MinDistancePrice_Regions" FromRole="Region" ToRole="MinDistancePrice" />
+          <NavigationProperty Name="RestaurantDatas" Relationship="TakeawayModel.FK_RestaurantData_Regions" FromRole="Region" ToRole="RestaurantData" />
+          <NavigationProperty Name="Restaurants" Relationship="TakeawayModel.FK_Restaurants_Regions" FromRole="Region" ToRole="Restaurant" />
+          <NavigationProperty Name="UserDatas" Relationship="TakeawayModel.FK_UserData_Regions" FromRole="Region" ToRole="UserData" />
+        </EntityType>
+        <EntityType Name="RestaurantAppointment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RestaurantID" Type="Int32" Nullable="false" />
+          <Property Name="Day" Type="Int32" Nullable="false" />
+          <Property Name="OpeningTime" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="CloseTime" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Restaurant" Relationship="TakeawayModel.FK_RestaurantAppointment_Restaurants" FromRole="RestaurantAppointment" ToRole="Restaurant" />
+        </EntityType>
+        <EntityType Name="RestaurantData">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RestaurantID" Type="Int32" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Region_id" Type="Int32" Nullable="false" />
+          <Property Name="MapLatitude" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MapLongitude" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDetete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="MinDistancePrices" Relationship="TakeawayModel.FK_MinDistancePrice_RestaurantData" FromRole="RestaurantData" ToRole="MinDistancePrice" />
+          <NavigationProperty Name="Orders" Relationship="TakeawayModel.FK_Order_RestaurantData" FromRole="RestaurantData" ToRole="Order" />
+          <NavigationProperty Name="Region" Relationship="TakeawayModel.FK_RestaurantData_Regions" FromRole="RestaurantData" ToRole="Region" />
+          <NavigationProperty Name="Restaurant" Relationship="TakeawayModel.FK_RestaurantData_Restaurant" FromRole="RestaurantData" ToRole="Restaurant" />
+        </EntityType>
+        <EntityType Name="RestaurantRate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="RestaurantID" Type="Int32" Nullable="false" />
+          <Property Name="UserRate" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="RateType" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDetete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="RateType1" Relationship="TakeawayModel.FK_RestaurantRate_RateType" FromRole="RestaurantRate" ToRole="RateType" />
+          <NavigationProperty Name="Restaurant" Relationship="TakeawayModel.FK_RestaurantRate_Restaurants" FromRole="RestaurantRate" ToRole="Restaurant" />
+          <NavigationProperty Name="User" Relationship="TakeawayModel.FK_RestaurantRate_User" FromRole="RestaurantRate" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Restaurant">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RestaurantNameEn" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RestaurantName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RestaurantDescrption" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="RestaurantDescrptionEn" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="RestaurantPhone" Type="String" MaxLength="12" FixedLength="true" Unicode="true" />
+          <Property Name="ChainRestaurants_id" Type="Int32" />
+          <Property Name="DeliveryWayID" Type="Int32" Nullable="false" />
+          <Property Name="RestaurantStatus" Type="Int32" Nullable="false" />
+          <Property Name="Date_Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Date_modified" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UserID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="MembershipExpired" Type="DateTime" Precision="3" />
+          <Property Name="MapLatitude" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MapLongitude" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Logo" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Stars" Type="Int32" Nullable="false" />
+          <Property Name="Country_Id" Type="Int32" />
+          <Property Name="City_Id" Type="Int32" />
+          <Property Name="Region_Id" Type="Int32" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Categories" Relationship="TakeawayModel.FK_Category_Restaurants" FromRole="Restaurant" ToRole="Category" />
+          <NavigationProperty Name="ChainRestaurant" Relationship="TakeawayModel.FK_Restaurants_ChainRestaurants" FromRole="Restaurant" ToRole="ChainRestaurant" />
+          <NavigationProperty Name="City" Relationship="TakeawayModel.FK_Restaurants_Cities" FromRole="Restaurant" ToRole="City" />
+          <NavigationProperty Name="Country" Relationship="TakeawayModel.FK_Restaurants_Countries" FromRole="Restaurant" ToRole="Country" />
+          <NavigationProperty Name="CuisineRestaurants" Relationship="TakeawayModel.FK_CuisineRestaurant_Restaurants" FromRole="Restaurant" ToRole="CuisineRestaurant" />
+          <NavigationProperty Name="DeliveryWay" Relationship="TakeawayModel.FK_Restaurants_DeliveryWay" FromRole="Restaurant" ToRole="DeliveryWay" />
+          <NavigationProperty Name="MinDistancePrices" Relationship="TakeawayModel.FK_MinDistancePrice_Restaurants" FromRole="Restaurant" ToRole="MinDistancePrice" />
+          <NavigationProperty Name="PackageRestaurants" Relationship="TakeawayModel.FK_PackageRestaurant_Restaurants" FromRole="Restaurant" ToRole="PackageRestaurant" />
+          <NavigationProperty Name="Region" Relationship="TakeawayModel.FK_Restaurants_Regions" FromRole="Restaurant" ToRole="Region" />
+          <NavigationProperty Name="RestaurantAppointments" Relationship="TakeawayModel.FK_RestaurantAppointment_Restaurants" FromRole="Restaurant" ToRole="RestaurantAppointment" />
+          <NavigationProperty Name="RestaurantDatas" Relationship="TakeawayModel.FK_RestaurantData_Restaurant" FromRole="Restaurant" ToRole="RestaurantData" />
+          <NavigationProperty Name="RestaurantRates" Relationship="TakeawayModel.FK_RestaurantRate_Restaurants" FromRole="Restaurant" ToRole="RestaurantRate" />
+          <NavigationProperty Name="RestaurantStatu" Relationship="TakeawayModel.FK_Restaurants_RestaurantStatus" FromRole="Restaurant" ToRole="RestaurantStatu" />
+          <NavigationProperty Name="User" Relationship="TakeawayModel.FK_Restaurants_User" FromRole="Restaurant" ToRole="User" />
+          <NavigationProperty Name="UserComments" Relationship="TakeawayModel.FK_UserComment_Restaurants" FromRole="Restaurant" ToRole="UserComment" />
+        </EntityType>
+        <EntityType Name="RestaurantStatu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RestaurantStatusAr" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RestaurantStatusEn" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DescriptionAr" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DescriptionEn" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDetete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Restaurants" Relationship="TakeawayModel.FK_Restaurants_RestaurantStatus" FromRole="RestaurantStatu" ToRole="Restaurant" />
+        </EntityType>
+        <EntityType Name="Size">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SizeEN" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="SizeAR" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ItemFoods" Relationship="TakeawayModel.FK_ItemFood_Size" FromRole="Size" ToRole="ItemFood" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ContactPhone" Type="String" MaxLength="12" FixedLength="true" Unicode="true" />
+          <Property Name="ContactEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ContactName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IP_Address" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="RegisterDate" Type="DateTime" Precision="3" />
+          <Property Name="LastLogin" Type="DateTime" Precision="3" />
+          <Property Name="UserCategory" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDetete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="TakeawayModel.FK_User_AspNetUsers" FromRole="User" ToRole="AspNetUser" />
+          <NavigationProperty Name="CoboneUsers" Relationship="TakeawayModel.FK_CoboneUser_User" FromRole="User" ToRole="CoboneUser" />
+          <NavigationProperty Name="ItemFoodRates" Relationship="TakeawayModel.FK_ItemFoodRate_User" FromRole="User" ToRole="ItemFoodRate" />
+          <NavigationProperty Name="NotificationUsers" Relationship="TakeawayModel.FK_NotificationUser_User" FromRole="User" ToRole="NotificationUser" />
+          <NavigationProperty Name="Orders" Relationship="TakeawayModel.FK_Order_User" FromRole="User" ToRole="Order" />
+          <NavigationProperty Name="RestaurantRates" Relationship="TakeawayModel.FK_RestaurantRate_User" FromRole="User" ToRole="RestaurantRate" />
+          <NavigationProperty Name="Restaurants" Relationship="TakeawayModel.FK_Restaurants_User" FromRole="User" ToRole="Restaurant" />
+          <NavigationProperty Name="UserDatas" Relationship="TakeawayModel.FK_UserData_User" FromRole="User" ToRole="UserData" />
+        </EntityType>
+        <EntityType Name="UserComment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RestaurantID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Comment" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDetete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Restaurant" Relationship="TakeawayModel.FK_UserComment_Restaurants" FromRole="UserComment" ToRole="Restaurant" />
+        </EntityType>
+        <EntityType Name="UserData">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Region_id" Type="Int32" Nullable="false" />
+          <Property Name="MapLatitude" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MapLongitude" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDetete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Region" Relationship="TakeawayModel.FK_UserData_Regions" FromRole="UserData" ToRole="Region" />
+          <NavigationProperty Name="User" Relationship="TakeawayModel.FK_UserData_User" FromRole="UserData" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_User_AspNetUsers">
+          <End Type="TakeawayModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+          <End Type="TakeawayModel.User" Role="User" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Category_Restaurants">
+          <End Type="TakeawayModel.Restaurant" Role="Restaurant" Multiplicity="1" />
+          <End Type="TakeawayModel.Category" Role="Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurant">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Category">
+              <PropertyRef Name="RestaurantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemFood_Category">
+          <End Type="TakeawayModel.Category" Role="Category" Multiplicity="1" />
+          <End Type="TakeawayModel.ItemFood" Role="ItemFood" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ItemFood">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemFood_CategoryType">
+          <End Type="TakeawayModel.CategoryType" Role="CategoryType" Multiplicity="1" />
+          <End Type="TakeawayModel.ItemFood" Role="ItemFood" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoryType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ItemFood">
+              <PropertyRef Name="CategoryTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemFoodDetails_CategoryType">
+          <End Type="TakeawayModel.CategoryType" Role="CategoryType" Multiplicity="1" />
+          <End Type="TakeawayModel.ItemFoodDetail" Role="ItemFoodDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoryType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ItemFoodDetail">
+              <PropertyRef Name="CategoryTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Restaurants_ChainRestaurants">
+          <End Type="TakeawayModel.ChainRestaurant" Role="ChainRestaurant" Multiplicity="0..1" />
+          <End Type="TakeawayModel.Restaurant" Role="Restaurant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChainRestaurant">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Restaurant">
+              <PropertyRef Name="ChainRestaurants_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cities_Countries">
+          <End Type="TakeawayModel.Country" Role="Country" Multiplicity="1" />
+          <End Type="TakeawayModel.City" Role="City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Regions_Cities">
+          <End Type="TakeawayModel.City" Role="City" Multiplicity="0..1" />
+          <End Type="TakeawayModel.Region" Role="Region" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Region">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Restaurants_Cities">
+          <End Type="TakeawayModel.City" Role="City" Multiplicity="0..1" />
+          <End Type="TakeawayModel.Restaurant" Role="Restaurant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Restaurant">
+              <PropertyRef Name="City_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cobone_CoboneType">
+          <End Type="TakeawayModel.CoboneType" Role="CoboneType" Multiplicity="1" />
+          <End Type="TakeawayModel.Cobone" Role="Cobone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoboneType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Cobone">
+              <PropertyRef Name="CoboneTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoboneUser_Cobone">
+          <End Type="TakeawayModel.Cobone" Role="Cobone" Multiplicity="1" />
+          <End Type="TakeawayModel.CoboneUser" Role="CoboneUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cobone">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CoboneUser">
+              <PropertyRef Name="CoboneID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoboneUser_User">
+          <End Type="TakeawayModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="TakeawayModel.CoboneUser" Role="CoboneUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CoboneUser">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetails_CookingCategory">
+          <End Type="TakeawayModel.CookingCategory" Role="CookingCategory" Multiplicity="0..1" />
+          <End Type="TakeawayModel.OrderDetail" Role="OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CookingCategory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="CookingCatID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Restaurants_Countries">
+          <End Type="TakeawayModel.Country" Role="Country" Multiplicity="0..1" />
+          <End Type="TakeawayModel.Restaurant" Role="Restaurant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Restaurant">
+              <PropertyRef Name="Country_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CuisineRestaurant_Cuisine">
+          <End Type="TakeawayModel.Cuisine" Role="Cuisine" Multiplicity="1" />
+          <End Type="TakeawayModel.CuisineRestaurant" Role="CuisineRestaurant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cuisine">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CuisineRestaurant">
+              <PropertyRef Name="CuisineID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CuisineRestaurant_Restaurants">
+          <End Type="TakeawayModel.Restaurant" Role="Restaurant" Multiplicity="1" />
+          <End Type="TakeawayModel.CuisineRestaurant" Role="CuisineRestaurant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurant">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CuisineRestaurant">
+              <PropertyRef Name="RestaurantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Restaurants_DeliveryWay">
+          <End Type="TakeawayModel.DeliveryWay" Role="DeliveryWay" Multiplicity="1" />
+          <End Type="TakeawayModel.Restaurant" Role="Restaurant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeliveryWay">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Restaurant">
+              <PropertyRef Name="DeliveryWayID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemFoodType_FoodType">
+          <End Type="TakeawayModel.FoodType" Role="FoodType" Multiplicity="1" />
+          <End Type="TakeawayModel.ItemFoodType" Role="ItemFoodType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FoodType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ItemFoodType">
+              <PropertyRef Name="FoodTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemFood_Size">
+          <End Type="TakeawayModel.Size" Role="Size" Multiplicity="0..1" />
+          <End Type="TakeawayModel.ItemFood" Role="ItemFood" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Size">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ItemFood">
+              <PropertyRef Name="SizeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemFoodDetails_ItemFood">
+          <End Type="TakeawayModel.ItemFood" Role="ItemFood" Multiplicity="1" />
+          <End Type="TakeawayModel.ItemFoodDetail" Role="ItemFoodDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemFood">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ItemFoodDetail">
+              <PropertyRef Name="ItemFoodID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemFoodRate_ItemFood">
+          <End Type="TakeawayModel.ItemFood" Role="ItemFood" Multiplicity="1" />
+          <End Type="TakeawayModel.ItemFoodRate" Role="ItemFoodRate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemFood">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ItemFoodRate">
+              <PropertyRef Name="ItemFoodID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemFoodType_ItemFood">
+          <End Type="TakeawayModel.ItemFood" Role="ItemFood" Multiplicity="1" />
+          <End Type="TakeawayModel.ItemFoodType" Role="ItemFoodType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemFood">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ItemFoodType">
+              <PropertyRef Name="ItemFoodID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetails_ItemFood">
+          <End Type="TakeawayModel.ItemFood" Role="ItemFood" Multiplicity="1" />
+          <End Type="TakeawayModel.OrderDetail" Role="OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemFood">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="ItemFoodID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemFoodRate_RateType">
+          <End Type="TakeawayModel.RateType" Role="RateType" Multiplicity="1" />
+          <End Type="TakeawayModel.ItemFoodRate" Role="ItemFoodRate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RateType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ItemFoodRate">
+              <PropertyRef Name="RateType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemFoodRate_User">
+          <End Type="TakeawayModel.User" Role="User" Multiplicity="1" />
+          <End Type="TakeawayModel.ItemFoodRate" Role="ItemFoodRate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ItemFoodRate">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MinDistancePrice_Regions">
+          <End Type="TakeawayModel.Region" Role="Region" Multiplicity="1" />
+          <End Type="TakeawayModel.MinDistancePrice" Role="MinDistancePrice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Region">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MinDistancePrice">
+              <PropertyRef Name="RegionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MinDistancePrice_RestaurantData">
+          <End Type="TakeawayModel.RestaurantData" Role="RestaurantData" Multiplicity="1" />
+          <End Type="TakeawayModel.MinDistancePrice" Role="MinDistancePrice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RestaurantData">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MinDistancePrice">
+              <PropertyRef Name="RestaurantDataID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MinDistancePrice_Restaurants">
+          <End Type="TakeawayModel.Restaurant" Role="Restaurant" Multiplicity="1" />
+          <End Type="TakeawayModel.MinDistancePrice" Role="MinDistancePrice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurant">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MinDistancePrice">
+              <PropertyRef Name="RestaurantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NotificationUser_NotificationMsg">
+          <End Type="TakeawayModel.NotificationMsg" Role="NotificationMsg" Multiplicity="1" />
+          <End Type="TakeawayModel.NotificationUser" Role="NotificationUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NotificationMsg">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="NotificationUser">
+              <PropertyRef Name="NotificationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NotificationUser_User">
+          <End Type="TakeawayModel.User" Role="User" Multiplicity="1" />
+          <End Type="TakeawayModel.NotificationUser" Role="NotificationUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="NotificationUser">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_OrderStatus">
+          <End Type="TakeawayModel.OrderStatu" Role="OrderStatu" Multiplicity="1" />
+          <End Type="TakeawayModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderStatu">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="OrderStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_RestaurantData">
+          <End Type="TakeawayModel.RestaurantData" Role="RestaurantData" Multiplicity="1" />
+          <End Type="TakeawayModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RestaurantData">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="RestaurantDataID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_User">
+          <End Type="TakeawayModel.User" Role="User" Multiplicity="1" />
+          <End Type="TakeawayModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="DeliveryUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetails_Order">
+          <End Type="TakeawayModel.Order" Role="Order" Multiplicity="1" />
+          <End Type="TakeawayModel.OrderDetail" Role="OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PackageRestaurant_Package">
+          <End Type="TakeawayModel.Package" Role="Package" Multiplicity="1" />
+          <End Type="TakeawayModel.PackageRestaurant" Role="PackageRestaurant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Package">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PackageRestaurant">
+              <PropertyRef Name="PackageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PackageRestaurant_Restaurants">
+          <End Type="TakeawayModel.Restaurant" Role="Restaurant" Multiplicity="1" />
+          <End Type="TakeawayModel.PackageRestaurant" Role="PackageRestaurant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurant">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PackageRestaurant">
+              <PropertyRef Name="RestaurantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RestaurantRate_RateType">
+          <End Type="TakeawayModel.RateType" Role="RateType" Multiplicity="1" />
+          <End Type="TakeawayModel.RestaurantRate" Role="RestaurantRate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RateType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RestaurantRate">
+              <PropertyRef Name="RateType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RestaurantData_Regions">
+          <End Type="TakeawayModel.Region" Role="Region" Multiplicity="1" />
+          <End Type="TakeawayModel.RestaurantData" Role="RestaurantData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Region">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RestaurantData">
+              <PropertyRef Name="Region_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Restaurants_Regions">
+          <End Type="TakeawayModel.Region" Role="Region" Multiplicity="0..1" />
+          <End Type="TakeawayModel.Restaurant" Role="Restaurant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Region">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Restaurant">
+              <PropertyRef Name="Region_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserData_Regions">
+          <End Type="TakeawayModel.Region" Role="Region" Multiplicity="1" />
+          <End Type="TakeawayModel.UserData" Role="UserData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Region">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserData">
+              <PropertyRef Name="Region_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RestaurantAppointment_Restaurants">
+          <End Type="TakeawayModel.Restaurant" Role="Restaurant" Multiplicity="1" />
+          <End Type="TakeawayModel.RestaurantAppointment" Role="RestaurantAppointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurant">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RestaurantAppointment">
+              <PropertyRef Name="RestaurantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RestaurantData_Restaurant">
+          <End Type="TakeawayModel.Restaurant" Role="Restaurant" Multiplicity="1" />
+          <End Type="TakeawayModel.RestaurantData" Role="RestaurantData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurant">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RestaurantData">
+              <PropertyRef Name="RestaurantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RestaurantRate_Restaurants">
+          <End Type="TakeawayModel.Restaurant" Role="Restaurant" Multiplicity="1" />
+          <End Type="TakeawayModel.RestaurantRate" Role="RestaurantRate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurant">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RestaurantRate">
+              <PropertyRef Name="RestaurantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RestaurantRate_User">
+          <End Type="TakeawayModel.User" Role="User" Multiplicity="1" />
+          <End Type="TakeawayModel.RestaurantRate" Role="RestaurantRate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RestaurantRate">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Restaurants_RestaurantStatus">
+          <End Type="TakeawayModel.RestaurantStatu" Role="RestaurantStatu" Multiplicity="1" />
+          <End Type="TakeawayModel.Restaurant" Role="Restaurant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RestaurantStatu">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Restaurant">
+              <PropertyRef Name="RestaurantStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Restaurants_User">
+          <End Type="TakeawayModel.User" Role="User" Multiplicity="1" />
+          <End Type="TakeawayModel.Restaurant" Role="Restaurant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Restaurant">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserComment_Restaurants">
+          <End Type="TakeawayModel.Restaurant" Role="Restaurant" Multiplicity="1" />
+          <End Type="TakeawayModel.UserComment" Role="UserComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurant">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserComment">
+              <PropertyRef Name="RestaurantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserData_User">
+          <End Type="TakeawayModel.User" Role="User" Multiplicity="1" />
+          <End Type="TakeawayModel.UserData" Role="UserData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserData">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TakeawayModelStoreContainer" CdmEntityContainer="TakeawayEntities">
+          <EntitySetMapping Name="ItemFoods">
+            <EntityTypeMapping TypeName="TakeawayModel.ItemFood">
+              <MappingFragment StoreEntitySet="ItemFood">
+                <ScalarProperty Name="IsCooking" ColumnName="IsCooking" />
+                <ScalarProperty Name="SizeID" ColumnName="SizeID" />
+                <ScalarProperty Name="IsDetete" ColumnName="IsDetete" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="NotforSale" ColumnName="NotforSale" />
+                <ScalarProperty Name="CategoryTypeID" ColumnName="CategoryTypeID" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="DescriptionEn" ColumnName="DescriptionEn" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="FoodNameEn" ColumnName="FoodNameEn" />
+                <ScalarProperty Name="FoodName" ColumnName="FoodName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cities">
+            <EntityTypeMapping TypeName="TakeawayModel.City">
+              <MappingFragment StoreEntitySet="Cities">
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="RegionID" ColumnName="RegionID" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="CityAr" ColumnName="CityAr" />
+                <ScalarProperty Name="CityEn" ColumnName="CityEn" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="TakeawayModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="TakeawayModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="IsDetete" ColumnName="IsDetete" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="RestaurantID" ColumnName="RestaurantID" />
+                <ScalarProperty Name="DescriptionEn" ColumnName="DescriptionEn" />
+                <ScalarProperty Name="DescriptionAr" ColumnName="DescriptionAr" />
+                <ScalarProperty Name="CategoryNameEn" ColumnName="CategoryNameEn" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CategoryTypes">
+            <EntityTypeMapping TypeName="TakeawayModel.CategoryType">
+              <MappingFragment StoreEntitySet="CategoryType">
+                <ScalarProperty Name="IsDetete" ColumnName="IsDetete" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CategoryTypeNameEn" ColumnName="CategoryTypeNameEn" />
+                <ScalarProperty Name="CategoryTypeName" ColumnName="CategoryTypeName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChainRestaurants">
+            <EntityTypeMapping TypeName="TakeawayModel.ChainRestaurant">
+              <MappingFragment StoreEntitySet="ChainRestaurants">
+                <ScalarProperty Name="IsDetete" ColumnName="IsDetete" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ChainRestaurants_ar" ColumnName="ChainRestaurants_ar" />
+                <ScalarProperty Name="ChainRestaurants_En" ColumnName="ChainRestaurants_En" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cobones">
+            <EntityTypeMapping TypeName="TakeawayModel.Cobone">
+              <MappingFragment StoreEntitySet="Cobone">
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="CoboneTypeValue" ColumnName="CoboneTypeValue" />
+                <ScalarProperty Name="CoboneTypeID" ColumnName="CoboneTypeID" />
+                <ScalarProperty Name="CoboneNameEn" ColumnName="CoboneNameEn" />
+                <ScalarProperty Name="CoboneNameAr" ColumnName="CoboneNameAr" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoboneTypes">
+            <EntityTypeMapping TypeName="TakeawayModel.CoboneType">
+              <MappingFragment StoreEntitySet="CoboneType">
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CoboneTypeNameEn" ColumnName="CoboneTypeNameEn" />
+                <ScalarProperty Name="CoboneTypeNameAr" ColumnName="CoboneTypeNameAr" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoboneUsers">
+            <EntityTypeMapping TypeName="TakeawayModel.CoboneUser">
+              <MappingFragment StoreEntitySet="CoboneUser">
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="isUsed" ColumnName="isUsed" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="CoboneSerial" ColumnName="CoboneSerial" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="CoboneID" ColumnName="CoboneID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CookingCategories">
+            <EntityTypeMapping TypeName="TakeawayModel.CookingCategory">
+              <MappingFragment StoreEntitySet="CookingCategory">
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CookingCatNameEN" ColumnName="CookingCatNameEN" />
+                <ScalarProperty Name="CookingCatNameAR" ColumnName="CookingCatNameAR" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="TakeawayModel.Country">
+              <MappingFragment StoreEntitySet="Countries">
+                <ScalarProperty Name="IsDetete" ColumnName="IsDetete" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CountryAr" ColumnName="CountryAr" />
+                <ScalarProperty Name="CountryEng" ColumnName="CountryEng" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cuisines">
+            <EntityTypeMapping TypeName="TakeawayModel.Cuisine">
+              <MappingFragment StoreEntitySet="Cuisine">
+                <ScalarProperty Name="IsDetete" ColumnName="IsDetete" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="DescriptionEn" ColumnName="DescriptionEn" />
+                <ScalarProperty Name="DescriptionAr" ColumnName="DescriptionAr" />
+                <ScalarProperty Name="CuisineEn" ColumnName="CuisineEn" />
+                <ScalarProperty Name="CuisineAr" ColumnName="CuisineAr" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CuisineRestaurants">
+            <EntityTypeMapping TypeName="TakeawayModel.CuisineRestaurant">
+              <MappingFragment StoreEntitySet="CuisineRestaurant">
+                <ScalarProperty Name="IsDetete" ColumnName="IsDetete" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="RestaurantID" ColumnName="RestaurantID" />
+                <ScalarProperty Name="CuisineID" ColumnName="CuisineID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeliveryWays">
+            <EntityTypeMapping TypeName="TakeawayModel.DeliveryWay">
+              <MappingFragment StoreEntitySet="DeliveryWay">
+                <ScalarProperty Name="IsDetete" ColumnName="IsDetete" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="DeliveryNameEn" ColumnName="DeliveryNameEn" />
+                <ScalarProperty Name="DeliveryNameAr" ColumnName="DeliveryNameAr" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FoodTypes">
+            <EntityTypeMapping TypeName="TakeawayModel.FoodType">
+              <MappingFragment StoreEntitySet="FoodType">
+                <ScalarProperty Name="IsDetete" ColumnName="IsDetete" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="FoodTypeNameEn" ColumnName="FoodTypeNameEn" />
+                <ScalarProperty Name="FoodTypeNameAr" ColumnName="FoodTypeNameAr" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemFoodDetails">
+            <EntityTypeMapping TypeName="TakeawayModel.ItemFoodDetail">
+              <MappingFragment StoreEntitySet="ItemFoodDetails">
+                <ScalarProperty Name="IsDetete" ColumnName="IsDetete" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CategoryTypeID" ColumnName="CategoryTypeID" />
+                <ScalarProperty Name="AddItemFoodID" ColumnName="AddItemFoodID" />
+                <ScalarProperty Name="ItemFoodID" ColumnName="ItemFoodID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemFoodRates">
+            <EntityTypeMapping TypeName="TakeawayModel.ItemFoodRate">
+              <MappingFragment StoreEntitySet="ItemFoodRate">
+                <ScalarProperty Name="IsDetete" ColumnName="IsDetete" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="RateType" ColumnName="RateType" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="UserRate" ColumnName="UserRate" />
+                <ScalarProperty Name="ItemFoodID" ColumnName="ItemFoodID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemFoodTypes">
+            <EntityTypeMapping TypeName="TakeawayModel.ItemFoodType">
+              <MappingFragment StoreEntitySet="ItemFoodType">
+                <ScalarProperty Name="FoodTypeID" ColumnName="FoodTypeID" />
+                <ScalarProperty Name="ItemFoodID" ColumnName="ItemFoodID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MinDistancePrices">
+            <EntityTypeMapping TypeName="TakeawayModel.MinDistancePrice">
+              <MappingFragment StoreEntitySet="MinDistancePrice">
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedUser" ColumnName="CreatedUser" />
+                <ScalarProperty Name="deliveryFeeValue" ColumnName="deliveryFeeValue" />
+                <ScalarProperty Name="minPrice" ColumnName="minPrice" />
+                <ScalarProperty Name="RegionID" ColumnName="RegionID" />
+                <ScalarProperty Name="RestaurantDataID" ColumnName="RestaurantDataID" />
+                <ScalarProperty Name="RestaurantID" ColumnName="RestaurantID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NotificationMsgs">
+            <EntityTypeMapping TypeName="TakeawayModel.NotificationMsg">
+              <MappingFragment StoreEntitySet="NotificationMsg">
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="UserCategory" ColumnName="UserCategory" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="message" ColumnName="message" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NotificationUsers">
+            <EntityTypeMapping TypeName="TakeawayModel.NotificationUser">
+              <MappingFragment StoreEntitySet="NotificationUser">
+                <ScalarProperty Name="isSend" ColumnName="isSend" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="NotificationID" ColumnName="NotificationID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Offers">
+            <EntityTypeMapping TypeName="TakeawayModel.Offer">
+              <MappingFragment StoreEntitySet="Offer">
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="FeeValue" ColumnName="FeeValue" />
+                <ScalarProperty Name="FeeType" ColumnName="FeeType" />
+                <ScalarProperty Name="OfferType" ColumnName="OfferType" />
+                <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="TakeawayModel.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="IsSent" ColumnName="IsSent" />
+                <ScalarProperty Name="RestOfferID" ColumnName="RestOfferID" />
+                <ScalarProperty Name="IsDetete" ColumnName="IsDetete" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Delivery_estimation" ColumnName="Delivery_estimation" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="FeeValue" ColumnName="FeeValue" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="OrderStatusID" ColumnName="OrderStatusID" />
+                <ScalarProperty Name="RestaurantDataID" ColumnName="RestaurantDataID" />
+                <ScalarProperty Name="DeliveryUserID" ColumnName="DeliveryUserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderDetails">
+            <EntityTypeMapping TypeName="TakeawayModel.OrderDetail">
+              <MappingFragment StoreEntitySet="OrderDetails">
+                <ScalarProperty Name="ItemOfferID" ColumnName="ItemOfferID" />
+                <ScalarProperty Name="IsDetete" ColumnName="IsDetete" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ItemCount" ColumnName="ItemCount" />
+                <ScalarProperty Name="ItemPrice" ColumnName="ItemPrice" />
+                <ScalarProperty Name="CookingCatID" ColumnName="CookingCatID" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="ItemFoodParentID" ColumnName="ItemFoodParentID" />
+                <ScalarProperty Name="ItemFoodID" ColumnName="ItemFoodID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderStatus">
+            <EntityTypeMapping TypeName="TakeawayModel.OrderStatu">
+              <MappingFragment StoreEntitySet="OrderStatus">
+                <ScalarProperty Name="IsDetete" ColumnName="IsDetete" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDone" ColumnName="IsDone" />
+                <ScalarProperty Name="OrderStatus_En" ColumnName="OrderStatus_En" />
+                <ScalarProperty Name="OrderStatus_ar" ColumnName="OrderStatus_ar" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Packages">
+            <EntityTypeMapping TypeName="TakeawayModel.Package">
+              <MappingFragment StoreEntitySet="Package">
+                <ScalarProperty Name="IsDetete" ColumnName="IsDetete" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="PackageEndDate" ColumnName="PackageEndDate" />
+                <ScalarProperty Name="PackageStartDate" ColumnName="PackageStartDate" />
+                <ScalarProperty Name="PackagePeriod" ColumnName="PackagePeriod" />
+                <ScalarProperty Name="PackagePrice" ColumnName="PackagePrice" />
+                <ScalarProperty Name="PackageNameEn" ColumnName="PackageNameEn" />
+                <ScalarProperty Name="PackageNameAr" ColumnName="PackageNameAr" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PackageRestaurants">
+            <EntityTypeMapping TypeName="TakeawayModel.PackageRestaurant">
+              <MappingFragment StoreEntitySet="PackageRestaurant">
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="RestaurantID" ColumnName="RestaurantID" />
+                <ScalarProperty Name="PackageID" ColumnName="PackageID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RateTypes">
+            <EntityTypeMapping TypeName="TakeawayModel.RateType">
+              <MappingFragment StoreEntitySet="RateType">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="RateNameEn" ColumnName="RateNameEn" />
+                <ScalarProperty Name="RateNameAr" ColumnName="RateNameAr" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Regions">
+            <EntityTypeMapping TypeName="TakeawayModel.Region">
+              <MappingFragment StoreEntitySet="Regions">
+                <ScalarProperty Name="IsDetete" ColumnName="IsDetete" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="NotesEn" ColumnName="NotesEn" />
+                <ScalarProperty Name="NotesAr" ColumnName="NotesAr" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="RegionAr" ColumnName="RegionAr" />
+                <ScalarProperty Name="RegionEn" ColumnName="RegionEn" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RestaurantAppointments">
+            <EntityTypeMapping TypeName="TakeawayModel.RestaurantAppointment">
+              <MappingFragment StoreEntitySet="RestaurantAppointment">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="CloseTime" ColumnName="CloseTime" />
+                <ScalarProperty Name="OpeningTime" ColumnName="OpeningTime" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="RestaurantID" ColumnName="RestaurantID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RestaurantDatas">
+            <EntityTypeMapping TypeName="TakeawayModel.RestaurantData">
+              <MappingFragment StoreEntitySet="RestaurantData">
+                <ScalarProperty Name="IsDetete" ColumnName="IsDetete" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="MapLongitude" ColumnName="MapLongitude" />
+                <ScalarProperty Name="MapLatitude" ColumnName="MapLatitude" />
+                <ScalarProperty Name="Region_id" ColumnName="Region_id" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="RestaurantID" ColumnName="RestaurantID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RestaurantRates">
+            <EntityTypeMapping TypeName="TakeawayModel.RestaurantRate">
+              <MappingFragment StoreEntitySet="RestaurantRate">
+                <ScalarProperty Name="IsDetete" ColumnName="IsDetete" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="RateType" ColumnName="RateType" />
+                <ScalarProperty Name="UserRate" ColumnName="UserRate" />
+                <ScalarProperty Name="RestaurantID" ColumnName="RestaurantID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Restaurants">
+            <EntityTypeMapping TypeName="TakeawayModel.Restaurant">
+              <MappingFragment StoreEntitySet="Restaurants">
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Region_Id" ColumnName="Region_Id" />
+                <ScalarProperty Name="City_Id" ColumnName="City_Id" />
+                <ScalarProperty Name="Country_Id" ColumnName="Country_Id" />
+                <ScalarProperty Name="Stars" ColumnName="Stars" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="MapLongitude" ColumnName="MapLongitude" />
+                <ScalarProperty Name="MapLatitude" ColumnName="MapLatitude" />
+                <ScalarProperty Name="MembershipExpired" ColumnName="MembershipExpired" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Date_modified" ColumnName="Date_modified" />
+                <ScalarProperty Name="Date_Created" ColumnName="Date_Created" />
+                <ScalarProperty Name="RestaurantStatus" ColumnName="RestaurantStatus" />
+                <ScalarProperty Name="DeliveryWayID" ColumnName="DeliveryWayID" />
+                <ScalarProperty Name="ChainRestaurants_id" ColumnName="ChainRestaurants_id" />
+                <ScalarProperty Name="RestaurantPhone" ColumnName="RestaurantPhone" />
+                <ScalarProperty Name="RestaurantDescrptionEn" ColumnName="RestaurantDescrptionEn" />
+                <ScalarProperty Name="RestaurantDescrption" ColumnName="RestaurantDescrption" />
+                <ScalarProperty Name="RestaurantName" ColumnName="RestaurantName" />
+                <ScalarProperty Name="RestaurantNameEn" ColumnName="RestaurantNameEn" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RestaurantStatus">
+            <EntityTypeMapping TypeName="TakeawayModel.RestaurantStatu">
+              <MappingFragment StoreEntitySet="RestaurantStatus">
+                <ScalarProperty Name="IsDetete" ColumnName="IsDetete" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="DescriptionEn" ColumnName="DescriptionEn" />
+                <ScalarProperty Name="DescriptionAr" ColumnName="DescriptionAr" />
+                <ScalarProperty Name="RestaurantStatusEn" ColumnName="RestaurantStatusEn" />
+                <ScalarProperty Name="RestaurantStatusAr" ColumnName="RestaurantStatusAr" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sizes">
+            <EntityTypeMapping TypeName="TakeawayModel.Size">
+              <MappingFragment StoreEntitySet="Size">
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="SizeAR" ColumnName="SizeAR" />
+                <ScalarProperty Name="SizeEN" ColumnName="SizeEN" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="TakeawayModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="IsDetete" ColumnName="IsDetete" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="UserCategory" ColumnName="UserCategory" />
+                <ScalarProperty Name="LastLogin" ColumnName="LastLogin" />
+                <ScalarProperty Name="RegisterDate" ColumnName="RegisterDate" />
+                <ScalarProperty Name="IP_Address" ColumnName="IP_Address" />
+                <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+                <ScalarProperty Name="ContactEmail" ColumnName="ContactEmail" />
+                <ScalarProperty Name="ContactPhone" ColumnName="ContactPhone" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserComments">
+            <EntityTypeMapping TypeName="TakeawayModel.UserComment">
+              <MappingFragment StoreEntitySet="UserComment">
+                <ScalarProperty Name="IsDetete" ColumnName="IsDetete" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="RestaurantID" ColumnName="RestaurantID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserDatas">
+            <EntityTypeMapping TypeName="TakeawayModel.UserData">
+              <MappingFragment StoreEntitySet="UserData">
+                <ScalarProperty Name="IsDetete" ColumnName="IsDetete" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="MapLongitude" ColumnName="MapLongitude" />
+                <ScalarProperty Name="MapLatitude" ColumnName="MapLatitude" />
+                <ScalarProperty Name="Region_id" ColumnName="Region_id" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

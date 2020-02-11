@@ -1,0 +1,124 @@
+﻿@model Takeaway.Models.CookingCategory
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="page-content" style="min-height: 1119px">
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="~/Home/index">الرئيسية</a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+            <li>
+                <a href="/CookingCategory/Index"> درجات التسويه</a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+            <li>
+                اضافة درجات التسويه
+            </li>
+        </ul>
+    </div>
+    <div id="divMsg">@Html.Raw(ViewBag.Msg)</div>
+    <div class="row">
+        <div class="col-md-12">
+            @*<div id="bootstrap_alerts_demo">
+                </div>*@
+            <div class="portlet box grey-salsa">
+                <div class="portlet-title">
+                    <div class="caption">
+                        اضافة درجات التسويه
+                    </div>
+                    <div class="tools">
+                        <a href="javascript:;" class="collapse" data-original-title="" title=""></a>
+                    </div>
+                </div>
+                <div class="portlet-body form">
+
+                    <!-- BEGIN FORM-->
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(false, "", new { @class = "Metronic-alerts alert alert-danger fade in" })
+
+                        <div class="row">
+                            <div class="col-md-9 ">
+                                <div class="form-body">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.CookingCatNameAR, "درجة التسويه بالعربية", htmlAttributes: new { @class = "col-md-4 control-label" })
+                                        <div class="input-group col-md-4">
+                                            @Html.EditorFor(model => model.CookingCatNameAR, new { htmlAttributes = new { placeholder = "إدخل درجة التسويه بالعربية", @class = "form-control" } })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.CookingCatNameAR, "", new { @class = "text-danger" })
+                                                @***@
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.CookingCatNameEN, "درجة التسويه بالأنجليزية", htmlAttributes: new { @class = "col-md-4 control-label" })
+                                        <div class="input-group col-md-4">
+
+                                            @Html.EditorFor(model => model.CookingCatNameEN, new { htmlAttributes = new { placeholder = "إدخل درجة التسويه بالأنجليزية", @class = "form-control" } })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.CookingCatNameEN, "", new { @class = "text-danger" })
+                                                @***@
+                                            </span>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group" style="display:none;">
+                                        <div class="col-md-4">
+
+                                        </div>
+                                        <div class="input-group col-md-4">
+                                            <div class="md-checkbox">
+                                                @Html.CheckBoxFor(model => model.IsActive, new { @class = "md-check" })
+                                                <label for="IsActive">
+                                                    التفعيل
+                                                    <span class="inc"></span>
+                                                    <span class="check"></span>
+                                                    <span class="box"></span>
+                                                </label>
+                                            </div>
+                                            <span class="input-group-addon input-circle-right">
+                                            </span>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="form-actions fluid">
+                            <div class="row">
+                                <div class="col-md-offset-3 col-md-9">
+                                    <input type="submit" value="حفظ" class="btn green " />
+                                    <a href="Index" class="btn default">للخلف</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    <!-- END FORM-->
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+
+    <script>
+
+    </script>
+}

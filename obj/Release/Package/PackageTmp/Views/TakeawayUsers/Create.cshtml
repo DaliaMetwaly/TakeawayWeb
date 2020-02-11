@@ -1,0 +1,544 @@
+﻿@model Takeaway.Models.TakeawayUser
+<style>
+    #description {
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+    }
+
+    #infowindow-content .title {
+        font-weight: bold;
+    }
+
+    #infowindow-content {
+        display: none;
+    }
+
+    #map #infowindow-content {
+        display: inline;
+    }
+
+    .pac-card {
+        margin: 10px 10px 0 0;
+        border-radius: 2px 0 0 2px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        outline: none;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        background-color: #fff;
+        font-family: Roboto;
+    }
+
+    #pac-container {
+        padding-bottom: 12px;
+        margin-right: 12px;
+    }
+
+    .pac-controls {
+        display: inline-block;
+        padding: 5px 11px;
+    }
+
+        .pac-controls label {
+            font-family: Roboto;
+            font-size: 13px;
+            font-weight: 300;
+        }
+
+    #pac-input {
+        background-color: #fff;
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+        margin-left: 12px;
+        padding: 0 11px 0 13px;
+        text-overflow: ellipsis;
+        width: 400px;
+    }
+
+        #pac-input:focus {
+            border-color: #4d90fe;
+        }
+
+    #title {
+        color: #fff;
+        background-color: #4d90fe;
+        font-size: 25px;
+        font-weight: 500;
+        padding: 6px 12px;
+    }
+
+    #target {
+        width: 345px;
+    }
+     table td {
+  position: relative;
+    }
+    table td input {
+  position: absolute;
+  display: block;
+  top:0;
+  left:0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  border: none;
+  padding: 10px;
+  box-sizing: border-box
+}
+</style>
+
+<div class="page-content" style="min-height: 1119px">
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="~/Home/index">الرئيسية</a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+            <li>
+                <a href="/TakeawayUsers/Index"> صلاحيات المستخدمين</a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+            <li>
+                اضافة مستخدم
+            </li>
+        </ul>
+    </div>
+    <div id="divMsg">@Html.Raw(ViewBag.Msg)</div>
+    @*<div class="row">
+        <div class="col-md-12">*@
+            @*<div id="bootstrap_alerts_demo">
+                </div>*@
+            <div class="portlet box grey-salsa">
+                <div class="portlet-title">
+                    <div class="caption">
+                        اضافة مستخدم
+                    </div>
+                    <div class="tools">
+                        <a href="javascript:;" class="collapse" data-original-title="" title=""></a>
+                    </div>
+                </div>
+                <div class="portlet-body form">
+
+                    <!-- BEGIN FORM-->
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(false, "", new { @class = "Metronic-alerts alert alert-danger fade in",@id="ValidationMsg" })
+                        
+                       
+                     <div class="row">
+                            <div class="col-md-12 ">
+                                <div class="form-body">
+
+                                   @Html.Hidden("isClient", (object)ViewBag.isClient)
+                                <!--<input type="hidden" id="isClient" value="" />-->
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.ContactName,"الاسم", htmlAttributes: new { @class = "col-md-2 control-label" })
+                                        <div class="input-group col-md-4">
+                                            @Html.EditorFor(model => model.ContactName, new { htmlAttributes = new { placeholder = "إدخل الاسم", @class = "form-control" } })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.ContactName, "", new { @class = "text-danger" })
+                                                @***@
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.UserName,"اسم المستخدم", htmlAttributes: new { @class = "col-md-2 control-label" })
+                                        <div class="input-group col-md-4">
+                                            @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { placeholder = "إدخل اسم المستخدم", @class = "form-control" } })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                                                @***@
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "col-md-2 control-label" })
+                                        <div class="input-group col-md-4">
+                                            @Html.EditorFor(model => model.Password,"كلمه المرور", new { htmlAttributes = new { placeholder = "إدخل كلمه المرور", @class = "form-control" , @type="password" } })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                                @***@
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.ConfirmPassword,"تاكيد كلمه المرور", htmlAttributes: new { @class = "col-md-2 control-label" })
+                                        <div class="input-group col-md-4">
+                                            @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { placeholder = "إدخل تاكيد كلمه المرور", @class = "form-control", @type = "password" } })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                                                @***@
+                                            </span>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.ContactPhone,"التليفون", htmlAttributes: new { @class = "col-md-2 control-label" })
+                                        <div class="input-group col-md-4">
+                                            @Html.EditorFor(model => model.ContactPhone, new { htmlAttributes = new { placeholder = "إدخل التليفون", @class = "form-control" } })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.ContactPhone, "", new { @class = "text-danger" })
+                                                @***@
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.ContactEmail,"البريد الالكترونى", htmlAttributes: new { @class = "col-md-2 control-label" })
+                                        <div class="input-group col-md-4">
+                                            @Html.EditorFor(model => model.ContactEmail, new { htmlAttributes = new { placeholder = "إدخل البريد الالكترونى", @class = "form-control" } })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.ContactEmail, "", new { @class = "text-danger" })
+                                                @***@
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    @*<div class="form-group">
+                                        @Html.LabelFor(model => model.UserCategory, "نوع التطبيق", new { @class = "col-md-2 control-label " })
+                                        <div class="input-group col-md-4">
+                                            @Html.DropDownListFor(model => model.UserCategory, ViewBag.UserCategory as List<SelectListItem>, "نوع التطبيق", new { @class = "form-control select2me" })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.UserCategory, null, new { @class = "text-danger" })
+                                            </span>
+                                        </div>
+                                    </div>*@
+
+                                    @*<div class="form-group">
+                                        @Html.LabelFor(model => model.PayTypeID,"طريقه الدفع", new { @class = "col-md-2 control-label " })
+                                        <div class="input-group col-md-6">
+                                            @Html.DropDownListFor(model => model.PayTypeID, ViewBag.PayTypeId as List<SelectListItem>, "اختر", new { @class = "form-control select2me" })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.PayTypeID, null, new { @class = "text-danger" })
+                                            </span>
+                                        </div>
+                                    </div>*@
+
+                                    <div class="form-group" id="roleDiv">
+                                        @Html.LabelFor(model => model.RoleID , "الصلاحيه", new { @class = "col-md-2 drop control-label " })
+                                        <div class="input-group col-md-6">
+                                            @Html.DropDownListFor(model => model.RoleID , ViewBag.RoleId as List<SelectListItem>, "اختر", new { @class = "form-control select2me" ,@id="Roleddl",@onchange= "ChangeRole()" })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.RoleID, null, new { @class = "text-danger" })
+                                            </span>
+                                        </div>
+                                    </div>
+
+
+
+                                    @*<div class="form-group">
+                                        <div class="col-md-2">
+
+                                        </div>
+
+                                        <div class="input-group col-md-4">
+                                            <div class="md-checkbox">
+                                                @Html.CheckBoxFor(model => model.IsActive, new { @class = "md-check" })
+                                                <label for="IsActive">
+                                                    التفعيل
+                                                    <span class="inc"></span>
+                                                    <span class="check"></span>
+                                                    <span class="box"></span>
+                                                </label>
+                                            </div>
+                                            <span class="input-group-addon input-circle-right">
+                                            </span>
+                                        </div>
+
+                                    </div>*@
+
+
+
+
+                                    <div id="UserDataDiv" style="display:none;">
+                                        <div class="portlet box green">
+                                            <div class="portlet-title">
+                                                <div class="caption">
+                                                    <i class="fa fa-gift"></i> بيانات المستخدم
+                                                </div>
+                                                <div class="tools">
+                                                    <a href="" class="collapse">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="portlet-body">
+                                                <div class="form-body">
+                                                    <div class="cold-md-12">
+                                                        
+                                                        <div class="row">
+                                                            <div class="form-group col-md-4" style="width:20%;">
+                                                                @Html.Label("المنطقة", htmlAttributes: new { @class = "control-label col-md-4", @style = "width:90%" })
+                                                                <br />
+                                                                <div class="input-group col-md-6" style="width:100%;">
+                                                                    @Html.DropDownList("RegionN", ViewBag.RegionN as List<SelectListItem>, "اختر", new { @class = "form-control select2me" })
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group col-md-4" style="width:20%;">
+                                                                @Html.Label("العنوان", htmlAttributes: new { @class = "control-label col-md-4" ,@style="width:90%"})
+                                                                <br />
+                                                                <div class="input-group col-md-6" style="width:100%;">
+                                                                    @Html.TextBox("GAddress", null, new { @class = "form-control "@*, @onkeyup = "countMMSChar(this)"*@ })
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group col-md-4" style="width:20%;">
+                                                               
+                                                                    @Html.Label("خط العرض", htmlAttributes: new { @class = "control-label col-md-4", @style = "width:92%" })
+                                                                    <br />
+                                                                    <div class="input-group col-md-6" style="width:100%;">
+                                                                        @Html.TextBox("GMapLutitude", null, new { @class = "form-control ", disabled = "disabled" })
+                                                                    </div>
+                                                                </div>
+                                                            <div class="form-group col-md-4" style="width:20%;">
+                                                               
+                                                                @Html.Label("خط الطول", new { @class = "control-label col-md-4", @style = "width:90%" })
+                                                                <br />
+                                                                <div class="input-group col-md-6" style="width:100%;">
+                                                                    @Html.TextBox("GMapLogitude", null, new { @class = "form-control ", disabled = "disabled" })
+                                                                </div>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                        <div class="row">
+                                                            <input id="pac-input" class="control" type="text" placeholder="بحث">
+                                                            <div id="map" style="width: 100%; height: 300px">
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-offset-5 col-md-1" style="margin-right:44%;">
+                                                                <input value="Add" id="btnAddUserData" name="btnAddUserData" type="button" class="btn blue-madison btn-default bt" style="margin-top:22px" />
+                                                            </div>
+                                                        </div>
+
+                                                            <div id="tableholderUserData">
+
+                                                            </div>
+
+                                                        </div>
+                                                </div>
+                                            </div>
+
+
+
+                                        </div>
+
+
+                                    </div>
+
+
+
+
+
+
+
+                                </div>
+
+
+
+
+                            </div>
+                        </div>
+                    <div class="form-actions fluid">
+                            <div class="row">
+                                <div class="col-md-offset-3 col-md-9">
+                                    <input type="submit" id="submit" value="حفظ" class="btn green " />
+                                    <a href="/TakeawayUsers/Index" class="btn default">للخلف</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    <!-- END FORM-->
+                </div>
+            </div>
+
+
+    </div>
+
+
+
+
+            @section Scripts {
+                <script>
+                    $(document).ready(function () {
+                        debugger;
+                        if($('#isClient').val()==1)
+                        {
+                            $('#roleDiv').css('display', 'none');
+                            $('#UserDataDiv').css('display', 'table');
+                            //DM 8-8-2017
+                            //after display Userdata div render map again
+                            google.maps.event.trigger(map, 'resize', function () {
+                                initMap();
+                            });
+                        }
+                        else {
+                            $('#UserDataDiv').css('display', 'none');
+                            $('#roleDiv').css('display', 'block');
+                        
+                        }
+
+                    });
+</script>   
+
+   <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5h1G8x0X-k7Kh9ufHzqtj2iYcZ-PVJa8&libraries=places&callback=initMap">
+</script>
+<script src="~/Scripts/Pages/TakeawayUsers.js"></script>
+<script>
+   
+      // Note: This example requires that you consent to location sharing when
+      // prompted by your browser. If you see the error "The Geolocation service
+      // failed.", it means you probably did not give permission for the browser to
+    // locate you.
+
+    var map, infoWindow;
+    function initMap() {
+
+       
+
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: { lat: 24.089723515381433, lng: 38.04842233657837 },
+            zoom: 17,
+            mapTypeId: 'terrain'
+        });
+        infoWindow = new google.maps.InfoWindow;
+
+        // Try HTML5 geolocation.
+        //if (navigator.geolocation) {
+        //  navigator.geolocation.getCurrentPosition(function(position) {
+        //    var pos = {
+        //      lat: position.coords.latitude,
+        //      lng: position.coords.longitude
+        //    };
+        //    var marker = new google.maps.Marker({
+        //        position: pos,
+        //        map: map,
+        //        //title: place.name,
+        //        // position: place.geometry.location,
+        //        animation: google.maps.Animation.BOUNCE
+        //    });
+        //    infoWindow.setPosition(pos);
+        //    infoWindow.setContent('Location found.');
+        //    infoWindow.open(map);
+        //    map.setCenter(pos);
+           
+            
+        //  }, function() {
+        //    handleLocationError(true, infoWindow, map.getCenter());
+        //  });
+        //} else {
+        //  // Browser doesn't support Geolocation
+        //  handleLocationError(false, infoWindow, map.getCenter());
+        //}
+        google.maps.event.addListener(map, 'click', function (e) {
+            $('#GMapLogitude').val(e.latLng.lng());
+            $('#GMapLutitude').val(e.latLng.lat());
+
+            //alert("Latitude: " + e.latLng.lat() + "\r\nLongitude: " + e.latLng.lng());
+        });
+
+          //==============================================
+          //DM 21-8-2017 Search in GoogleMap
+          // Create the search box and link it to the UI element.
+
+        var input = document.getElementById('pac-input');
+        var searchBox = new google.maps.places.SearchBox(input);
+        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+          // Bias the SearchBox results towards current map's viewport.
+        map.addListener('bounds_changed', function () {
+
+            searchBox.setBounds(map.getBounds());
+        });
+        var markers = [];
+          // Listen for the event fired when the user selects a prediction and retrieve
+          // more details for that place.
+        searchBox.addListener('places_changed', function () {
+
+            var places = searchBox.getPlaces();
+
+            if (places.length == 0) {
+                return;
+            }
+
+            // Clear out the old markers.
+            markers.forEach(function (marker) {
+                marker.setMap(null);
+            });
+            markers = [];
+
+            // For each place, get the icon, name and location.
+            var bounds = new google.maps.LatLngBounds();
+            places.forEach(function (place) {
+                if (!place.geometry) {
+                    console.log("Returned place contains no geometry");
+                    return;
+                }
+                var icon = {
+                    url: place.icon,
+                    size: new google.maps.Size(71, 71),
+                    origin: new google.maps.Point(0, 0),
+                    anchor: new google.maps.Point(17, 34),
+                    scaledSize: new google.maps.Size(25, 25)
+                };
+
+                // Create a marker for each place.
+                markers.push(new google.maps.Marker({
+                    map: map,
+                    icon: icon,
+                    title: place.name,
+                    position: place.geometry.location
+                }));
+
+                if (place.geometry.viewport) {
+                    // Only geocodes have viewport.
+                    bounds.union(place.geometry.viewport);
+                } else {
+                    bounds.extend(place.geometry.location);
+                }
+            });
+            map.fitBounds(bounds);
+        });
+
+        $('#pac-input').keydown(function (event) {
+            if (event.keyCode == 13) {
+                event.preventDefault();
+                return false;
+            }
+        });
+      }
+
+      //function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+      //  infoWindow.setPosition(pos);
+      //  infoWindow.setContent(browserHasGeolocation ?
+      //                        'Error: The Geolocation service failed.' :
+      //                        'Error: Your browser doesn\'t support geolocation.');
+      //  infoWindow.open(map);
+      //}
+
+
+</script>    
+                
+         
+
+
+
+
+
+               
+
+             
+
+
+
+
+            }

@@ -1,0 +1,273 @@
+/* here you can put your own css to customize and override the theme */
+
+/***
+Rounded Portlets
+***/
+/*
+.portlet {
+	border-radius: 4px !important;
+}
+
+.portlet .portlet-title {
+	border-radius: 4px 4px 0px 0px !important;
+}
+
+.portlet .portlet-body,
+.portlet .portlet-body .form-actions  {
+	border-radius: 0px 0px 4px 4px !important;
+}
+*/
+label {
+            font-weight: bold;
+            font-size: 12px;
+            text-align: right;
+            float: right;
+            padding-right:34px !important;
+        }
+        
+        .input-small {
+            width: 145px !important;
+            margin-bottom: 5px !important;
+        }
+        
+        .control-label {
+            /*margin-top: 9px;*/
+        }
+        
+        .controls {
+            margin-bottom: 10px;
+        }
+        /* leave this part out */
+        
+        body {
+            padding-top: 30px;
+        }
+        /* leave this part out */
+        
+        .clearfix {
+            *zoom: 1;
+        }
+        
+        .clearfix:before,
+        .clearfix:after {
+            display: table;
+            content: "";
+            line-height: 0;
+        }
+        
+        .clearfix:after {
+            clear: both;
+        }
+        
+        .hide-text {
+            font: 0/0 a;
+            color: transparent;
+            text-shadow: none;
+            background-color: transparent;
+            border: 0;
+        }
+        
+        .input-block-level {
+            display: block;
+            width: 100%;
+            min-height: 30px;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        
+        .btn-file {
+            overflow: hidden;
+            position: relative;
+            vertical-align: middle;
+        }
+        
+        .btn-file>input {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 0;
+            opacity: 0;
+            filter: alpha(opacity=0);
+            transform: translate(-300px, 0) scale(4);
+            font-size: 23px;
+            direction: ltr;
+            cursor: pointer;
+        }
+        
+        .fileupload {
+            margin-bottom: 9px;
+            text-align: center;
+        }
+        
+        .fileupload .uneditable-input {
+            display: inline-block;
+            margin-bottom: 0px;
+            vertical-align: middle;
+            cursor: text;
+        }
+        
+        .fileupload .thumbnail {
+            overflow: hidden;
+            display: inline-block;
+            margin-bottom: 5px;
+            vertical-align: middle;
+            text-align: center;
+        }
+        
+        .fileupload .thumbnail>img {
+            display: inline-block;
+            vertical-align: middle;
+            max-height: 100%;
+        }
+        
+        .fileupload .btn {
+            vertical-align: middle;
+        }
+        
+        .fileupload-exists .fileupload-new,
+        .fileupload-new .fileupload-exists {
+            display: none;
+        }
+        
+        .fileupload-inline .fileupload-controls {
+            display: inline;
+        }
+        
+        .fileupload-new .input-append .btn-file {
+            -webkit-border-radius: 0 3px 3px 0;
+            -moz-border-radius: 0 3px 3px 0;
+            border-radius: 0 3px 3px 0;
+        }
+        
+        .thumbnail-borderless .thumbnail {
+            border: none;
+            padding: 0;
+            -webkit-border-radius: 0;
+            -moz-border-radius: 0;
+            border-radius: 0;
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+        }
+        
+        .fileupload-new.thumbnail-borderless .thumbnail {
+            border: 1px solid #ddd;
+        }
+        
+        .control-group.warning .fileupload .uneditable-input {
+            color: #a47e3c;
+            border-color: #a47e3c;
+        }
+        
+        .control-group.warning .fileupload .fileupload-preview {
+            color: #a47e3c;
+        }
+        
+        .control-group.warning .fileupload .thumbnail {
+            border-color: #a47e3c;
+        }
+        
+        .control-group.error .fileupload .uneditable-input {
+            color: #b94a48;
+            border-color: #b94a48;
+        }
+        
+        .control-group.error .fileupload .fileupload-preview {
+            color: #b94a48;
+        }
+        
+        .control-group.error .fileupload .thumbnail {
+            border-color: #b94a48;
+        }
+        
+        .control-group.success .fileupload .uneditable-input {
+            color: #468847;
+            border-color: #468847;
+        }
+        
+        .control-group.success .fileupload .fileupload-preview {
+            color: #468847;
+        }
+        
+        .control-group.success .fileupload .thumbnail {
+            border-color: #468847;
+        }
+        
+        select {
+            width: 268px;
+            padding: 5px;
+            font-size: 16px;
+            line-height: 1;
+            border: 0;
+            border-radius: 5px;
+            height: 34px;
+            background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png) no-repeat right #ddd;
+            background-position-x: 244px;
+        }
+        
+        .form-control {
+            padding: 0px 12px;
+        }
+        
+        .box {
+            position: relative;
+        }
+        
+        .ribbon {
+            position: absolute;
+            right: -5px;
+            top: -5px;
+            z-index: 1;
+            overflow: hidden;
+            width: 75px;
+            height: 75px;
+            text-align: right;
+        }
+        
+        .ribbon span {
+            font-size: 10px;
+            font-weight: bold;
+            color: #FFF;
+            text-transform: uppercase;
+            text-align: center;
+            line-height: 20px;
+            transform: rotate(45deg);
+            -webkit-transform: rotate(45deg);
+            width: 100px;
+            display: block;
+            background: #79A70A;
+          /*  background: linear-gradient(#9BC90D 0%, #79A70A 100%);*/
+         /*   box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);*/
+            position: absolute;
+            top: 19px;
+            right: -20px;
+        }
+        
+        .ribbon span::before {
+            content: "";
+            position: absolute;
+            left: 0px;
+            top: 100%;
+            z-index: -1;
+            border-left: 3px solid #79A70A;
+            border-right: 3px solid transparent;
+            border-bottom: 3px solid transparent;
+            border-top: 3px solid #79A70A;
+        }
+        
+        .ribbon span::after {
+            content: "";
+            position: absolute;
+            right: 0px;
+            top: 100%;
+            z-index: -1;
+            border-left: 3px solid transparent;
+            border-right: 3px solid #79A70A;
+            border-bottom: 3px solid transparent;
+            border-top: 3px solid #79A70A;}
+
+.btn > i{
+    
+    color: white;
+}

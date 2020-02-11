@@ -1,0 +1,637 @@
+﻿<!DOCTYPE html>
+<html lang="en" dir="rtl">
+<head>
+    <meta charset="utf-8" />
+    <title> TakeAway</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    @* @Styles.Render("~/Content/css")*@
+    <style>
+        .validation-summary-valid {
+            display: none;
+        }
+
+        .validation-summary-errors {
+            display: block;
+        }
+    </style>
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/assets/global/plugins/bootstrap/css/bootstrap-rtl.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css" rel="stylesheet" />
+    
+    <link href="~/Content/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+    
+    <link href="~/Content/assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/balloon-css/0.4.0/balloon.min.css">
+    <link href="~/Content/assets/global/plugins/bootstrap-switch/css/bootstrap-switch-rtl.min.css" rel="stylesheet" type="text/css" />
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN PAGE LEVEL STYLES -->
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/global/plugins/select2/select2.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap-rtl.css" />
+    <!-- END PAGE LEVEL STYLES -->
+    @*<link href="~/Content/assets/global/plugins/bootstrap-modal/css/bootstrap-modal-bs3patch.css" rel="stylesheet" type="text/css" />
+        <link href="~/Content/assets/global/plugins/bootstrap-modal/css/bootstrap-modal.css" rel="stylesheet" type="text/css" />*@
+
+    <!-- BEGIN THEME STYLES -->
+  
+    <link href="~/Content/assets/global/css/components-md-rtl.css" id="style_components" rel="stylesheet" type="text/css" />
+    <!--  <link rel="stylesheet" type="text/css" href="../../assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css"/>-->
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/global/plugins/bootstrap-switch/css/bootstrap-switch-rtl.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/global/plugins/jquery-tags-input/jquery.tagsinput-rtl.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/global/plugins/bootstrap-markdown/css/bootstrap-markdown.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/global/plugins/typeahead/typeahead.css">
+    <link href="~/Content/assets/global/css/plugins-md-rtl.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/assets/admin/layout/css/layout-rtl.css" rel="stylesheet" type="text/css" />
+    <link id="style_color" href="~/Content/assets/admin/layout/css/themes/light2-rtl.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/assets/admin/layout/css/custom-rtl.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/assets/global/DatePicker/jquery-ui.css" rel="stylesheet" />
+    @*<link href="~/Content/wickedpicker.css" rel="stylesheet" type="text/css" />*@
+   
+    <!-- END THEME STYLES -->
+    <link rel="shortcut icon" href="favicon.ico" />
+</head>
+<body class="page-md page-header-fixed page-quick-sidebar-over-content">
+    <div class="page-header md-shadow-z-1-i navbar navbar-fixed-top">
+        <div class="page-header-inner">
+            <div class="page-logo">
+                <a href="~/Home/Index">
+                    <img src="~/Content/assets/admin/layout/img/logo.png" alt="logo" class="logo-default" style="margin-top: 7px;margin-right:29px" height="35" width="35"/>
+                </a>
+                <div class="menu-toggler sidebar-toggler hide">
+                </div>
+            </div>
+            
+
+            <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+            </a>
+            <div class="top-menu">
+                <ul class="nav navbar-nav pull-right">
+                    <li class="dropdown dropdown-user">
+                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                            <img alt="" class="img-circle" src="~/Content/assets/admin/layout/img/avatar3_small.jpg" />
+                            <span class="username username-hide-on-mobile"> @User.Identity.Name </span>
+                            <i class="fa fa-angle-down"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-default">
+
+                            <li>
+                                @*<a href="~/Account/Login">
+
+                                    <i class="icon-key"></i> خروج
+                                </a>*@
+                                @using (Html.BeginForm("LogOff", "Account", FormMethod.Post))
+                                {
+
+                                    @Html.AntiForgeryToken()
+                                    <input type="submit" value="خروج" class="item" />
+
+                                }
+                            </li>
+
+                            <li>
+                                <a href="/Manage/Index">
+
+                                    ادارة المستخدم
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="top-menu" style="padding: 14px 8px 12px 6px;">
+                <ul class="nav navbar-nav pull-right">
+                    <li class="dropdown dropdown-user">
+                        <img alt="" class="img-circle" src="~/Content/assets/admin/layout/img/icon-color.png" />
+                        <span class="username username-hide-on-mobile" id="Daily"> </span>
+                       
+                    </li>
+                </ul>
+            </div>
+            <div class="top-menu" style="padding: 14px 8px 12px 6px;">
+                <ul class="nav navbar-nav pull-right">
+                    <li class="dropdown dropdown-user">
+                        <img alt="" class="img-circle" src="~/Content/assets/admin/layout/img/icon-color.png" />
+                        <span class="username username-hide-on-mobile" id="Monthly"> </span>
+
+                    </li>
+                </ul>
+            </div>
+            <div class="top-menu" style="padding: 14px 8px 12px 6px;">
+    <ul class="nav navbar-nav pull-right">
+        <li class="dropdown dropdown-user">
+            <img alt="" class="img-circle" src="~/Content/assets/admin/layout/img/icon-color.png" />
+            <span class="username username-hide-on-mobile" id="Yearly"> </span>
+
+        </li>
+    </ul>
+</div>
+            <div class="top-menu" style="padding: 14px 8px 12px 6px;">
+                <ul class="nav navbar-nav pull-right">
+                    <li class="dropdown dropdown-user">
+                        <img alt="" class="img-circle" src="~/Content/assets/admin/layout/img/icon-color.png" />
+                        <span class="username username-hide-on-mobile" id="Delivered"> </span>
+
+                    </li>
+                </ul>
+            </div>
+            <div class="top-menu" style="padding: 14px 8px 12px 6px;">
+                <ul class="nav navbar-nav pull-right">
+                    <li class="dropdown dropdown-user">
+                        <img alt="" class="img-circle" src="~/Content/assets/admin/layout/img/icon-color.png" />
+                        <span class="username username-hide-on-mobile" id="UnderDelivery"> </span>
+
+                    </li>
+                </ul>
+            </div>
+            <div class="top-menu" style="padding: 14px 8px 12px 6px;">
+                <ul class="nav navbar-nav pull-right">
+                    <li class="dropdown dropdown-user">
+                        <img alt="" class="img-circle" src="~/Content/assets/admin/layout/img/icon-color.png" />
+                        <span class="username username-hide-on-mobile" id="Canceled"> </span>
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="clearfix">
+    </div>
+    <div class="page-container">
+        <div class="page-sidebar-wrapper">
+            <div class="page-sidebar navbar-collapse collapse">
+                @*<div style="padding:5px">*@
+                @* Here I will add Language Switcher *@
+                @*@{
+                        foreach (var i in SCStoreProgram.Models.SiteLanguages.AvailableLanguages)
+                        {
+                            @Html.ActionLink(i.LangFullName, "ChangeLanguage", "Home", new { ControllerId = @ViewContext.RouteData.Values["Controller"].ToString(), ActionName = @ViewContext.RouteData.Values["action"].ToString(), num = @ViewContext.RouteData.Values["id"], lang = i.LangCultureName }, null) <text>&nbsp;</text>
+                        }
+                    }*@
+                @*</div>*@
+                <ul class="page-sidebar-menu page-sidebar-menu-light" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+                    <li class="sidebar-toggler-wrapper">
+                        <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+                        <div class="sidebar-toggler"> </div>
+                        <!-- END SIDEBAR TOGGLER BUTTON -->
+                    </li>
+                    <li class="start  ">
+                        <a href="~/Home/Index">
+                            <i class="icon-home"></i>
+                            <span class="title">الصفحة الرئيسية </span>
+                            <span class=""></span>
+                        </a>
+                    </li>
+                    <li class="start">
+                        <a href="#">
+                            <i class="fa fa-cogs"></i>
+                            <span class="title">إعدادات البلد</span>
+                            <span class=""></span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="~/Countries/Index">
+                                    <i class="fa fa-file-text-o"></i>
+                                    البلد
+                                </a>
+                            </li>
+                            <li>
+                                <a href="~/Cities/Index">
+                                    <i class="fa fa-file-text-o"></i>
+                                    المدن
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/Regions/Index">
+                                    <i class="fa fa-file-text-o"></i>
+                                   المناطق      
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="start">
+                        <a href="#">
+                            <i class="fa fa-cogs"></i>
+                            <span class="title">إعدادات المطاعم</span>
+                            <span class=""></span>
+                        </a>
+                        <ul class="sub-menu">
+                            @*<li>
+                                <a href="/PayTypes/Index">
+                                    <i class="fa fa-file-text-o"></i>
+                                    العمولات
+                                </a>
+                            </li>*@
+                           
+                            <li>
+                                <a href="/RestaurantStatus/Index">
+                                    <i class="fa fa-user-plus"></i>
+                                    حالة المطعم
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/Cuisine/Index">
+                                    <i class="fa fa-user-plus"></i>
+                                    الأطباق
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/Package/Index"> 
+                                    <i class="fa fa-user-plus"></i>
+                                    الحزم
+                                 </a>
+                            </li>
+                            <li>
+                                <a href="/Comment/Index">
+                                    <i class="fa fa-user-plus"></i>
+                                    التعليقات
+                                </a>
+                            </li>
+                           
+                            <li>
+                                <a href="/FoodType/Index">
+                                    <i class="fa fa-user-plus"></i>
+                                   تصنيفات البحث
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/Size/Index">
+                                    <i class="fa fa-user-plus"></i>
+                                    الاحجام
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/CookingCategory/Index">
+                                    <i class="fa fa-user-plus"></i>
+                                    درجات التسويه
+                                </a>
+                            </li>
+                           
+                           
+                        </ul>
+                    </li>
+
+                    <li class="start">
+                        <a href="#">
+                            <i class="fa fa-cogs"></i>
+                            <span class="title">المطاعم</span>
+                            <span class=""></span>
+                        </a>
+                        <ul class="sub-menu">
+                            
+                            <li>
+                                <a href="/takeawayusers/Index">
+                                    <i class="fa fa-user-plus"></i>
+                                    المستخدمين
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/Restaurant/Index">
+                                    <i class="fa fa-user-plus"></i>
+                                    المطاعم
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/RestaurantAppointment/Index">
+                                    <i class="fa fa-user-plus"></i>
+                                    مواعيد المطاعم
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/MinDistancePrice/Index">
+                                    <i class="fa fa-user-plus"></i>
+                                    الحد الدنى للطلبات
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/Category/Index">
+                                    <i class="fa fa-user-plus"></i>
+                                    قوائم المطاعم
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="/ItemFoods/Index">
+                                    <i class="fa fa-user-plus"></i>
+                                     وجبات المطاعم
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="/Offer/Index">
+                                    <i class="fa fa-user-plus"></i>
+                                   العروض
+                                </a>
+                            </li>
+                          
+                            <li>
+                                <a href="/Notification/Index">
+                                    <i class="fa fa-user-plus"></i>
+                                    الأشعارات
+                                </a>
+                            </li>
+                          
+                        </ul>
+                    </li>
+
+                    <li class="start">
+                        <a href="#">
+                            <i class="fa fa-cogs"></i>
+                            <span class="title">الكوبونات</span>
+                            <span class=""></span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="/Cobone/Index">
+                                    <i class="fa fa-user-plus"></i>
+                                    الكوبونات
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="/CoboneUser/Index">
+                                    <i class="fa fa-user-plus"></i>
+                                     كوبونات العملاء
+                                </a>
+                            </li>
+
+                        
+                        </ul>
+                    </li>
+
+
+                    <li class="start">
+                        <a href="#">
+                            <i class="fa fa-cogs"></i>
+                            <span class="title">الطلبات</span>
+                            <span class=""></span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="/OrderStatus/">
+                                    <i class="fa fa-file-text-o"></i>
+                                   اعداد حاله الطلب
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/Orders/">
+                                    <i class="fa fa-file-text-o"></i>
+                                    الطلبات
+                                </a>
+                            </li>
+                          
+                        </ul>
+                    </li>
+                    <li class="start">
+                        <a>
+                            <i class="fa fa-cogs"></i>
+                            <span class="title">صلاحيات المستخدمين   </span>
+                            <span class=""></span>
+                        </a>
+                        <ul class="sub-menu">
+                          
+                            <li>
+                                <a href="/takeawayusers/Index2">
+                                    <i class="fa fa-user-plus"></i>
+                                    العملاء
+                                </a>
+                            </li>
+
+
+                        </ul>
+                    </li>
+
+                    <li class="start">
+                        <a>
+                            <i class="fa fa-cogs"></i>
+                            <span class="title">التقارير</span>
+                            <span class=""></span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="/RestaurantDailyIncomeReport/RestaurantDailyIncomeReport">
+                                    <i class="fa fa-user"></i>
+                                   تقرير اجمالى الدخل اليومى
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/OrderReport/OrderReport">
+                                        <i class="fa fa-user"></i>
+                                        تقرير الدخل خلال فترة
+                                    </a>
+
+                            </li>
+
+                           
+
+                            <li>
+                                <a href="/RestaurantReport/OrderDetailsReport">
+                                    <i class="fa fa-user"></i>
+                                    تقرير تفاصيل الطلبات
+                                </a>
+
+                            </li>
+
+
+                            <li>
+                                <a href="/RestaurantReport/RestaurantReport">
+                                    <i class="fa fa-user"></i>
+                                    تقرير المطاعم
+                                </a>
+
+                            </li>
+
+                            <li>
+                                <a href="/Report/RestaurantRatesReport">
+                                    <i class="fa fa-user"></i>
+                                    تقرير تقييمات المطاعم
+                                </a>
+
+                            </li>
+
+                            <li>
+                                <a href="/Report/ActiveCustomersReport">
+                                    <i class="fa fa-user"></i>
+                                    تقرير العملاء الاكثر نشاطا
+                                </a>
+
+                            </li>
+
+                            <li>
+                                <a href="/CoboneReport/CoboneReport">
+                                    <i class="fa fa-user"></i>
+                                    تقرير كوبونات العملاء
+                                </a>
+
+                            </li>
+
+                        </ul>
+                    </li>
+
+
+                    <li class="tooltips" data-container="body" data-placement="right" data-html="true" data-original-title="AngularJS version demo">
+                        <a href="/Account/LogOff">
+                            <i class="icon-logout"></i>
+                            <span class="title">
+                                خروج
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="page-content-wrapper">
+
+            @RenderBody()
+        </div>
+        <a href="javascript:;" class="page-quick-sidebar-toggler"><i class="icon-close"></i></a>
+    </div>
+    <div class="page-footer">
+        <div class="page-footer-inner">
+            2017 &copy;  SourceCode Co.
+            @*<a href="#" title="SourceCode" target="_blank">SourceCode</a>*@
+        </div>
+        <div class="scroll-to-top">
+            <i class="icon-arrow-up"></i>
+        </div>
+    </div>
+    <script src="~/Content/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+    <script src="~/Content/assets/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
+    @*<script type="text/javascript" src="~/Scripts/wickedpicker.js"></script>*@
+    @*<script src="~/Content/assets/global/plugins/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>*@
+    <script src="~/Content/assets/global/DatePicker/jquery-ui.js"></script>
+    <script src="~/Content/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="~/Content/assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
+    <script src="~/Content/assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
+    <script src="~/Content/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+    <script src="~/Content/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+    <script src="~/Content/assets/global/plugins/jquery.cokie.min.js" type="text/javascript"></script>
+    <script src="~/Content/assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
+    <script src="~/Content/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    @*<script type="text/javascript" src="~/Content/assets/global/plugins/bootstrap-select/bootstrap-select.min.js"></script>
+        <script type="text/javascript" src="~/Content/assets/global/plugins/select2/select2.min.js"></script>
+        <script type="text/javascript" src="~/Content/assets/global/plugins/jquery-multi-select/js/jquery.multi-select.js"></script>*@
+    <!-- END PAGE LEVEL PLUGINS -->
+    <script src="~/Content/assets/global/plugins/bootbox/bootbox.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="~/Content/assets/global/plugins/select2/select2.min.js"></script>
+    <script type="text/javascript" src="~/Content/assets/global/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="~/Content/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js"></script>
+    @*<script type="text/javascript" src="~/Content/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>*@
+
+    <script src="~/Content/assets/global/scripts/metronic.js" type="text/javascript"></script>
+    <script src="~/Content/assets/admin/layout2/scripts/layout.js" type="text/javascript"></script>
+    <script src="~/Content/assets/admin/layout2/scripts/quick-sidebar.js" type="text/javascript"></script>
+    <script src="~/Content/assets/admin/layout2/scripts/demo.js" type="text/javascript"></script>
+    @*<script src="~/Content/assets/global/plugins/bootstrap-modal/js/bootstrap-modalmanager.js" type="text/javascript"></script>
+        <script src="~/Content/assets/global/plugins/bootstrap-modal/js/bootstrap-modal.js" type="text/javascript"></script>*@
+    <script src="~/Content/assets/admin/pages/scripts/ui-extended-modals.js"></script>
+    <script src="~/Content/assets/global/scripts/datatable.js"></script>
+    <script src="~/Content/assets/admin/pages/scripts/ecommerce-orders.js"></script>
+    <script src="~/Content/assets/admin/pages/scripts/ui-alert-dialog-api.js"></script>
+
+    
+    <script src="~/Scripts/Takeaway/CustomJS.js"></script>
+    @*<script src="~/Scripts/angular.min.js"></script>*@
+    @*<script src="~/Content/assets/admin/pages/scripts/components-dropdowns.js"></script>*@
+    
+
+    <script>
+        var sessionTimeoutWarning = @Session.Timeout -1;
+
+        var sTimeout = parseInt(sessionTimeoutWarning) * 60 * 1000;
+        setTimeout('SessionEnd()', sTimeout);
+     
+        function SessionEnd() {
+            window.location = "/Account/LogOff";
+        }
+
+        setInterval(GetAmount(), 15000);
+
+        function GetAmount() {
+            //call $.ajax here
+            debugger;
+            $.ajax({
+                url: '/Orders/GetOrderCount',
+                type: "Get",
+                datatype: "json",
+                error: function (xhr, ajaxOptions, thrownError) {
+                    debugger;
+                    //alert(xhr.status);
+                    //alert(thrownError);
+                },
+                success: function (result) {
+                    debugger;
+                    $("#Daily").html("الدخل اليومى : " + result.dailysum);
+                    $("#Monthly").html("الدخل الشهرى : " + result.monthlysum);
+                    $("#Yearly").html("الدخل السنوى : " + result.yearlysum);
+                    $("#Delivered").html("الطلبات التى تم توصيلها : " + result.Delivered);
+                    $("#UnderDelivery").html("الطلبات قيد التوصيل : " + result.UnderDelivery);
+                    $("#Canceled").html("الطلبات الملغاه : " + result.Canceled);
+                }
+            });
+        }
+
+        jQuery(document).ready(function () {
+            Metronic.init();
+            Layout.init();
+            QuickSidebar.init();
+            Demo.init();
+            UIAlertDialogApi.init();
+           //ComponentsDropdowns.init();
+            EcommerceOrders.init();
+            //$('.timepicker').wickedpicker({
+            //    // current time
+            //    //now: "01:01:01",
+
+            //// 12- or 24-hour format
+            //twentyFour: true,
+            //    autoUpdateInput :false,
+            //// CSS classes
+            //upArrow: 'wickedpicker__controls__control-up',
+            //downArrow: 'wickedpicker__controls__control-down',
+            //close: 'wickedpicker__close',
+            //hoverState: 'hover-state',
+
+            //// title
+            //title: 'Timepicker'
+            //});
+
+            $('.timepicker').timepicker({
+                minuteStep: 1,
+                showMeridian: true,
+                template: 'dropdown',
+                defaultTime: '12:00 AM',
+                disableFocus: true,
+                autoclose: true,
+                defaultTime: ''
+                
+              
+               
+
+            });
+        });
+    </script>
+
+    @*<script>
+            var _timeout = @Session.Timeout
+                for (var i = 0; i < date.ti; i++) {
+
+                }
+          $("")
+        </script>*@
+
+
+    @*@Scripts.Render("~/bundles/jquery")*@
+    @Scripts.Render("~/bundles/jqueryval")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

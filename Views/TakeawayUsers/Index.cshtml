@@ -1,0 +1,215 @@
+﻿
+<div class="page-content" style="min-height: 1119px">
+
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="~/Home/index">الرئيسية</a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+
+            <li>
+                المستخدمين
+            </li>
+        </ul>
+    </div>
+
+    <div class="row">
+        <p>
+            <a id="btn_Create" href="/TakeawayUsers/Create?isClient=0" class="btn green">إضافة</a>
+        </p>
+        <div id="bootstrap_alerts_demo">
+        </div>
+        <div class="col-md-12">
+            <div class="portlet box grey-salsa">
+                <div class="portlet-title">
+                    <div class="caption icon-users">
+                        قائمة المستخدمين
+                    </div>
+                    <div class="tools">
+                        <a href="javascript:;" class="collapse" data-original-title="" title=""></a>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    @Html.ValidationSummary(false, "", new { @id = "bootstrap_alerts_demo", @class = "Metronic-alerts alert alert-danger fade in" })
+                    @*<div class="table-toolbar">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="btn-group">
+                                        @if (ViewBag.IsAdmin == 1)
+                                        {
+                                            <a id="AddNew" href="~/Cities/Create" class="btn green"><i class="fa fa-plus">اضافة</i></a>
+                                        }
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>*@
+                    <div class="form-body">
+                        <table id="myTable" style="text-align: center;" class="table table-striped table-bordered table-hover">
+                            <thead class="flip-content">
+
+                                <tr class="heading">
+                                    <th style="text-align: center;">الإسم</th>
+                                    <th style="text-align: center;">إسم المستخدم</th>
+                                    <th style="text-align: center;">التليفون</th>
+                                    <th style="text-align: center;">الإيميل</th>
+                                    <th style="text-align: center;">الصلاحية</th>
+                                    <th style="text-align: center;">نوع التطبيق</th>
+                                    <th style="text-align: center;">تغيير كلمة السر</th>
+                                    <th style="text-align: center;">تغيير البريد الالكترونى</th>
+                                    <th style="text-align: center;">التفعيل</th>
+                                    <th style="text-align: center;">تعديل</th>
+                                    <th style="text-align: center;">حذف</th>
+                                </tr>
+                            </thead>
+                        </table>
+
+                        <div id="myModal" class="modal fade" role="dialog">
+                            <div id="myPartialContainer">
+
+
+                            </div>
+                        </div>
+
+                        <div id="myModalEmail" class="modal fade" role="dialog">
+                            <div id="myPartialContainerEmail">
+
+
+                            </div>
+                        </div>
+                   
+
+                        
+                 
+
+
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    tr.even {
+        background-color: #F5F5F5 !important;
+        text-align: center;
+    }
+
+    .dataTables_filter input[type="search"] {
+        font-size: 14px;
+        font-weight: normal;
+        color: #333;
+        background-color: #fff;
+        border: 1px solid #989898;
+        box-shadow: none;
+        transition: border-color ease-in-out .15s, box-shadow;
+    }
+
+    .dataTables_length select {
+        font-size: 14px;
+        font-weight: normal;
+        color: #333;
+        background-color: #fff;
+        border: 1px solid #989898;
+        box-shadow: none;
+        transition: border-color ease-in-out .15s, box-shadow;
+    }
+</style>
+
+
+@section Scripts{
+
+    <script src="~/Scripts/Pages/TakeawayUsers.js"></script>
+    <script>
+        $(document).ready(function () {
+            var Errorlist = '@ViewBag.Error'
+          
+            LoadData();
+            var Msg = '@ViewBag.Msg';
+            if (Msg == 3) {
+                ShowMsg('حسنا تم تغيير كلمة المرور وكل شيء يبدو جيدا.', MessageType.Success, 5);
+            }
+            else if (Msg == 2) {
+                ShowMsg('لم تتم العملية الرجاء المحاولة مرة اخري ' + Errorlist, MessageType.Error, 5);
+            }
+            else if (Msg == 4) {
+                ShowMsg('حسنا تم تعديل بيانات الشركة وكل شيء يبدو جيدا. ', MessageType.Success, 5);
+            }
+            else if (Msg == 1) {
+                ShowMsg('حسنا تم الحذف  وكل شيء يبدو جيدا. ', MessageType.Success, 5);
+            }
+            else if (Msg == 5) {
+                ShowMsg('حسنا تم تغيير البريد الالكترونى وكل شيء يبدو جيدا.. ', MessageType.Success, 5);
+            }
+            else if (Msg == 6) {
+                ShowMsg('حسنا تم اضافه المستخدم وكل شيء يبدو جيدا.. ', MessageType.Success, 5);
+            }
+        });
+        function ChangePassword(Id) {
+            var URL = '/TakeawayUsers/ChangePassword/' + Id;
+
+            $.ajax({
+                url: URL, //'/LanguageTemplate/Delete/' + ID,
+                type: "GET",
+                dataType: "html",
+                contentType: "application/json",
+                success: function (response) {
+                    $('#myPartialContainer').html(response);
+                    $.validator.unobtrusive.parse('#frmChangePassword');
+                 
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(xhr.status);
+                    alert(thrownError);
+                }
+            });
+        }
+
+        function ChangeEmail(Id) {
+            var URL = '/TakeawayUsers/ChangeEmail/' + Id;
+
+            $.ajax({
+                url: URL, //'/LanguageTemplate/Delete/' + ID,
+                type: "GET",
+                dataType: "html",
+                contentType: "application/json",
+                success: function (response) {
+
+
+                    $('#myPartialContainerEmail').html(response);
+                    $.validator.unobtrusive.parse('#frmChangeEmail');
+
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(xhr.status);
+                    alert(thrownError);
+                }
+            });
+        }
+
+
+      
+    </script>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

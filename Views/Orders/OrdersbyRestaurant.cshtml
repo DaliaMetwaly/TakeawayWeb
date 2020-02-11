@@ -1,0 +1,267 @@
+﻿
+
+<div class="page-content" style="min-height: 1119px">
+
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="~/Home/index">الرئيسية</a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+
+            <li>
+                الطلبات الخاصه بالمطعم
+            </li>
+        </ul>
+    </div>
+
+    <div class="row">
+       
+        <div id="bootstrap_alerts_demo">
+        </div>
+        <div class="col-md-12">
+            <div class="portlet box grey-salsa">
+                <div class="portlet-title">
+                    <div class="caption icon-users">
+                        الطلبات الخاصه بالمطعم
+                    </div>
+                    <div class="tools">
+                        <a href="javascript:;" class="collapse" data-original-title="" title=""></a>
+                    </div>
+                </div>
+                <div class="portlet-body">
+
+                    <div class="table-toolbar">
+                        <div class="row">
+                            <div class="col-md-6">
+                               
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-body">
+                        <table id="OrderTable" style="text-align: center;" class="table table-striped table-bordered table-hover">
+                            <thead class="flip-content">
+
+                                <tr class="heading">
+                                    <th>التفاصيل</th>
+                                    <th style="display:none;" class="text-center">Id</th>
+                                    <th style="text-align: center;">اسم المستخدم</th>
+                                    <th style="text-align: center;">المطعم </th>
+                                    <th style="text-align: center;">حاله الطلب</th>
+                                    <th style="text-align: center;">اجمالى السعر</th>
+                                    @*<th style="text-align: center;">طريقه الدفع</th>*@
+                                    <th style="text-align: center;">تاريخ الطلب</th>
+                                
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-sm-6">
+            <!-- BEGIN PORTLET-->
+            <div class="portlet light ">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="icon-bar-chart font-green-sharp hide"></i>
+                        <span class="caption-subject font-green-sharp bold uppercase"></span>
+                        <span class="caption-helper"> </span>
+                    </div>
+                    <div class="actions">
+
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="dashboard-stat blue-madison">
+                                <div class="visual">
+                                    <i class="fa fa-comments"></i>
+                                </div>
+                                <div class="details">
+                                    <div id="TotalSales" class="number">
+                                        @ViewBag.TotalSales $
+                                    </div>
+                                    <div class="desc">
+                                        المبيعات اخر 30 يوم
+                                    </div>
+                                </div>
+                                <a class="more" href="javascript:;">
+                                    View more <i class="m-icon-swapright m-icon-white"></i>
+                                </a>
+                            </div>
+                        </div>
+                        
+
+
+                     
+                       
+
+                    </div>
+                </div>
+            </div>
+            <!-- END PORTLET-->
+        </div>
+        <div class="col-md-6 col-sm-6">
+            <!-- BEGIN PORTLET-->
+
+            <div class="portlet box green">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-gift"></i>اجمالى المبيعات اخر 30 يوم حسب البنود
+                    </div>
+                    <div class="tools">
+                        @*<a href="#portlet-config" data-toggle="modal" class="config">
+                    </a>*@
+                        <a href="javascript:;" class="reload">
+                        </a>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div id="ChartProvider" style="width:100%; height:300px">
+
+                    </div>
+                </div>
+
+
+            </div>
+
+            <!-- END PORTLET-->
+        </div>
+
+    </div>
+</div>
+
+<style>
+    tr.even {
+        background-color: #F5F5F5 !important;
+        text-align: center;
+    }
+
+    .dataTables_filter input[type="search"] {
+        font-size: 14px;
+        font-weight: normal;
+        color: #333;
+        background-color: #fff;
+        border: 1px solid #989898;
+        box-shadow: none;
+        transition: border-color ease-in-out .15s, box-shadow;
+    }
+
+    .dataTables_length select {
+        font-size: 14px;
+        font-weight: normal;
+        color: #333;
+        background-color: #fff;
+        border: 1px solid #989898;
+        box-shadow: none;
+        transition: border-color ease-in-out .15s, box-shadow;
+    }
+</style>
+
+
+@section Scripts{
+
+    <script src="~/Scripts/Pages/OrdersbyRestaurant.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script>
+
+
+        $(document).ready(function () {
+            debugger;
+            getOrdersbyRestaurant('@ViewBag.ID');
+            getTotalSalesbyRestaurant('@ViewBag.ID');
+            getTotalSalesChart('@ViewBag.ID');
+
+            $('#OrderTable tbody').on('click', 'td.details-control', function () {
+                //$('.details-control').click(function () {
+                var tr = $(this).closest('tr');
+                var row = table.row(tr);
+
+                if (row.child.isShown()) {
+                    // This row is already open - close it
+                    row.child.hide();
+                    tr.removeClass('shown');
+                }
+                else {
+                    var transactionId = tr.find('.id').text();
+                    $.ajax({
+                        url: '/Orders/GetIndexDetails/' + transactionId,
+                        type: "GET",
+
+                        dataType: "JSON",
+                        contentType: "application/json",
+                        success: function (response) {
+                            // Open this row
+                            row.child(format(response)).show();
+                            tr.addClass('shown');
+                        },
+                        error: function () {
+                            alert('Error. Please try again.');
+                        }
+                    });
+                }
+
+
+
+            });
+
+        });
+
+
+      
+
+
+        function drawChart(chartData) {
+            debugger;
+            var tdata2 = new google.visualization.DataTable();
+
+            tdata2.addColumn('string', 'ProviderName');
+            tdata2.addColumn('number', 'مبيعات الوجبات');
+
+
+            var data1 = chartData;
+
+            $.each(data1, function (index, value) {
+                debugger;
+                tdata2.addRows([[value.ProviderName, value.Revenue]])
+
+            });
+
+            var dataView = new google.visualization.DataView(tdata2);
+
+            //Set the first column of the dataview to format as a string, and return the other columns [1, 2 and 3]
+
+            var options = {
+                title: "اجمالى المبيعات لليوم"
+
+            };
+
+            var chart = new google.visualization.ColumnChart(document.getElementById('ChartProvider'));
+            chart.draw(dataView, {
+                legend: "bottom"
+            }, options);
+
+
+
+        }
+        google.load('visualization', '1', { packages: ['corechart'] });
+
+    </script>
+}
+
+
+
+
+
+
+
+
+
+

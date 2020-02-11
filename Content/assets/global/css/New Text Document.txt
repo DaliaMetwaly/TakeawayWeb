@@ -1,0 +1,1088 @@
+﻿     <div class="page-content">
+                <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+             >
+                <!-- BEGIN PAGE HEADER-->
+                <div class="page-bar">
+                    <ul class="page-breadcrumb">
+                        <li>
+                            <i class="fa fa-home"></i>
+                            <a href="index.html">Home</a>
+                            <i class="fa fa-angle-right"></i>
+                        </li>
+                        <li>
+                            <a href="#">Dashboard</a>
+                        </li>
+                    </ul>
+                    <div class="page-toolbar">
+                        <div id="dashboard-report-range" class="pull-right tooltips btn btn-sm btn-default" data-container="body" data-placement="bottom" data-original-title="Change dashboard date range">
+                            <i class="icon-calendar"></i>&nbsp; <span class="thin uppercase visible-lg-inline-block"></span>&nbsp; <i class="fa fa-angle-down"></i>
+                        </div>
+                    </div>
+                </div>
+                <h3 class="page-title">
+		لوحة المراقبة <small>التقرير & الحالة</small>
+			</h3>
+                <!-- END PAGE HEADER-->
+
+                <div class="clearfix">
+                </div>
+
+                <!----------------------------------------->
+
+
+
+                <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                        <!-- BEGIN PORTLET-->
+                        <div class="portlet light ">
+                            <div class="portlet-title">
+                                <div class="caption">
+                                    <i class="icon-bar-chart font-green-sharp hide"></i>
+                                    <span class="caption-subject font-green-sharp bold uppercase">الإجمالي للفواتير مقابل الإجمالي للدفع</span>
+                                    <span class="caption-helper"> </span>
+                                </div>
+                                <div class="actions">
+                                  
+                                </div>
+                            </div>
+                            <div class="portlet-body">
+                                <div id="site_statistics_loading">
+                                    <img src="../../assets/admin/layout/img/loading.gif" alt="loading" />
+                                </div>
+                                <div id="site_statistics_content" class="display-none">
+                                    <div id="site_statistics" class="chart">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END PORTLET-->
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <!-- BEGIN PORTLET-->
+
+                        <div class="portlet light ">
+                            <div class="portlet-title">
+                                <div class="caption">
+                                    <i class="icon-bar-chart font-green-sharp hide"></i>
+                                    <span class="caption-subject font-green-sharp bold uppercase">       اجراءات عاجة   </span>
+                                    <span class="caption-helper"> </span>
+                                </div>
+
+                            </div>
+
+
+                            <table class="table no-margin">
+                                <tbody>
+                                    <tr>
+
+                                        <td style="padding:0;">
+                                            <div class="Urgent-action text-center">
+                                                <a href="Purchas_invoices/Create">
+                                                    <i class="fa fa-file-o fa-3x  "></i>
+                                                    <p>
+
+                                                        إنشاء فاتورة شراء
+
+                                                    </p>
+                                                </a>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="Urgent-action text-center">
+                                                <a href="">
+                                                    <i class="fa fa-user-plus fa-3x  "></i>
+                                                    <p>
+
+                                                        اضافة مورد
+
+                                                    </p>
+                                                </a>
+                                            </div>
+                                        </td>
+                                        <td id="tour-create-invoice">
+                                            <div class="Urgent-action text-center">
+                                                <a href="">
+                                                    <i class="fa fa-shopping-cart fa-3x  "></i>
+                                                    <p>
+
+                                                        دفعات الشراء
+                                                    </p>
+                                                </a>
+                                            </div>
+                                        </td>
+                                        <td colspan="2" rowspan="3" style="width:31%;">
+                                            <div class="Urgent-action text-center">
+                                                <p class="strong-r"> Reports </p>
+                                                <a href="">
+
+                                                    <p style="
+    text-align: right;
+">
+                                                        <i class="fa fa-file-text-o fa-1x  "></i> تقرير تقريرتقرير تقرير
+
+                                                    </p>
+                                                </a>
+                                                <a href="">
+
+                                                    <p style="
+    text-align: right;
+">
+                                                        <i class="fa fa-file-text-o fa-1x  "></i> تقرير تقريرتقريرتقريرتقرير
+
+                                                    </p>
+                                                </a>
+                                                <a href="">
+
+                                                    <p style="
+    text-align: right;
+">
+                                                        <i class="fa fa-file-text-o fa-1x  "></i>تقريرتقريرتقريرتقريرتقرير
+                                                    </p>
+                                                </a>
+                                                <a href="">
+
+                                                    <p style="
+    text-align: right;
+">
+                                                        <i class="fa fa-file-text-o fa-1x  "></i> تقريرتقريرتقريرتقريرتقرير
+
+                                                    </p>
+                                                </a>
+                                            </div>
+
+
+
+                                    </tr>
+                                    <tr style="border-top:1px solid #ddd;">
+                                        <td style="padding:0;">
+
+                                            <div class="Urgent-action text-center">
+                                                <a href="">
+                                                    <i class="fa fa-calculator fa-3x  "></i>
+                                                    <p>
+
+                                                        انشاء غرض
+
+                                                    </p>
+                                                </a>
+                                            </div>
+
+                                            <td>
+                                                <div class="Urgent-action text-center">
+                                                    <a href="">
+                                                        <i class="fa fa-file-text-o fa-3x  "></i>
+                                                        <p>
+
+                                                            أنشاء فاتورة
+
+                                                        </p>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="Urgent-action text-center">
+                                                    <a href="">
+                                                        <i class="fa fa-user fa-3x  "></i>
+                                                        <p>
+
+                                                            اضافة عميل
+
+                                                        </p>
+                                                    </a>
+                                                </div>
+
+
+
+                                            </td>
+                                    </tr>
+                                    <tr style="border-top:1px solid #ddd;">
+                                        <td style="padding:0;">
+                                            <div class="Urgent-action text-center">
+                                                <a href="">
+                                                    <i class="fa fa-credit-card fa-3x"></i>
+                                                    <p>
+
+                                                        ادخال دفع
+
+                                                    </p>
+                                                </a>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="Urgent-action text-center">
+                                                <a href="">
+                                                    <i class="fa fa-archive fa-3x  "></i>
+                                                    <p>
+
+                                                        ادخال منتج
+
+                                                    </p>
+                                                </a>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="Urgent-action text-center">
+                                                <a href="">
+                                                    <i class="fa fa-usd fa-3x  "></i>
+                                                    <p>
+
+                                                        ادخال مصروف
+
+                                                    </p>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+
+
+
+
+
+
+
+                        </div>
+
+                        <!-- END PORTLET-->
+                    </div>
+
+                </div>
+
+
+
+                <div class="clearfix">
+                </div>
+
+
+
+                <div class="row">
+                    <div class="col-md-6 col-sm-6">
+
+                        <!-- BEGIN DASHBOARD STATS -->
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="dashboard-stat blue-madison">
+                                    <div class="visual">
+                                        <i class="fa fa-comments"></i>
+                                    </div>
+                                    <div class="details">
+                                        <div class="number">
+                                            1349
+                                        </div>
+                                        <div class="desc">
+                                            New Feedbacks
+                                        </div>
+                                    </div>
+                                    <a class="more" href="javascript:;">
+						View more <i class="m-icon-swapright m-icon-white"></i>
+						</a>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="dashboard-stat red-intense">
+                                    <div class="visual">
+                                        <i class="fa fa-bar-chart-o"></i>
+                                    </div>
+                                    <div class="details">
+                                        <div class="number">
+                                            12,5M$
+                                        </div>
+                                        <div class="desc">
+                                            Total Profit
+                                        </div>
+                                    </div>
+                                    <a class="more" href="javascript:;">
+						View more <i class="m-icon-swapright m-icon-white"></i>
+						</a>
+                                </div>
+                            </div>
+
+
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="dashboard-stat green-haze">
+                                    <div class="visual">
+                                        <i class="fa fa-shopping-cart"></i>
+                                    </div>
+                                    <div class="details">
+                                        <div class="number">
+                                            549
+                                        </div>
+                                        <div class="desc">
+                                            New Orders
+                                        </div>
+                                    </div>
+                                    <a class="more" href="javascript:;">
+						View more <i class="m-icon-swapright m-icon-white"></i>
+						</a>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="dashboard-stat purple-plum">
+                                    <div class="visual">
+                                        <i class="fa fa-globe"></i>
+                                    </div>
+                                    <div class="details">
+                                        <div class="number">
+                                            +89%
+                                        </div>
+                                        <div class="desc">
+                                            Brand Popularity
+                                        </div>
+                                    </div>
+                                    <a class="more" href="javascript:;">
+						View more <i class="m-icon-swapright m-icon-white"></i>
+						</a>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- END DASHBOARD STATS -->
+
+
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+
+                        <div class="portlet box red">
+                            <div class="portlet-title">
+                                <div class="caption">
+                                    <i class="fa fa-gift"></i>أعلى المصروفات
+                                </div>
+                                <div class="tools">
+                                    <a href="#portlet-config" data-toggle="modal" class="config">
+                                    </a>
+                                    <a href="javascript:;" class="reload">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="portlet-body">
+                                
+                                <div id="pie_chart_3" class="chart">
+                                </div>
+                            </div>
+                            
+                               <div class="portlet-title">
+                                <div class="caption">
+                                    <i class="fa fa-gift"></i>العملاء الأكثر نشاطا
+                                </div>
+                                <div class="tools">
+                                    <a href="#portlet-config" data-toggle="modal" class="config">
+                                    </a>
+                                    <a href="javascript:;" class="reload">
+                                    </a>
+                                </div>
+                            </div>
+                             <div class="portlet-body">
+                                
+                                <div id="pie_chart_3" class="chart">
+                                </div>
+                            </div>
+                                                            </div>
+
+                        </div>
+
+                    </div>
+                
+                
+                
+                    
+			<div class="row">
+				<div class="col-md-6">
+					<!-- BEGIN SAMPLE TABLE PORTLET-->
+					<div class="portlet box blue">
+						<div class="portlet-title">
+							<div class="caption">
+								<i class="fa fa-cogs"></i>تنبيهات المخزن
+							</div>
+							<div class="tools">
+								<a href="javascript:;" class="collapse">
+								</a>
+								<a href="#portlet-config" data-toggle="modal" class="config">
+								</a>
+								<a href="javascript:;" class="reload">
+								</a>
+								<a href="" class="fullscreen">
+								</a>
+								<a href="javascript:;" class="remove">
+								</a>
+							</div>
+						</div>
+						<div class="portlet-body">
+							<table class="table table-hover">
+							<thead>
+							<tr>
+								<th>
+									الوضع	
+                                    
+								</th>
+								<th>
+									 المنتج
+								</th>
+								<th>
+									الكمية
+								</th>
+								<th class="hidden-480">
+										أقل
+								</th>
+								<th>
+									تنبيه
+								</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr>
+								<td>
+									 1
+								</td>
+								<td>
+									 Mark
+								</td>
+								<td>
+									 Otto
+								</td>
+								<td class="hidden-480">
+									 makr124
+								</td>
+								<td>
+									<span class="label label-success">
+									Approved </span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									 2
+								</td>
+								<td>
+									 Jacob
+								</td>
+								<td>
+									 Nilson
+								</td>
+								<td class="hidden-480">
+									 jac123
+								</td>
+								<td>
+									<span class="label label-info">
+									Pending </span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									 3
+								</td>
+								<td>
+									 Larry
+								</td>
+								<td>
+									 Cooper
+								</td>
+								<td class="hidden-480">
+									 lar
+								</td>
+								<td>
+									<span class="label label-warning">
+									Suspended </span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									 3
+								</td>
+								<td>
+									 Sandy
+								</td>
+								<td>
+									 Lim
+								</td>
+								<td class="hidden-480">
+									 sanlim
+								</td>
+								<td>
+									<span class="label label-danger">
+									Blocked </span>
+								</td>
+							</tr>
+							</tbody>
+							</table>
+						</div>
+					</div>
+					<!-- END SAMPLE TABLE PORTLET-->
+				</div>
+				<div class="col-md-6">
+					<!-- BEGIN BORDERED TABLE PORTLET-->
+					<div class="portlet box  green">
+						<div class="portlet-title">
+							<div class="caption">
+								<i class="fa fa-coffee"></i>لمحة عامة على الفواتير
+							</div>
+							<div class="tools">
+								<a href="javascript:;" class="collapse">
+								</a>
+								<a href="#portlet-config" data-toggle="modal" class="config">
+								</a>
+								<a href="javascript:;" class="reload">
+								</a>
+								<a href="" class="fullscreen">
+								</a>
+								<a href="javascript:;" class="remove">
+								</a>
+							</div>
+						</div>
+						<div class="portlet-body">
+							<table class="table table-bordered table-hover">
+					 
+							<tbody>
+							<tr>
+								<td>
+                                    
+									<a href="#">مسودة<div style="width:2px;display:inline-block;"></div><i class="fa fa-link"></i></a>
+                                    
+								</td>
+								<td>
+									<a href="#">ارسلت<div style="width:2px;display:inline-block;"></div><i class="fa fa-link"></i></a>
+								</td>
+								<td>
+									<a href="#">شوهدت<div style="width:2px;display:inline-block;"></div><i class="fa fa-link"></i></a>
+								</td>
+								<td class="hidden-480">
+									<a href="#">مدفوعة<div style="width:2px;display:inline-block;"></div><i class="fa fa-link"></i></a>
+								</td>
+							 
+							</tr>
+							<tr>
+								<td>
+									 0
+								</td>
+								<td>
+									0
+								</td>
+								<td>
+									0
+								</td>
+								<td class="hidden-480">
+									 0
+								</td>
+								 
+							</tr>
+							 	<tr>
+								<td>
+									 0
+								</td>
+								<td>
+									0
+								</td>
+								<td>
+									0
+								</td>
+								<td class="hidden-480">
+									 0
+								</td>
+								 
+							</tr>
+                                	<tr>
+								<td>
+									 0
+								</td>
+								<td>
+									0
+								</td>
+								<td>
+									0
+								</td>
+								<td class="hidden-480">
+									 0
+								</td>
+								 
+							</tr>
+                                	<tr>
+								<td>
+									 0
+								</td>
+								<td>
+									0
+								</td>
+								<td>
+									0
+								</td>
+								<td class="hidden-480">
+									 0
+								</td>
+								 
+							</tr>
+							 
+							</tbody>
+							</table>
+						</div>
+					</div>
+					<!-- END BORDERED TABLE PORTLET-->
+				</div>
+			</div>
+            
+                      
+			<div class="row">
+				<div class="col-md-6">
+					<!-- BEGIN SAMPLE TABLE PORTLET-->
+					<div class="portlet box yellow">
+						<div class="portlet-title">
+							<div class="caption">
+								<i class="fa fa-cogs"></i>الفوتير الاخيرة
+							</div>
+							<div class="tools">
+								<a href="javascript:;" class="collapse">
+								</a>
+								<a href="#portlet-config" data-toggle="modal" class="config">
+								</a>
+								<a href="javascript:;" class="reload">
+								</a>
+								<a href="" class="fullscreen">
+								</a>
+								<a href="javascript:;" class="remove">
+								</a>
+							</div>
+						</div>
+						<div class="portlet-body">
+							<table class="table table-hover">
+							<thead>
+							<tr>
+								<th>
+							الوضع
+                                    
+								</th>
+								<th>
+								تاريخ الاستحقاق
+								</th>
+								<th>
+									الفاتورة
+								</th>
+								<th class="hidden-480">
+										
+                                   العميل
+								</th>
+								<th>
+								الرصيد
+								</th>
+                                <th>
+									PDF
+								</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr>
+								<td>
+								0
+								</td>
+								<td>
+									0
+								</td>
+								<td>
+									 0
+								</td>
+								<td>
+									 0
+								</td>
+							<td>
+									 0
+								</td>
+                                                                
+                                
+<td>
+									 0
+								</td>
+                                
+							</tr>
+						 
+							 
+							 
+							</tbody>
+							</table>
+						</div>
+					</div>
+					<!-- END SAMPLE TABLE PORTLET-->
+				</div>
+				<div class="col-md-6">
+					<!-- BEGIN BORDERED TABLE PORTLET-->
+					<div class="portlet box blue">
+						<div class="portlet-title">
+							<div class="caption">
+								<i class="fa fa-coffee"></i>لمحة عامة على العروض
+							</div>
+							<div class="tools">
+								<a href="javascript:;" class="collapse">
+								</a>
+								<a href="#portlet-config" data-toggle="modal" class="config">
+								</a>
+								<a href="javascript:;" class="reload">
+								</a>
+								<a href="" class="fullscreen">
+								</a>
+								<a href="javascript:;" class="remove">
+								</a>
+							</div>
+						</div>
+						<div class="portlet-body">
+							<table class="table table-bordered table-hover">
+					 
+							<tbody>
+							<tr>
+								<td>
+                                    
+									<a href="#">فى الانتظار<div style="width:2px;display:inline-block;"></div><i class="fa fa-link"></i></a>
+                                    
+								</td>
+								<td>
+									<a href="#">تمت الموافقة<div style="width:2px;display:inline-block;"></div><i class="fa fa-link"></i></a>
+								</td>
+								<td>
+									<a href="#">مرفوضة<div style="width:2px;display:inline-block;"></div><i class="fa fa-link"></i></a>
+								</td>
+								<td class="hidden-480">
+									<a href="#">ملغاه<div style="width:2px;display:inline-block;"></div><i class="fa fa-link"></i></a>
+								</td>
+							 
+							</tr>
+							<tr>
+								<td>
+									 0
+								</td>
+								<td>
+									0
+								</td>
+								<td>
+									0
+								</td>
+								<td class="hidden-480">
+									 0
+								</td>
+								 
+							</tr>
+							 
+							 
+							</tbody>
+							</table>
+						</div>
+					</div>
+					<!-- END BORDERED TABLE PORTLET-->
+				</div>
+			</div>
+            
+                            
+			<div class="row">
+				<div class="col-md-6">
+					<!-- BEGIN SAMPLE TABLE PORTLET-->
+					<div class="portlet box purple">
+						<div class="portlet-title">
+							<div class="caption">
+								<i class="fa fa-cogs"></i>العروض الأخيرة
+							</div>
+							<div class="tools">
+								<a href="javascript:;" class="collapse">
+								</a>
+								<a href="#portlet-config" data-toggle="modal" class="config">
+								</a>
+								<a href="javascript:;" class="reload">
+								</a>
+								<a href="" class="fullscreen">
+								</a>
+								<a href="javascript:;" class="remove">
+								</a>
+							</div>
+						</div>
+						<div class="portlet-body">
+							<table class="table table-hover">
+							<thead>
+							<tr>
+								<th>
+						الوضع 
+                                    
+								</th>
+								<th>
+								التاريخ
+								</th>
+								<th>
+									العرض
+								</th>
+								<th class="hidden-480">
+										
+                                   العميل
+								</th>
+								<th>
+							الرصيد
+								</th>
+                                <th>
+									PDF
+								</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr>
+								<td>
+								0
+								</td>
+								<td>
+									0
+								</td>
+								<td>
+									 0
+								</td>
+								<td>
+									 0
+								</td>
+							<td>
+									 0
+								</td>
+                                                                
+                                
+<td>
+									 0
+								</td>
+                                
+							</tr>
+						 
+							 
+							 
+							</tbody>
+							</table>
+						</div>
+					</div>
+					<!-- END SAMPLE TABLE PORTLET-->
+				</div>
+				<div class="col-md-6">
+					<!-- BEGIN BORDERED TABLE PORTLET-->
+					<div class="portlet box yellow">
+						<div class="portlet-title">
+							<div class="caption">
+								<i class="fa fa-coffee"></i>لمحة عن سندات الطلب
+							</div>
+							<div class="tools">
+								<a href="javascript:;" class="collapse">
+								</a>
+								<a href="#portlet-config" data-toggle="modal" class="config">
+								</a>
+								<a href="javascript:;" class="reload">
+								</a>
+								<a href="" class="fullscreen">
+								</a>
+								<a href="javascript:;" class="remove">
+								</a>
+							</div>
+						</div>
+						<div class="portlet-body">
+							<table class="table table-bordered table-hover">
+					 
+							<tbody>
+							<tr>
+								<td>
+                                    
+									<a href="#">فى الانتظار<div style="width:2px;display:inline-block;"></div><i class="fa fa-link"></i></a>
+                                    
+								</td>
+								<td>
+									<a href="#">تمت الموافقة <div style="width:2px;display:inline-block;"></div><i class="fa fa-link"></i></a>
+								</td>
+								<td>
+									<a href="#">مرفوضة<div style="width:2px;display:inline-block;"></div><i class="fa fa-link"></i></a>
+								</td>
+								<td class="hidden-480">
+									<a href="#">ملغاه<div style="width:2px;display:inline-block;"></div><i class="fa fa-link"></i></a>
+								</td>
+							 
+							</tr>
+							<tr>
+								<td>
+									 0
+								</td>
+								<td>
+									0
+								</td>
+								<td>
+									0
+								</td>
+								<td class="hidden-480">
+									 0
+								</td>
+								 
+							</tr>
+							 
+							 
+							</tbody>
+							</table>
+						</div>
+					</div>
+					<!-- END BORDERED TABLE PORTLET-->
+				</div>
+			</div>
+            
+            
+              	<div class="row">
+                    
+				<div class="col-md-6">
+					<!-- BEGIN SAMPLE TABLE PORTLET-->
+					<div class="portlet box yellow">
+						<div class="portlet-title">
+							<div class="caption">
+								<i class="fa fa-cogs"></i>الفواتيرالغير مدفوعة
+							</div>
+							<div class="tools">
+								<a href="javascript:;" class="collapse">
+								</a>
+								<a href="#portlet-config" data-toggle="modal" class="config">
+								</a>
+								<a href="javascript:;" class="reload">
+								</a>
+								<a href="" class="fullscreen">
+								</a>
+								<a href="javascript:;" class="remove">
+								</a>
+							</div>
+						</div>
+						<div class="portlet-body">
+							<table class="table table-hover">
+							<thead>
+							<tr>
+								<th>
+					الوضع
+                                    
+								</th>
+								<th>
+							تاريخ الاستحقاق
+								</th>
+								<th>
+									الفاتورة
+								</th>
+								<th class="hidden-480">
+										
+                                    العميل
+								</th>
+								<th>
+								الرصيد
+								</th>
+                                <th>
+									PDF
+								</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr>
+								<td>
+								0
+								</td>
+								<td>
+									0
+								</td>
+								<td>
+									 0
+								</td>
+								<td>
+									 0
+								</td>
+							<td>
+									 0
+								</td>
+                                                                
+                                
+<td>
+									 0
+								</td>
+                                
+							</tr>
+						 
+							 
+							 
+							</tbody>
+							</table>
+						</div>
+					</div>
+					<!-- END SAMPLE TABLE PORTLET-->
+				</div>
+                     	<div class="col-md-6">
+					<!-- BEGIN SAMPLE TABLE PORTLET-->
+					<div class="portlet box green">
+						<div class="portlet-title">
+							<div class="caption">
+								<i class="fa fa-cogs"></i>
+                                سندات الطلب الأخيرة
+							</div>
+							<div class="tools">
+								<a href="javascript:;" class="collapse">
+								</a>
+								<a href="#portlet-config" data-toggle="modal" class="config">
+								</a>
+								<a href="javascript:;" class="reload">
+								</a>
+								<a href="" class="fullscreen">
+								</a>
+								<a href="javascript:;" class="remove">
+								</a>
+							</div>
+						</div>
+						<div class="portlet-body">
+							<table class="table table-hover">
+							<thead>
+							<tr>
+								<th>
+				الوضع
+                                    
+								</th>
+								<th>
+								التاريخ
+								</th>
+								<th>
+									سند الطلب
+								</th>
+								<th class="hidden-480">
+										
+                                    العميل
+								</th>
+								<th>
+								الرصيد
+								</th>
+                                <th>
+									PDF
+								</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr>
+								<td>
+								0
+								</td>
+								<td>
+									0
+								</td>
+								<td>
+									 0
+								</td>
+								<td>
+									 0
+								</td>
+							<td>
+									 0
+								</td>
+                                                                
+                                
+<td>
+									 0
+								</td>
+                                
+							</tr>
+						 
+							 
+							 
+							</tbody>
+							</table>
+						</div>
+					</div>
+					<!-- END SAMPLE TABLE PORTLET-->
+				</div>
+                    
+                    
+			</div>
+            
+              
+                </div>
+
+         
+       
+        
+        

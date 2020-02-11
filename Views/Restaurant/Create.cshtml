@@ -1,0 +1,774 @@
+﻿@model Takeaway.Models.RestaurantVM
+@{
+    ViewBag.Title = "Create";
+}
+<style>
+     #description {
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+      }
+
+      #infowindow-content .title {
+        font-weight: bold;
+      }
+
+      #infowindow-content {
+        display: none;
+      }
+
+      #map #infowindow-content {
+        display: inline;
+      }
+
+      .pac-card {
+        margin: 10px 10px 0 0;
+        border-radius: 2px 0 0 2px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        outline: none;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        background-color: #fff;
+        font-family: Roboto;
+      }
+
+      #pac-container {
+        padding-bottom: 12px;
+        margin-right: 12px;
+      }
+
+      .pac-controls {
+        display: inline-block;
+        padding: 5px 11px;
+      }
+
+      .pac-controls label {
+        font-family: Roboto;
+        font-size: 13px;
+        font-weight: 300;
+      }
+
+      #pac-input {
+        background-color: #fff;
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+        margin-left: 12px;
+        padding: 0 11px 0 13px;
+        text-overflow: ellipsis;
+        width: 400px;
+      }
+
+      #pac-input:focus {
+        border-color: #4d90fe;
+      }
+
+      #title {
+        color: #fff;
+        background-color: #4d90fe;
+        font-size: 25px;
+        font-weight: 500;
+        padding: 6px 12px;
+      }
+      #target {
+        width: 345px;
+      }
+    </style>
+
+
+<div class="page-content" style="min-height: 1119px">
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="~/Home/index">الرئيسية</a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+            <li>
+                <a href="/Restaurant/Index"> المطاعم</a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+            <li>
+                اضافة مطعم
+            </li>
+        </ul>
+    </div>
+    <div id="divMsg">@Html.Raw(ViewBag.Msg)</div>
+    <div class="row">
+        <div class="col-md-12">
+            @*<div id="bootstrap_alerts_demo">
+                </div>*@
+            <div class="portlet box grey-salsa">
+                <div class="portlet-title">
+                    <div class="caption">
+                        اضافة مطعم
+                    </div>
+                    <div class="tools">
+                        <a href="javascript:;" class="collapse" data-original-title="" title=""></a>
+                    </div>
+                </div>
+                <div class="portlet-body form">
+
+                    <!-- BEGIN FORM-->
+
+                    @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data",id="CreateRestaurantFRM"}))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(false, "", new { @class = "Metronic-alerts alert alert-danger fade in" })
+                        @*@Html.EditorFor(model => model.MapLatitude, new { htmlAttributes = new { style = "height:0px;visibility: hidden;" } })
+                        @Html.EditorFor(model => model.MapLongitude, new{ htmlAttributes = new{ style= "height:0px;visibility: hidden;" } })*@
+                        
+                        <div class="row">
+                            <div class="col-md-9 ">
+                                <div class="form-body">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.RestaurantName, "المطعم بالعربية", htmlAttributes: new { @class = "col-md-4 control-label" })
+                                        <div class="input-group col-md-4">
+                                            @Html.EditorFor(model => model.RestaurantName, new { htmlAttributes = new { placeholder = "إدخل المطعم بالعربية", @class = "form-control" } })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.RestaurantName, "", new { @class = "text-danger" })
+                                                @***@
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.RestaurantDescrption, "وصف المطعم بالعربية", htmlAttributes: new { @class = "col-md-4 control-label" })
+                                        <div class="input-group col-md-4">
+                                            @Html.TextAreaFor(model => model.RestaurantDescrption,  new { cols = "105", placeholder = "إدخل وصف المطعم بالعربية", @class = "form-control col" } )
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.RestaurantDescrption, "", new { @class = "text-danger" })
+                                                @***@
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.RestaurantNameEn, "المطعم بالأنجليزية", htmlAttributes: new { @class = "col-md-4 control-label" })
+                                        <div class="input-group col-md-4">
+                                            @Html.EditorFor(model => model.RestaurantNameEn, new { htmlAttributes = new { placeholder = "إدخل المطعم بالأنجليزية", @class = "form-control" } })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.RestaurantNameEn, "", new { @class = "text-danger" })
+                                                @***@
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.RestaurantDescrptionEn, "وصف المطعم بالأنجليزية", htmlAttributes: new { @class = "col-md-4 control-label" })
+                                        <div class="input-group col-md-4">
+                                            @Html.TextAreaFor(model => model.RestaurantDescrptionEn, new { cols = "105", placeholder = "إدخل وصف المطعم بالأنجليزية", @class = "form-control col" } )
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.RestaurantDescrptionEn, "", new { @class = "text-danger" })
+                                                @***@
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.RestaurantPhone, "رقم الهاتف", htmlAttributes: new { @class = "col-md-4 control-label" })
+                                        <div class="input-group col-md-4">
+                                            @Html.EditorFor(model => model.RestaurantPhone, new { htmlAttributes = new { placeholder = "إدخل رقم الهاتف ", @class = "form-control" } })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.RestaurantPhone, "", new { @class = "text-danger" })
+                                                
+                                            </span>
+                                        </div>
+                                    </div>
+                                    @*<div class="form-group">
+                                        @Html.LabelFor(model => model.FeeTypeID, "تكلفة التوصيل", new { @class = "col-md-4 control-label " })
+                                        <div class="input-group col-md-4">
+                                            @Html.DropDownListFor(model => model.FeeTypeID, ViewBag.FeeTypeID as List<SelectListItem>, "إختار تكلفة التوصيل", new { @class = "form-control select2me" })
+                                            <span class="input-group-addon input-circle-right">
+                                                <div class="input-group col-md-1">
+                                                    @Html.Label("FeeValue", "1", new { @class = "col-md-4 control-label ", @style = "display:none" })
+                                                    </div>
+                                                <div class="input-group col-md-4">
+                                                    @Html.ValidationMessageFor(model => model.FeeTypeID, null, new { @class = "text-danger" })
+                                             </div></span>
+                                        </div>
+                                       
+                                    </div>*@
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.DeliveryWayID, "طريقة التوصيل", new { @class = "col-md-4 control-label " })
+                                        <div class="input-group col-md-4">
+                                            @Html.DropDownListFor(model => model.DeliveryWayID, ViewBag.DeliveryWayID as List<SelectListItem>, "إختار طريقة التوصيل", new {  @class = "form-control select2me" })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.DeliveryWayID, null, new { @class = "text-danger" })
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.RestaurantStatus, "حالة المطعم", new { @class = "col-md-4 control-label " })
+                                        <div class="input-group col-md-4">
+                                            @Html.DropDownListFor(model => model.RestaurantStatus, ViewBag.RestaurantStatus as List<SelectListItem>, "إختار حالة المطعم", new { @class = "form-control select2me" })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.RestaurantStatus, null, new { @class = "text-danger" })
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.UserID, "المالك", new { @class = "col-md-4 control-label " })
+                                        <div class="input-group col-md-4">
+                                            @Html.DropDownListFor(model => model.UserID, ViewBag.UserID as List<SelectListItem>, "إختار المالك", new { @class = "form-control select2me" })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.UserID, null, new { @class = "text-danger" })
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" >
+                                        @Html.LabelFor(model => model.CountryID,  new { @class = "col-md-4 control-label " })
+                                        <div class="input-group col-md-4">
+                                            @Html.DropDownListFor(model => model.CountryID, ViewBag.CountryID as List<SelectListItem>, "إختار البلد", new {  @class = "form-control select2me" })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.CountryID, null, new { @class = "text-danger" })
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.CityID,  new { @class = "col-md-4 control-label " })
+                                        <div class="input-group col-md-4">
+                                            @Html.DropDownListFor(model => model.CityID, ViewBag.CityID as List<SelectListItem>, "إختار المدينه", new {  @class = "form-control select2me" })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.CityID, null, new { @class = "text-danger" })
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.RegionID, new { @class = "col-md-4 control-label " })
+                                        <div class="input-group col-md-4">
+                                            @Html.DropDownListFor(model => model.RegionID, ViewBag.RegionID as List<SelectListItem>, "إختار المنطقه", new {  @class = "form-control select2me" })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.RegionID, null, new { @class = "text-danger" })
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "col-md-4 control-label" })
+                                        <div class="input-group col-md-4">
+                                            @Html.TextAreaFor(model => model.Address, new { cols = "105", placeholder = "إدخل العنوان", @class = "form-control col" })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                                                @***@
+                                            </span>
+                                        </div>
+                                    </div>
+
+
+                                    @*<div class="form-group">
+                                        @Html.LabelFor(model => model.RestaurantOpeningID, "مفتوح/مغلق", new { @class = "col-md-4 control-label " })
+                                        <div class="input-group col-md-4">
+                                            @Html.DropDownListFor(model => model.RestaurantOpeningID, ViewBag.RestaurantOpeningID as List<SelectListItem>, null, new { @Placeholder = "إختار مفتوح/مغلق", @class = "form-control select2me" })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.RestaurantOpeningID, null, new { @class = "text-danger" })
+                                            </span>
+                                        </div>
+                                    </div>*@
+                                    @*<div class="form-group ">
+                                        <div class="col-md-4">
+                                            <div class="form-group ">
+                                                @Html.LabelFor(model => model.Openingtime, "مفتوح من", htmlAttributes: new { @class = "control-label col-md-4" })
+                                                <div class="input-group col-md-6">
+                                                    @Html.TextBoxFor(model => model.Openingtime, new { @class = "form-control timepicker" })
+                                                    <span class="input-group-addon input-circle-right">
+                                                        @Html.ValidationMessageFor(model => model.Openingtime, "", new { @class = "text-danger" })
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group ">
+                                                @Html.LabelFor(model => model.Closetime, "مفتوح الى", htmlAttributes: new { @class = "control-label col-md-4" })
+                                                <div class="input-group col-md-6">
+                                                    @Html.TextBoxFor(model => model.Closetime, new { @class = "form-control timepicker" })
+                                                    <span class="input-group-addon input-circle-right">
+                                                        @Html.ValidationMessageFor(model => model.Closetime, "", new { @class = "text-danger" })
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </div>*@
+                                        <div class="form-group" >
+                                            @Html.LabelFor(model => model.Stars, "نجوم المطعم", htmlAttributes: new { @class = "col-md-4 control-label" })
+                                            <div class="input-group col-md-4">
+                                                @Html.TextBoxFor(model => model.Stars,   new { placeholder = "إدخل نجوم المطعم ", @class = "form-control" } )
+                                                <span class="input-group-addon input-circle-right">
+                                                    @Html.ValidationMessageFor(model => model.Stars, "", new { @class = "text-danger" })
+                                                    @***@
+                                                </span>
+                                            </div>
+                                        </div>
+
+
+                                    <div class="form-group">
+                                      <div class="col-md-4">
+
+                                      </div>
+                                      <div class="input-group col-md-4">
+                                          <div class="md-checkbox">
+                                              @Html.CheckBoxFor(model => model.OneMachine, new { @class = "md-check" })
+                                              <label for="OneMachine">
+                                                  ماكينه واحده
+                                                  <span class="inc"></span>
+                                                  <span class="check"></span>
+                                                  <span class="box"></span>
+                                              </label>
+                                          </div>
+
+                                          <span class="input-group-addon input-circle-right">
+                                          </span>
+                                      </div>
+                                  </div>
+
+
+
+
+                                   
+                                    <div class="form-group">
+                                        @Html.Label("", "الملف", htmlAttributes: new { @class = "control-label col-md-4" })
+                                        <div class="input-group col-md-4">
+
+                                            <input type="file" id="FileName" accept="image/*" name="FileName" />
+                                            <span class="input-group-addon input-circle-right">
+
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                        @*<div class="form-group">
+                                            @Html.LabelFor(model => model.MapLongitude, "خط الطول", htmlAttributes: new { @class = "col-md-4 control-label" })
+                                            <div class="input-group col-md-4">
+                                                @Html.EditorFor(model => model.MapLongitude, new { htmlAttributes = new { placeholder = "إدخل خط الطول", @class = "form-control" } })
+                                                <span class="input-group-addon input-circle-right">
+                                                    @Html.ValidationMessageFor(model => model.MapLongitude, "", new { @class = "text-danger" })
+                                                  
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.MapLatitude, "خط العرض", htmlAttributes: new { @class = "col-md-4 control-label" })
+                                            <div class="input-group col-md-4">
+                                                @Html.EditorFor(model => model.MapLatitude, new { htmlAttributes = new { placeholder = "إدخل خط العرض", @class = "form-control" } })
+                                                <span class="input-group-addon input-circle-right">
+                                                    @Html.ValidationMessageFor(model => model.MapLatitude, "", new { @class = "text-danger" })
+                                                   
+                                                </span>
+                                            </div>
+                                        </div>*@
+
+                                   
+                                    @*<div class="form-group">
+                                        <div id="map" style="width: 100%; height: 300px">
+                                        </div>
+                                    </div>*@
+
+                                   
+                                    
+                                    
+                                     <div id="UserDataDiv" style="display:table;">
+                                        <div class="portlet box green">
+                                            <div class="portlet-title">
+                                                <div class="caption">
+                                                    <i class="fa fa-gift"></i> بيانات المطعم
+                                                </div>
+                                                <div class="tools">
+                                                    <a href="" class="collapse">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="portlet-body">
+                                                <div class="form-body">
+                                                    <div class="cold-md-12">
+
+                                                        <div class="row">
+                                                           
+                                                            <div class="form-group col-md-4" style="width:15%;">
+                                                                @Html.Label("المدينة", htmlAttributes: new { @class = "control-label col-md-4", @style = "width:90%" })
+                                                                <br />
+                                                                <div class="input-group col-md-6" style="width:100%;">
+                                                                    @Html.DropDownList("City", ViewBag.City as List<SelectListItem>, "اختر", new { @class = "form-control select2me" })
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group col-md-4" style="width:15%;">
+                                                                @Html.Label("المنطقة", htmlAttributes: new { @class = "control-label col-md-4", @style = "width:90%" })
+                                                                <br />
+                                                                <div class="input-group col-md-6" style="width:100%;">
+                                                                    @Html.DropDownList("RegionN", ViewBag.RegionN as List<SelectListItem>, "اختر", new { @class = "form-control select2me" })
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group col-md-4" style="width:40%;">
+                                                                @Html.Label("العنوان", htmlAttributes: new { @class = "control-label col-md-4", @style = "width:90%" })
+                                                                <br />
+                                                                <div class="input-group col-md-6" style="width:100%;">
+                                                                    @Html.TextBox("AddressMap", null, new { @class = "form-control "@*, @onkeyup = "countMMSChar(this)"*@ })
+                                                                </div>
+                                                            </div>
+                                                            </div>
+                                                            <div class="row">
+                                                              
+                                                                <div class="form-group col-md-4" style="width:20%;">
+
+                                                                    @Html.Label("خط العرض", htmlAttributes: new { @class = "control-label col-md-4", @style = "width:98%" })
+                                                                    <br />
+                                                                    <div class="input-group col-md-6" style="width:100%;">
+                                                                        @Html.TextBox("GMapLutitude", null, new { @class = "form-control ", disabled = "disabled" })
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group col-md-4" style="width:20%;">
+
+                                                                    @Html.Label("خط الطول", new { @class = "control-label col-md-4", @style = "width:98%" })
+                                                                    <br />
+                                                                    <div class="input-group col-md-6" style="width:100%;">
+                                                                        @Html.TextBox("GMapLogitude", null, new { @class = "form-control ", disabled = "disabled" })
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group col-md-4" style="width:15%;">
+                                                                    @Html.Label("التليفون", htmlAttributes: new { @class = "control-label col-md-4", @style = "width:90%" })
+                                                                    <br />
+                                                                    <div class="input-group col-md-6" style="width:100%;">
+                                                                        @Html.TextBox("Phone", null, new { @class = "form-control "@*, @onkeyup = "countMMSChar(this)"*@ })
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-group col-md-4" style="width:15%;">
+                                                                    @Html.Label("الموبايل", htmlAttributes: new { @class = "control-label col-md-4", @style = "width:90%" })
+                                                                    <br />
+                                                                    <div class="input-group col-md-6" style="width:100%;">
+                                                                        @Html.TextBox("Mobile", null, new { @class = "form-control "@*, @onkeyup = "countMMSChar(this)"*@ })
+                                                                    </div>
+                                                                </div>
+
+
+
+                                                            </div>
+                                                            <div class="row">
+                                                                <input id="pac-input" class="control" type="text" placeholder="بحث">
+                                                                <div id="map" style="width: 100%; height: 300px">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-offset-5 col-md-1" style="margin-right:44%;">
+                                                                    <input value="حفظ" id="btnAddRestaurantData" name="btnAddRestaurantData" type="button" class="btn blue-madison btn-default bt" style="margin-top:22px" />
+                                                                </div>
+                                                            </div>
+
+                                                            <div id="tableholderRestauarntData">
+
+                                                            </div>
+
+                                                        </div>
+                                                </div>
+                                            </div>
+
+
+
+                                        </div>
+
+
+                                    </div>
+
+
+
+
+
+
+
+
+
+
+                                    
+                                  
+
+
+                                    </div>
+                            </div>
+
+                        </div>
+                       
+                        <div class="form-actions fluid">
+                            <div class="row">
+                                <div class="col-md-offset-3 col-md-9">
+                                    <input type="submit" value="حفظ" class="btn green " />
+                                    <a href="Index" class="btn default">للخلف</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    <!-- END FORM-->
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript" src="~/Scripts/Pages/Restaurant.js"></script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5h1G8x0X-k7Kh9ufHzqtj2iYcZ-PVJa8&libraries=places&callback=initMap">
+</script>
+    <script>
+       
+        //jQuery().ready(function () {
+        //    $.validator.setDefaults({ ignore: "" });
+        //});
+        $(function () {
+           
+            $(window).keydown(function (event) {
+                if (event.keyCode == 13) {
+                    event.preventDefault();
+                    return false;
+                }
+            });
+          
+            $("#CountryID").change(function () {
+                debugger;
+                var selectedValue = $(this).val();
+                $.ajax({
+                    url: '/Restaurant/GetCityList',
+                    type: "POST",
+                    data: { id: selectedValue },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        debugger;
+                    },
+                    success: function (result) {
+                        var CityDdl = $('#CityID');
+                        CityDdl.empty();
+
+                        debugger;
+                        for (i = 0; i < result.data.length; i++) {
+                            debugger;
+                            CityDdl.append(
+                                 $('<option/>', {
+                                     value: result.data[i].ID,
+                                     html: result.data[i].Name
+                                 }));
+                        };
+                        $('#CityID').val(result.data[0].ID).change();
+
+                    }
+                });
+            });
+            $("#CityID").change(function () {
+                debugger;
+                var selectedValue = $(this).val();
+                $.ajax({
+                    url: '/Restaurant/GetRegionList',
+                    type: "POST",
+                    data: { id: selectedValue },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        debugger
+                    },
+                    success: function (result) {
+                        var RegionDdl = $('#RegionID');
+                        RegionDdl.empty();
+                        debugger
+                        
+                        for (i = 0; i < result.data.length; i++) {
+                            debugger
+                            RegionDdl.append(
+                                 $('<option/>', {
+                                     value: result.data[i].ID,
+                                     html: result.data[i].Name
+                                 }));
+                        };
+                        
+                        $('#RegionID').val(result.data[0].ID).change();
+                    }
+                });
+            });
+            $("#City").change(function () {
+                debugger;
+                var selectedValue = $(this).val();
+                $.ajax({
+                    url: '/Restaurant/GetRegionList',
+                    type: "POST",
+                    data: { id: selectedValue },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        debugger
+                    },
+                    success: function (result) {
+                        var RegionDdl = $('#RegionN');
+                        RegionDdl.empty();
+                        debugger
+
+                        for (i = 0; i < result.data.length; i++) {
+                            debugger
+                            RegionDdl.append(
+                                 $('<option/>', {
+                                     value: result.data[i].ID,
+                                     html: result.data[i].Name
+                                 }));
+                        };
+
+                        $('#RegionN').val(result.data[0].ID).change();
+                    }
+                });
+            });
+            $("#Stars").keypress(function (e) {
+                //if (e.which == 13) {
+                //    handleClick(e);
+                //    return false; //<---- Add this line
+                //}
+                debugger;
+                if (isNaN(this.value)) {
+                    alert("إدخل نجوم المطعم بالأرقام");
+                    return false;
+                }
+            });
+            $("#FeeTypeID").change(function () {
+                debugger;
+                var selectedValue = $(this).val();
+                $.ajax({
+                    url: '/Restaurant/GetFeeValue',
+                    type: "POST",
+                    data: { id: selectedValue },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        $('label[for="FeeValue"]').html("");
+                        $('label[for="FeeValue"]').hide();
+                    },
+                    success: function (result) {
+                        $('label[for="FeeValue"]').html(result);
+                        $('label[for="FeeValue"]').hide();
+                        if (result != "") {
+                            $('label[for="FeeValue"]').html(result);
+                            $('label[for="FeeValue"]').show();
+                        }
+                        
+                    }
+                });
+            });
+        //$('#Openingtime').timepicker();
+            //$('#Closetime').timepicker();
+           $('.timepicker').timepicker();
+        });
+        //
+      
+       
+    </script>
+
+
+<script>
+      // Note: This example requires that you consent to location sharing when
+      // prompted by your browser. If you see the error "The Geolocation service
+      // failed.", it means you probably did not give permission for the browser to
+      // locate you.
+      var map, infoWindow;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: { lat: 24.089723515381433, lng: 38.04842233657837 },
+            zoom: 17,
+            mapTypeId: 'terrain'
+        });
+        infoWindow = new google.maps.InfoWindow;
+
+        // Try HTML5 geolocation.
+        //if (navigator.geolocation) {
+        //  navigator.geolocation.getCurrentPosition(function(position) {
+        //    var pos = {
+        //      lat: position.coords.latitude,
+        //      lng: position.coords.longitude
+        //    };
+        //    debugger;
+        //    infoWindow.setPosition(pos);
+        //    infoWindow.setContent('Location found.');
+        //    infoWindow.open(map);
+        //    map.setCenter(pos);
+        //    var marker = new google.maps.Marker({
+        //        position: pos,
+        //        map: map,
+        //        animation: google.maps.Animation.BOUNCE   
+        //    });
+        //  }, function() {
+        //    handleLocationError(true, infoWindow, map.getCenter());
+        //  });
+        //} else {
+        //  // Browser doesn't support Geolocation
+        //  handleLocationError(false, infoWindow, map.getCenter());
+        //}
+        google.maps.event.addListener(map, 'click', function (e) {
+            $('#GMapLogitude').val(e.latLng.lng());
+           // $("#MapLongitude").validate();
+            $('#GMapLutitude').val(e.latLng.lat());
+           // $("#MapLatitude").validate();
+            //alert("Latitude: " + e.latLng.lat() + "\r\nLongitude: " + e.latLng.lng());
+        });
+          //==============================================
+          //DM 21-8-2017 Search in GoogleMap
+          // Create the search box and link it to the UI element.
+        
+        var input = document.getElementById('pac-input');
+        var searchBox = new google.maps.places.SearchBox(input);
+        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+          // Bias the SearchBox results towards current map's viewport.
+        map.addListener('bounds_changed', function () {
+           
+            searchBox.setBounds(map.getBounds());
+        });
+        var markers = [];
+          // Listen for the event fired when the user selects a prediction and retrieve
+          // more details for that place.
+        searchBox.addListener('places_changed', function () {
+          
+            var places = searchBox.getPlaces();
+
+            if (places.length == 0) {
+                return;
+            }
+
+            // Clear out the old markers.
+            markers.forEach(function (marker) {
+                marker.setMap(null);
+            });
+            markers = [];
+
+            // For each place, get the icon, name and location.
+            var bounds = new google.maps.LatLngBounds();
+            places.forEach(function (place) {
+                if (!place.geometry) {
+                    console.log("Returned place contains no geometry");
+                    return;
+                }
+                var icon = {
+                    url: place.icon,
+                    size: new google.maps.Size(71, 71),
+                    origin: new google.maps.Point(0, 0),
+                    anchor: new google.maps.Point(17, 34),
+                    scaledSize: new google.maps.Size(25, 25)
+                };
+
+                // Create a marker for each place.
+                markers.push(new google.maps.Marker({
+                    map: map,
+                    icon: icon,
+                    title: place.name,
+                    position: place.geometry.location
+                }));
+
+                if (place.geometry.viewport) {
+                    // Only geocodes have viewport.
+                    bounds.union(place.geometry.viewport);
+                } else {
+                    bounds.extend(place.geometry.location);
+                }
+            });
+            map.fitBounds(bounds);
+        });
+
+      }
+
+      //function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+      //  infoWindow.setPosition(pos);
+      //  infoWindow.setContent(browserHasGeolocation ?
+      //                        'Error: The Geolocation service failed.' :
+      //                        'Error: Your browser doesn\'t support geolocation.');
+      //  infoWindow.open(map);
+      //}
+</script>
+
+}

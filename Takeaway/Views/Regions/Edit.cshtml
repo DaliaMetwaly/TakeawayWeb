@@ -1,0 +1,196 @@
+﻿@model Takeaway.Models.Region
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="page-content" style="min-height: 1119px">
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="~/Home/index">الرئيسية</a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+            <li>
+                <a href="/Regions/Index"> المناظق</a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+            <li>
+                تعديل منطقة
+            </li>
+        </ul>
+    </div>
+    <div id="divMsg">@Html.Raw(ViewBag.Msg)</div>
+    <div class="row">
+        <div class="col-md-12">
+            @*<div id="bootstrap_alerts_demo">
+                </div>*@
+            <div class="portlet box grey-salsa">
+                <div class="portlet-title">
+                    <div class="caption">
+                        تعديل منطقة
+                    </div>
+                    <div class="tools">
+                        <a href="javascript:;" class="collapse" data-original-title="" title=""></a>
+                    </div>
+                </div>
+                <div class="portlet-body form">
+
+                    <!-- BEGIN FORM-->
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(false, "", new { @class = "Metronic-alerts alert alert-danger fade in" })
+                        @Html.HiddenFor(model => model.ID)
+                          <div class="row">
+                            <div class="col-md-9 ">
+                                <div class="form-body">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.RegionAr, htmlAttributes: new { @class = "col-md-4 control-label" })
+                                        <div class="input-group col-md-4">
+                                            @Html.EditorFor(model => model.RegionAr, new { htmlAttributes = new { placeholder = "إدخل المنطقة", @class = "form-control" } })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.RegionAr, "", new { @class = "text-danger" })
+                                                @***@
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.RegionEn, htmlAttributes: new { @class = "col-md-4 control-label" })
+                                        <div class="input-group col-md-4">
+                                            @Html.EditorFor(model => model.RegionEn, new { htmlAttributes = new { placeholder = "Region Name", @class = "form-control" } })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.RegionEn, "", new { @class = "text-danger" })
+                                                @***@
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.CountryID, new { @class = "col-md-4 control-label " })
+                                        <div class="input-group col-md-6">
+                                            @Html.DropDownListFor(model => model.CountryID, ViewBag.CountryID as List<SelectListItem>, " اختر الدولة ", new { @class = "form-control select2me" })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.CountryID, null, new { @class = "text-danger" })
+                                            </span>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.CityID, new { @class = "col-md-4 control-label " })
+                                        <div class="input-group col-md-6">
+                                            @Html.DropDownListFor(model => model.CityID, ViewBag.CityID as List<SelectListItem>, " اختر المدينة ", new { @class = "form-control select2me" })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.CityID, null, new { @class = "text-danger" })
+                                            </span>
+                                        </div>
+                                    </div>
+                                  
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.PostalCode, "الرقم البريدى", htmlAttributes: new { @class = "col-md-4 control-label" })
+                                        <div class="input-group col-md-4">
+                                            @Html.EditorFor(model => model.PostalCode, new { htmlAttributes = new { placeholder = "إدخل الرقم البريدى", @class = "form-control", cols = "105" } })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.PostalCode, "", new { @class = "text-danger" })
+                                                @***@
+                                            </span>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-body">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.NotesAr, "الملاحظات بالعربى", htmlAttributes: new { @class = "col-md-4 control-label" })
+                                            <div class="input-group col-md-4">
+                                                @Html.TextAreaFor(model => model.NotesAr,  new { placeholder = "إدخل الملاحظات", @class = "form-control", cols = "105"  })
+                                                <span class="input-group-addon input-circle-right">
+                                                    @Html.ValidationMessageFor(model => model.NotesAr, "", new { @class = "text-danger" })
+                                                    @***@
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.NotesEn, "الملاحظات بالانجليزى", htmlAttributes: new { @class = "col-md-4 control-label" })
+                                            <div class="input-group col-md-4">
+                                                @Html.TextAreaFor(model => model.NotesEn,  new { placeholder = "Notes", @class = "form-control", cols = "105"  })
+                                                <span class="input-group-addon input-circle-right">
+                                                    @Html.ValidationMessageFor(model => model.NotesEn, "", new { @class = "text-danger" })
+                                                    @***@
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group" style="display:none;">
+                                            @Html.LabelFor(model => model.IsActive, "تفعيل", htmlAttributes: new { @class = "col-md-4 control-label" })
+                                            <div class="input-group col-md-4">
+                                                @Html.EditorFor(model => model.IsActive, new { @class = "form-control" })
+                                                <span class="input-group-addon input-circle-right">
+                                                    @***@
+                                                </span>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="form-actions fluid">
+                            <div class="row">
+                                <div class="col-md-offset-3 col-md-9">
+                                    <input type="submit" value="حفظ" class="btn green " />
+                                    <a href="../Index" class="btn default">للخلف</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    <!-- END FORM-->
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+
+    <script>
+        $(document).ready(function () {
+          
+            $("#CountryID").change(function () {
+
+                $("#CityID").empty();
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("Get_city")', // we are calling json method
+                    dataType: 'json',
+                    data: { id: $("#CountryID").val() },
+                    success: function (_city) {
+                        // states contains the JSON formatted list
+                        // of states passed from the controller
+                        $.each(_city, function (i, city) {
+                            $("#CityID").append('<option value="' + city.Value + '">' + city.Text + '</option>');
+                        }); // here we are adding option for States
+                    },
+                    error: function (ex) {
+                        $("#CityID").append('<option value="' + null + '">' + "اختر المدينة" + '</option>');
+
+                        // alert('please choose the company' );
+                    }
+                });
+                return false;
+            });
+
+
+        });
+    </script>
+}

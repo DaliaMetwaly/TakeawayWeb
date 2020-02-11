@@ -1,0 +1,782 @@
+﻿@model Takeaway.Models.OrderViewModel
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="page-content" style="min-height: 1119px">
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="~/Home/index">الرئيسية</a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+            <li>
+                <a href="/Orders/Index"> الطلبات  </a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+            <li>
+                تعديل طلب
+            </li>
+        </ul>
+    </div>
+    <div id="divMsg">@Html.Raw(ViewBag.Msg)</div>
+    <div class="row">
+        <div class="col-md-12">
+            @*<div id="bootstrap_alerts_demo">
+                </div>*@
+            <div class="portlet box grey-salsa">
+                <div class="portlet-title">
+                    <div class="caption">
+                        تعديل طلب
+                    </div>
+                    <div class="tools">
+                        <a href="javascript:;" class="collapse" data-original-title="" title=""></a>
+                    </div>
+                </div>
+                <div class="portlet-body form">
+
+                    <!-- BEGIN FORM-->
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(false, "", new { @class = "Metronic-alerts alert alert-danger fade in" })
+                        @Html.HiddenFor(model => model.ID)
+                        <div class="row">
+                            <div class="col-md-12 ">
+                                <div class="form-body">
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.DeliveryUserID, new { @class = "col-md-2 control-label " })
+                                        <div class="input-group col-md-4">
+                                            @Html.DropDownListFor(model => model.DeliveryUserID, ViewBag.DeliveryUserID as List<SelectListItem>, " اختر اسم المستخدم  ", new { @class = "form-control select2me" })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.DeliveryUserID, null, new { @class = "text-danger" })
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.RestaurantID, new { @class = "col-md-2 control-label " })
+                                        <div class="input-group col-md-4">
+                                            @Html.DropDownListFor(model => model.RestaurantID, ViewBag.RestaurantID as List<SelectListItem>, " اختر  المطعم ", new { @class = "form-control select2me" })
+                                            <span class="input-group-addon input-circle-right">
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.OrderStatusID, new { @class = "col-md-2 control-label " })
+                                        <div class="input-group col-md-4">
+                                            @Html.DropDownListFor(model => model.OrderStatusID, ViewBag.OrderStatusID as List<SelectListItem>, " اختر حالة الطلب  ", new { @class = "form-control select2me" })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.OrderStatusID, null, new { @class = "text-danger" })
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    @*<div class="form-group">
+                                        @Html.LabelFor(model => model.PayType, new { @class = "col-md-2 control-label " })
+                                        <div class="input-group col-md-4">
+                                            @Html.DropDownListFor(model => model.PayType, ViewBag.PayType as List<SelectListItem>, " اختر نوع الدفع ", new { @class = "form-control select2me" })
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.PayType, null, new { @class = "text-danger" })
+                                            </span>
+                                        </div>
+                                    </div>*@
+
+
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.OrderDate, htmlAttributes: new { @class = "col-md-2 control-label" })
+                                        <div class="input-group col-md-4">
+                                            @Html.EditorFor(model => model.OrderDate, new { htmlAttributes = new { placeholder = "  Order Date  ", @class = "form-control" } })
+
+                                            <span class="input-group-addon input-circle-right">
+                                                @Html.ValidationMessageFor(model => model.OrderDate, "", new { @class = "text-danger" })
+                                                @***@
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    @*<div class="form-group">
+                                            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "col-md-4 control-label" })
+                                            <div class="input-group col-md-4">
+                                                @Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { placeholder = "إدخل الملاحظات", @class = "form-control", cols = "105" } })
+                                                <span class="input-group-addon input-circle-right">
+                                                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                                                </span>
+                                            </div>
+                                        </div>*@
+                                    <div class="form-group" style="display:none;">
+                                        <div class="col-md-2">
+
+                                        </div>
+                                        <div class="input-group col-md-4">
+                                            <div class="md-checkbox">
+                                                @Html.CheckBoxFor(model => model.IsActive, new { @class = "md-check" })
+                                                <label for="IsActive">
+                                                    التفعيل
+                                                    <span class="inc"></span>
+                                                    <span class="check"></span>
+                                                    <span class="box"></span>
+                                                </label>
+                                            </div>
+                                            <span class="input-group-addon input-circle-right">
+                                            </span>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+
+                                <div class="form-group">
+                                    @Html.Label("ItemFoodID", "نوع الوجبه", new { @class = "col-md-2 control-label " })
+                                    <div class="input-group col-md-4">
+                                        @Html.DropDownList("ItemFoodID", ViewBag.ItemFoodID as List<SelectListItem>, " اختر الوجبة   ", new { @class = "form-control select2me" })
+                                        <span class="input-group-addon input-circle-right">
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group" id="CookingDiv" style="display: none; ">
+                                    @Html.Label("ItemFoodID", "درجة التسوية", new { @class = "col-md-2 control-label " })
+                                    <div class="input-group col-md-4">
+                                        @Html.DropDownList("CookingCatID", ViewBag.CookingCatID as List<SelectListItem>, " اختر درجة التسوية   ", new { @class = "form-control select2me" })
+                                        <span class="input-group-addon input-circle-right">
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.Label("", "العدد", htmlAttributes: new { @class = "col-md-2 control-label" })
+                                    <div class="input-group col-md-4">
+                                        @Html.Editor("count", new { htmlAttributes = new { placeholder = "  count   ", @class = "form-control", @Value = "1" } })
+
+                                        <span class="input-group-addon input-circle-right">
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.Label("", "اضافات", htmlAttributes: new { @class = "col-md-2 control-label", @id = "LBL_Addition", @style = "display:none" })
+                                    <div id="radio_button_addition" class="input-group col-md-4">
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.Label("", "مشروبات", htmlAttributes: new { @class = "col-md-2 control-label", @id = "LBL_drink", @style = "display:none" })
+                                    <div id="radio_button_drink" class="input-group col-md-4">
+
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-offset-3 col-md-9">
+                                        <input type="button" id="btnSaveFood" value="إضافة وجبة" class="btn green " />
+
+
+                                    </div>
+                                </div>
+
+                                <div style="padding-top: 4em;"></div>
+                                <div id="_Drink" style="display:none;">
+                                    <div class="portlet box grey">
+                                        <div class="portlet-title">
+                                            <div class="caption">
+                                                <i class="fa fa-gift"></i>  الاضافات والمشروبات
+                                            </div>
+                                            <div class="tools">
+                                                <a href="" class="collapse">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="portlet-body">
+                                            <div class="form-body">
+                                                <div class="cold-md-12">
+
+                                                    <div id="tableholder" class="row">
+
+                                                    </div>
+
+                                                    <div id="tableholder2" class="row">
+                                                        @*<div class="col-md-6 col-sm-6">*@
+                                                        @*Details Table*@
+                                                        @*</div>*@
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                    </div>
+
+
+                                </div>
+                                <div style="padding-top: 4em;"></div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.TotalPrice, htmlAttributes: new { @class = "col-md-2 control-label" })
+                                    <div class="input-group col-md-4">
+                                        @Html.EditorFor(model => model.TotalPrice, new { htmlAttributes = new { placeholder = "  Total Price  ", @class = "form-control", @Value = "0.0" } })
+
+                                        <span class="input-group-addon input-circle-right">
+                                            @Html.ValidationMessageFor(model => model.TotalPrice, "", new { @class = "text-danger" })
+                                            @***@
+                                        </span>
+                                    </div>
+                                </div>
+
+                       
+                               
+                             
+
+
+                            </div>
+                        </div>
+
+                        <div class="form-actions fluid">
+                            <div class="row">
+                                <div class="col-md-offset-3 col-md-9">
+                                    <input type="submit" id="btnSaveAll" value="حفظ" class="btn green " />
+                                    <a href="../Index" class="btn default">للخلف</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+
+                    <!-- END FORM-->
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    tr.even {
+        background-color: #F5F5F5 !important;
+        text-align: center;
+    }
+
+    .dataTables_filter input[type="search"] {
+        font-size: 14px;
+        font-weight: normal;
+        color: #333;
+        background-color: #fff;
+        border: 1px solid #989898;
+        box-shadow: none;
+        transition: border-color ease-in-out .15s, box-shadow;
+    }
+
+    .dataTables_length select {
+        font-size: 14px;
+        font-weight: normal;
+        color: #333;
+        background-color: #fff;
+        border: 1px solid #989898;
+        box-shadow: none;
+        transition: border-color ease-in-out .15s, box-shadow;
+    }
+</style>
+@section Scripts{
+
+    <script>
+        var table1;
+        var table;
+        var FoodsList = [];
+        var FoodsdetailsList = [];
+        
+        $(function () {
+            $('#OrderDate').datepicker(
+                {
+                    dateFormat: 'yy-mm-dd',
+                    autoclose: true
+                }
+            );
+        });
+
+        $(document).ready(function () {
+            $("#OrderDate").val('@Model.OrderDate.ToString("yyyy-MM-dd")');
+            var FoodEdittempListcount = '@Model.FoodEdittempList.Count()';
+            if (FoodEdittempListcount > 0) {
+
+                FoodsList =  @Html.Raw(Json.Encode(Model.FoodEdittempList));
+                FoodsListtable();
+                $('#_Drink').show();
+            }
+            var selection = '@Model.ID';
+           
+        });
+
+        var radiobuttonlists = [];
+        $("#ItemFoodID").change(function () {
+            var ItemFoodId = $('#ItemFoodID').val();
+            $.ajax({
+                url: '/Orders/FillRadiobutton',
+                type: "GET",
+                data: { 'ItemFoodId': ItemFoodId },
+                dataType: "JSON",
+                contentType: "application/json",
+                success: function (response) {
+                    if (response.IsCooking == false) {
+                        $("#CookingDiv").hide();
+                    }
+                    else {
+                        $("#CookingDiv").show();
+                    }
+                    if (response.foodlist.length > 0) {
+                        radiobuttonlists = response.foodlist;
+                        $("#radio_button_drink").empty();
+                        $("#radio_button_addition").empty();
+
+                        for (var i = 0; i < radiobuttonlists.length; i++) {
+
+                            if (response.foodlist[i].CategoryTypeID == "3") {
+                                var radio_home = document.getElementById("radio_button_addition");
+
+                                var label = document.createElement("label");
+                                var radio = document.createElement("input");
+                                radio.type = "radio";
+                                radio.name = "adds";
+                                radio.value = response.foodlist[i].FoodName;
+                                radio.id = response.foodlist[i].ID;
+                                label.appendChild(radio);
+
+                                label.appendChild(document.createTextNode(response.foodlist[i].FoodName));
+                                radio_home.appendChild(label);
+                            }
+
+                            else if (response.foodlist[i].CategoryTypeID == "2") {
+
+                                var radio_home = document.getElementById("radio_button_drink");
+                                var label = document.createElement("label");
+                                var radio = document.createElement("input");
+                                radio.type = "radio";
+                                radio.name = "drinks";
+                                radio.value = response.foodlist[i].FoodName;
+                                radio.id = response.foodlist[i].ID;
+                                label.appendChild(radio);
+
+                                label.appendChild(document.createTextNode(response.foodlist[i].FoodName));
+                                radio_home.appendChild(label);
+                            }
+
+                        }
+                        $("#LBL_Addition").css('display', 'inline');
+                        $("#LBL_drink").css('display'   , 'inline');
+                    }
+                    else {
+
+                        $("#radio_button_drink").empty();
+                        $("#radio_button_addition").empty();
+                        $("#LBL_Addition").css('display', 'none');
+                        $("#LBL_drink").css('display'   , 'none');
+                    }
+
+                },
+                error: function (xhr, status, error) {
+                    //alert('Error   ' + error.text);
+                    $("#ValidationSummary").text("error");
+
+                }
+
+
+
+            });
+        });
+
+        $("#btnSaveFood").click(function () {
+            debugger;
+            var selection = $("#ItemFoodID").val();
+            if(selection!=""){
+            $.ajax({
+                url: '/Orders/addtempDrinks',
+                contentType: "application/json; charset=utf-8",
+                datatype: 'Json',
+                type: "Get",
+                async: false,
+                data: { Id: selection },
+                success: function (Data) {
+                    if (Data.length != 0) {
+
+                        if (Data.isCooking == false) {
+                            FoodsList.push({
+                                Id: $("#ItemFoodID option:selected").val(),
+                                FoodName: $("#ItemFoodID option:selected").text(),
+                                CookingCatID: 1,
+                                FoodPrice: Data.FoodPrice,
+                                Foodcount: $("#count").val(),
+                                CatTypeId: Data.FoodCatType,
+                                ItemfoodAddId: $('#radio_button_addition').find('input[name=adds]:checked').attr('id'),
+                                ItemfoodDrinkId: $('#radio_button_drink').find('input[name=drinks]:checked').attr('id')
+                            });
+                        }
+                        else {
+                            FoodsList.push({
+                                Id: $("#ItemFoodID option:selected").val(),
+                                FoodName: $("#ItemFoodID option:selected").text(),
+                                CookingCatID: $("#CookingCatID option:selected").val(),
+                                FoodPrice: Data.FoodPrice,
+                                Foodcount: $("#count").val(),
+                                CatTypeId: Data.FoodCatType,
+                                ItemfoodAddId: $('#radio_button_addition').find('input[name=adds]:checked').attr('id'),
+                                ItemfoodDrinkId: $('#radio_button_drink').find('input[name=drinks]:checked').attr('id')
+                            });
+                        }
+                        var addition = $('#radio_button_addition').find('input[name=adds]:checked').attr('id');
+                        var drink = $('#radio_button_drink').find('input[name=drinks]:checked').attr('id');
+
+
+                        FoodsListtable();
+                    }
+                },
+                error: function () {
+                    alert('Error.' + Data.length);
+                }
+            });
+            }
+
+        });
+
+        function FoodsListtable() {
+            // table.destroy();
+            var totalPrice = 0;
+            $("#tblcategories").remove();
+            $("#myTable").remove();
+            var myTable = "<table id='tblcategories' class='table table-striped table-bordered table-hover dataTable no-footer'><tr><td style='width: 100px; color: red;'>الاسم</td>";
+            myTable += "<td style='width: 100px; color: red; display:none;'>id </td>";
+            myTable += "<td style='width: 100px; color: red; text-align: right;'>السعر </td>";
+            myTable += "<td style='width: 100px; color: red; text-align: right;'>نوع الصنف </td>";
+            myTable += "<td style='width: 100px; color: red; text-align: right;'>الكمية </td>";
+            myTable += "<td style='width: 100px; color: red; text-align: right;'>حذف</td>";
+            myTable += "<td style='width: 100px; color: red; text-align: right;'>التفاصيل</td></tr>";
+
+
+            for (var i = 0; i < FoodsList.length; i++) {
+                if (FoodsList[i].ItemFoodParentID == 0) {
+                    myTable += "<tr><td style='width: 100px;'>" + FoodsList[i].FoodName + "</td>";
+                    myTable += "<td style='width: 100px; display:none;' class='id'>" + FoodsList[i].Id + "</td>";
+                    myTable += "<td style='width: 100px;'>" + FoodsList[i].FoodPrice + "</td>";
+                    myTable += "<td style='width: 100px;'>" + FoodsList[i].FoodCatType + "</td>";
+                    myTable += "<td style='width: 100px;'>" + FoodsList[i].Foodcount + "</td>";
+                    myTable += "<td style='width: 100px; text-align: right;'><input type='button' id='deletecat' class='removebutton btn default btn-xs black' value='حذف'/></td>";
+                    myTable += "<td class='details-control' style='width: 100px; text-align: right;'><input type='button' id='detailfood'  value='+'/></td></tr>";
+                }
+                else{
+                    myTable += "<tr><td style='width: 100px;display:none;'>" + FoodsList[i].FoodName + "</td>";
+                    myTable += "<td style='width: 100px; display:none;' class='id'>" + FoodsList[i].Id + "</td>";
+                    myTable += "<td style='width: 100px;display:none;'>" + FoodsList[i].FoodPrice + "</td>";
+                    myTable += "<td style='width: 100px;display:none;'>" + FoodsList[i].FoodCatType + "</td>";
+                    myTable += "<td style='width: 100px;display:none;'>" + FoodsList[i].Foodcount + "</td>";
+                    myTable += "<td style='width: 100px;display:none; text-align: right;'><input type='button' id='deletecat' class='removebutton btn default btn-xs black' value='حذف'/></td>";
+                    myTable += "<td class='details-control' style='width: 100px; display:none;text-align: right;'><input type='button' id='detailfood'  value='+'/></td></tr>";
+                }
+                totalPrice = totalPrice + FoodsList[i].FoodPrice * FoodsList[i].Foodcount;
+            }
+            for (var i = 0; i < FoodsdetailsList.length; i++) {
+
+                myTable += "<tr><td style='width: 100px;'>" + FoodsdetailsList[i].FoodName + "</td>";
+                    myTable += "<td style='width: 100px; display:none;' class='id'>" + "0" + "</td>";
+                    myTable += "<td style='width: 100px;'>" + FoodsdetailsList[i].FoodPrice + "</td>";
+                    myTable += "<td style='width: 100px;'>" + FoodsdetailsList[i].CatTypeId + "</td>";
+                    myTable += "<td style='width: 100px;'>" + FoodsdetailsList[i].Foodcount + "</td>";
+                    myTable += "<td style='width: 100px; text-align: right;'><input type='button' id='newdeletecat' class='removebutton btn default btn-xs black' value='حذف'/></td>";
+                    myTable += "<td class='details-control' style='width: 100px; text-align: right;'><input type='button' id='newdetailfood'  value='+'/></td></tr>";
+
+                    totalPrice = totalPrice + FoodsdetailsList[i].FoodPrice * FoodsdetailsList[i].Foodcount;
+            }
+
+            myTable += "</table>";
+            $("#tableholder").append(myTable);
+            $('#TotalPrice').val(totalPrice);
+        }
+       
+
+        $(document).on('click', '#newdetailfood', function () {
+            debugger;
+            var ItemIndex = $(this).closest('tr').index();
+            var realindex = ItemIndex - 1-FoodsList.length;
+            var tr = $(this).closest('tr');
+            var AddditionId =FoodsList[realindex].ItemfoodAddId == undefined ? 0 : FoodsdetailsList[realindex].ItemfoodAddId;
+            var DrinkId = FoodsList[realindex].ItemfoodDrinkId == undefined ? 0 : FoodsdetailsList[realindex].ItemfoodDrinkId;
+            if(AddditionId!=0||DrinkId!=0){
+                $.ajax({
+                    url: "@Url.Action("GetnewEditDetails")?AddditionId=" + AddditionId + "&DrinkId=" + DrinkId,
+
+                  //  url: '/Orders/GetnewEditDetails/' + AddditionId,
+                    type: "GET",
+                    dataType: "JSON",
+                    contentType: "application/json",
+                    success: function (response) {
+                        if (response.length>0) {
+                            $("#tblQueueMessageDetails").remove();
+                            $("#tableholder2").append(newformat(response));
+                            tr.addClass('shown');
+                        }
+                        else {
+                            $("#tblQueueMessageDetails").remove();
+
+                            $("#tableholder2").append(newformat(""));
+                            tr.addClass('shown');
+                        }
+                    },
+                    error: function () {
+                        alert('Error. Please try again.');
+                    }
+                });
+            }
+
+            else{
+               
+                        $("#tblQueueMessageDetails").remove();
+
+                        $("#tableholder2").append(newformat(""));
+                        tr.addClass('shown');
+                   
+            }
+        });
+
+        $(document).on('click', '#detailfood', function () {
+
+            var ItemIndex = $(this).closest('tr').index();
+            var realindex = ItemIndex - 1;
+            var tr = $(this).closest('tr');
+
+            var transactionId = tr.find('.id').text();
+            $.ajax({
+                url: '/Orders/GetEditDetails?id=' + transactionId+'&&orderID='+'@Model.ID',
+                type: "GET",
+                dataType: "JSON",
+                contentType: "application/json",
+                success: function (response) {
+                    if (response.length>0) {
+                        $("#tblQueueMessageDetails").remove();
+
+                        $("#tableholder2").append(format(response));
+                        tr.addClass('shown');
+                    }
+                    else {
+                        $("#tblQueueMessageDetails").remove();
+
+                        $("#tableholder2").append(newformat(""));
+                        tr.addClass('shown');
+                    }
+                },
+                error: function () {
+                    alert('Error. Please try again.');
+                }
+            });
+        });
+
+
+
+        function format(d) {
+            // `d` is the original data object for the row
+
+            var sOut = '';
+            sOut += '<table id="tblQueueMessageDetails" class="table table-striped table-bordered table-hover Details">';
+            sOut += '<thead>';
+            sOut += '<tr class="heading">';
+            sOut += '<th class="text-center">الإسم</th>';
+            sOut += '<th class="text-center">التصنيف </th>';
+            sOut += '</tr>';
+            sOut += '</thead>';
+            sOut += '<tbody>';
+            if (d.length != 0) {
+                for (var i = 0; i < d.length; i++) {
+                    sOut += '<tr role="row" >';
+                    sOut += '<td class="text-center">' + d[i].FoodName + '</td>';
+                    sOut += '<td class="text-center">' + d[i].CategoryTypeName + ' </td>';
+                    sOut += '</tr>';
+                }
+            } else if(d=="") {
+                sOut += '<tr role="row" >';
+                sOut += '<td class="text-center" colspan="2">عفوا لا يوجد تفاصيل</td>';
+                sOut += '</tr>';
+
+            }
+
+            sOut += '</tbody>';
+            sOut += '</table>';
+            return sOut;
+        }
+        function newformat(d) {
+            // `d` is the original data object for the row
+
+            var sOut = '';
+            sOut += '<table id="tblQueueMessageDetails" class="table table-striped table-bordered table-hover Details">';
+            sOut += '<thead>';
+            sOut += '<tr class="heading">';
+            sOut += '<th class="text-center">الإسم</th>';
+            sOut += '<th class="text-center">التصنيف</th>';
+            sOut += '</tr>';
+            sOut += '</thead>';
+            sOut += '<tbody>';
+            if (d.length != 0) {
+                for (var i = 0; i < d.length; i++) {
+                    sOut += '<tr role="row" >';
+                    sOut += '<td class="text-center">' + d[i].FoodName + '</td>';
+                    sOut += '<td class="text-center">' + d[i].CategoryTypeName + ' </td>';
+                    sOut += '</tr>';
+                }
+            } else {
+                sOut += '<tr role="row" >';
+                sOut += '<td class="text-center" colspan="2">عفوا لا يوجد تفاصيل</td>';
+                sOut += '</tr>';
+
+            }
+
+            sOut += '</tbody>';
+            sOut += '</table>';
+            return sOut;
+        }
+        $(document).on('click', '#deletecat', function () {
+
+            var ItemIndex = $(this).closest('tr').index();
+            var realindex = ItemIndex - 1;
+            //FoodsList.splice(realindex, 1);
+            var itemfoodid= FoodsList[realindex].Id;
+            var orderId=FoodsList[realindex].OrderId;
+            $.ajax({
+                url: "@Url.Action("DeleteEditDetails")?itemfoodid=" + itemfoodid + "&orderId=" + orderId,
+                type: "Get",
+                dataType: "JSON",
+                contentType: "application/json",
+                success: function (response) {
+                    FoodsList=response;
+                    FoodsListtable();
+                    //check is successfully save to database
+                    //  alert("Done:" + response.text);
+                },
+                error: function () {
+                    alert('Error.' + FoodsList.length);
+
+                }
+            });
+          
+
+
+        });
+        $(document).on('click', '#newdeletecat', function () {
+
+            var ItemIndex = $(this).closest('tr').index();
+            var realindex = ItemIndex - 1 -FoodsList.length;
+            FoodsdetailsList.splice(realindex, 1);
+            FoodsListtable();
+
+        });
+
+
+        $("#btnSaveAll").click(function () {
+
+            var isValidItem = true;
+
+            //if ($("#DeliveryUserID").val().trim() == '') {
+            //    isValidItem = false;
+            //    ArreyError.push({ code: "1", ErrorName: "Please Enter Delivery User" });
+            //}
+
+
+            //if ($("#RestaurantID").val().trim() == '') {
+            //    isValidItem = false;
+            //    ArreyError.push({ code: "4", ErrorName: "Please Enter Restaurant " });
+            //}
+
+
+            //if ($("#PayType").val().trim() == '') {
+            //    isValidItem = false;
+            //    ArreyError.push({ code: "12", ErrorName: "Please Enter Pay Type " });
+            //}
+
+            //if ($("#TotalPrice").val().trim() == '') {
+            //    isValidItem = false;
+            //    ArreyError.push({ code: "12", ErrorName: "Please Enter Total Price  " });
+            //}
+            //if ($("#OrderDate").val().trim() == '') {
+            //    isValidItem = false;
+            //    ArreyError.push({ code: "12", ErrorName: "Please Enter Order Date  " });
+            //}
+
+
+
+
+            //  ValidationSummary(ArreyError);
+
+
+            if (isValidItem) {
+                var OrderViewModel = {
+                    OrderViewModel: {
+                        ID: $("#ID").val().trim(),
+                        DeliveryUserID: $("#DeliveryUserID").val().trim(),
+                        RestaurantID: $("#RestaurantID").val().trim(),
+                       // PayType: $("#PayType").val().trim(),
+                        OrderStatusID: $("#OrderStatusID").val().trim(),
+                        TotalPrice: $("#TotalPrice").val().trim(),
+                        OrderDate: $("#OrderDate").val().trim(),
+                        IsActive: $('#IsActive').is(':checked'),
+                        FoodtempList: FoodsdetailsList,
+                        FoodEdittempList: FoodsList,
+                    }
+                }
+
+                $.ajax({
+                    url: '/Orders/Edit',
+                    contentType: "application/json; charset=utf-8",
+                    type: "Post",
+                    async: false,
+                    data: JSON.stringify(OrderViewModel),
+                    success: function (response) {
+
+                        if (response.status == 2) {
+                            url = "/Orders/Index?Msg=1";
+                            window.location.replace(url);
+                        }
+                    },
+                    error: function (ex) {
+                        alert('Error.' );
+                    }
+                });
+            }
+        });
+        function ValidationSummary(ErrorName) {
+            var $summary = $('#ValidationSummary');
+            if (ErrorName.length > 0) {
+
+
+                // find the unordered list
+                var $ul = $summary.find("ul");
+
+                // Clear existing errors from DOM by removing all element from the list
+                $ul.empty();
+
+                // Add all errors to the list
+                $.each(ArreyError, function (index, msg) {
+                    $("<li />").html(msg.ErrorName).appendTo($ul);
+                });
+
+                // Add the appropriate class to the summary div
+                $summary.removeClass("validation-summary-valid")
+                    .addClass("validation-summary-errors Metronic-alerts alert alert-danger fade in");
+                ArreyError = [];
+                ArreyError.length = 0;
+                $('html,body').scrollTop(0);
+                $('#ValidationSummary').show();
+
+            }
+            else {
+
+                $summary.removeClass("validation-summary-errors Metronic-alerts alert alert-danger fade in")
+                 .addClass("validation-summary-valid");
+            }
+        }
+
+    </script>
+}
+
+

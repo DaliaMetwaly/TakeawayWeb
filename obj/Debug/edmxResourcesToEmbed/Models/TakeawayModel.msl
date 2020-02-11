@@ -1,0 +1,540 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TakeawayModelStoreContainer" CdmEntityContainer="TakeawayEntities">
+    <EntitySetMapping Name="ItemFoods">
+      <EntityTypeMapping TypeName="TakeawayModel.ItemFood">
+        <MappingFragment StoreEntitySet="ItemFood">
+          <ScalarProperty Name="IsCooking" ColumnName="IsCooking" />
+          <ScalarProperty Name="SizeID" ColumnName="SizeID" />
+          <ScalarProperty Name="IsDetete" ColumnName="IsDetete" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="NotforSale" ColumnName="NotforSale" />
+          <ScalarProperty Name="CategoryTypeID" ColumnName="CategoryTypeID" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="DescriptionEn" ColumnName="DescriptionEn" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="FoodNameEn" ColumnName="FoodNameEn" />
+          <ScalarProperty Name="FoodName" ColumnName="FoodName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cities">
+      <EntityTypeMapping TypeName="TakeawayModel.City">
+        <MappingFragment StoreEntitySet="Cities">
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="RegionID" ColumnName="RegionID" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="CityAr" ColumnName="CityAr" />
+          <ScalarProperty Name="CityEn" ColumnName="CityEn" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserRoles">
+      <EntityTypeMapping TypeName="TakeawayModel.AspNetUserRole">
+        <MappingFragment StoreEntitySet="AspNetUserRoles">
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUsers">
+      <EntityTypeMapping TypeName="TakeawayModel.AspNetUser">
+        <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="TakeawayModel.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="IsDetete" ColumnName="IsDetete" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="RestaurantID" ColumnName="RestaurantID" />
+          <ScalarProperty Name="DescriptionEn" ColumnName="DescriptionEn" />
+          <ScalarProperty Name="DescriptionAr" ColumnName="DescriptionAr" />
+          <ScalarProperty Name="CategoryNameEn" ColumnName="CategoryNameEn" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CategoryTypes">
+      <EntityTypeMapping TypeName="TakeawayModel.CategoryType">
+        <MappingFragment StoreEntitySet="CategoryType">
+          <ScalarProperty Name="IsDetete" ColumnName="IsDetete" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CategoryTypeNameEn" ColumnName="CategoryTypeNameEn" />
+          <ScalarProperty Name="CategoryTypeName" ColumnName="CategoryTypeName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChainRestaurants">
+      <EntityTypeMapping TypeName="TakeawayModel.ChainRestaurant">
+        <MappingFragment StoreEntitySet="ChainRestaurants">
+          <ScalarProperty Name="IsDetete" ColumnName="IsDetete" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ChainRestaurants_ar" ColumnName="ChainRestaurants_ar" />
+          <ScalarProperty Name="ChainRestaurants_En" ColumnName="ChainRestaurants_En" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cobones">
+      <EntityTypeMapping TypeName="TakeawayModel.Cobone">
+        <MappingFragment StoreEntitySet="Cobone">
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="CoboneTypeValue" ColumnName="CoboneTypeValue" />
+          <ScalarProperty Name="CoboneTypeID" ColumnName="CoboneTypeID" />
+          <ScalarProperty Name="CoboneNameEn" ColumnName="CoboneNameEn" />
+          <ScalarProperty Name="CoboneNameAr" ColumnName="CoboneNameAr" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CoboneTypes">
+      <EntityTypeMapping TypeName="TakeawayModel.CoboneType">
+        <MappingFragment StoreEntitySet="CoboneType">
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CoboneTypeNameEn" ColumnName="CoboneTypeNameEn" />
+          <ScalarProperty Name="CoboneTypeNameAr" ColumnName="CoboneTypeNameAr" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CoboneUsers">
+      <EntityTypeMapping TypeName="TakeawayModel.CoboneUser">
+        <MappingFragment StoreEntitySet="CoboneUser">
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="isUsed" ColumnName="isUsed" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="CoboneSerial" ColumnName="CoboneSerial" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="CoboneID" ColumnName="CoboneID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CookingCategories">
+      <EntityTypeMapping TypeName="TakeawayModel.CookingCategory">
+        <MappingFragment StoreEntitySet="CookingCategory">
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CookingCatNameEN" ColumnName="CookingCatNameEN" />
+          <ScalarProperty Name="CookingCatNameAR" ColumnName="CookingCatNameAR" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Countries">
+      <EntityTypeMapping TypeName="TakeawayModel.Country">
+        <MappingFragment StoreEntitySet="Countries">
+          <ScalarProperty Name="IsDetete" ColumnName="IsDetete" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CountryAr" ColumnName="CountryAr" />
+          <ScalarProperty Name="CountryEng" ColumnName="CountryEng" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cuisines">
+      <EntityTypeMapping TypeName="TakeawayModel.Cuisine">
+        <MappingFragment StoreEntitySet="Cuisine">
+          <ScalarProperty Name="IsDetete" ColumnName="IsDetete" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="DescriptionEn" ColumnName="DescriptionEn" />
+          <ScalarProperty Name="DescriptionAr" ColumnName="DescriptionAr" />
+          <ScalarProperty Name="CuisineEn" ColumnName="CuisineEn" />
+          <ScalarProperty Name="CuisineAr" ColumnName="CuisineAr" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CuisineRestaurants">
+      <EntityTypeMapping TypeName="TakeawayModel.CuisineRestaurant">
+        <MappingFragment StoreEntitySet="CuisineRestaurant">
+          <ScalarProperty Name="IsDetete" ColumnName="IsDetete" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="RestaurantID" ColumnName="RestaurantID" />
+          <ScalarProperty Name="CuisineID" ColumnName="CuisineID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DeliveryWays">
+      <EntityTypeMapping TypeName="TakeawayModel.DeliveryWay">
+        <MappingFragment StoreEntitySet="DeliveryWay">
+          <ScalarProperty Name="IsDetete" ColumnName="IsDetete" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="DeliveryNameEn" ColumnName="DeliveryNameEn" />
+          <ScalarProperty Name="DeliveryNameAr" ColumnName="DeliveryNameAr" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FoodTypes">
+      <EntityTypeMapping TypeName="TakeawayModel.FoodType">
+        <MappingFragment StoreEntitySet="FoodType">
+          <ScalarProperty Name="IsDetete" ColumnName="IsDetete" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="FoodTypeNameEn" ColumnName="FoodTypeNameEn" />
+          <ScalarProperty Name="FoodTypeNameAr" ColumnName="FoodTypeNameAr" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ItemFoodDetails">
+      <EntityTypeMapping TypeName="TakeawayModel.ItemFoodDetail">
+        <MappingFragment StoreEntitySet="ItemFoodDetails">
+          <ScalarProperty Name="IsDetete" ColumnName="IsDetete" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CategoryTypeID" ColumnName="CategoryTypeID" />
+          <ScalarProperty Name="AddItemFoodID" ColumnName="AddItemFoodID" />
+          <ScalarProperty Name="ItemFoodID" ColumnName="ItemFoodID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ItemFoodRates">
+      <EntityTypeMapping TypeName="TakeawayModel.ItemFoodRate">
+        <MappingFragment StoreEntitySet="ItemFoodRate">
+          <ScalarProperty Name="IsDetete" ColumnName="IsDetete" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="RateType" ColumnName="RateType" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="UserRate" ColumnName="UserRate" />
+          <ScalarProperty Name="ItemFoodID" ColumnName="ItemFoodID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ItemFoodTypes">
+      <EntityTypeMapping TypeName="TakeawayModel.ItemFoodType">
+        <MappingFragment StoreEntitySet="ItemFoodType">
+          <ScalarProperty Name="FoodTypeID" ColumnName="FoodTypeID" />
+          <ScalarProperty Name="ItemFoodID" ColumnName="ItemFoodID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NotificationMsgs">
+      <EntityTypeMapping TypeName="TakeawayModel.NotificationMsg">
+        <MappingFragment StoreEntitySet="NotificationMsg">
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="UserCategory" ColumnName="UserCategory" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NotificationUsers">
+      <EntityTypeMapping TypeName="TakeawayModel.NotificationUser">
+        <MappingFragment StoreEntitySet="NotificationUser">
+          <ScalarProperty Name="isSend" ColumnName="isSend" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="NotificationID" ColumnName="NotificationID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderStatus">
+      <EntityTypeMapping TypeName="TakeawayModel.OrderStatu">
+        <MappingFragment StoreEntitySet="OrderStatus">
+          <ScalarProperty Name="IsDetete" ColumnName="IsDetete" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDone" ColumnName="IsDone" />
+          <ScalarProperty Name="OrderStatus_En" ColumnName="OrderStatus_En" />
+          <ScalarProperty Name="OrderStatus_ar" ColumnName="OrderStatus_ar" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Packages">
+      <EntityTypeMapping TypeName="TakeawayModel.Package">
+        <MappingFragment StoreEntitySet="Package">
+          <ScalarProperty Name="IsDetete" ColumnName="IsDetete" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="PackageEndDate" ColumnName="PackageEndDate" />
+          <ScalarProperty Name="PackageStartDate" ColumnName="PackageStartDate" />
+          <ScalarProperty Name="PackagePeriod" ColumnName="PackagePeriod" />
+          <ScalarProperty Name="PackagePrice" ColumnName="PackagePrice" />
+          <ScalarProperty Name="PackageNameEn" ColumnName="PackageNameEn" />
+          <ScalarProperty Name="PackageNameAr" ColumnName="PackageNameAr" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PackageRestaurants">
+      <EntityTypeMapping TypeName="TakeawayModel.PackageRestaurant">
+        <MappingFragment StoreEntitySet="PackageRestaurant">
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="RestaurantID" ColumnName="RestaurantID" />
+          <ScalarProperty Name="PackageID" ColumnName="PackageID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RateTypes">
+      <EntityTypeMapping TypeName="TakeawayModel.RateType">
+        <MappingFragment StoreEntitySet="RateType">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="RateNameEn" ColumnName="RateNameEn" />
+          <ScalarProperty Name="RateNameAr" ColumnName="RateNameAr" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Regions">
+      <EntityTypeMapping TypeName="TakeawayModel.Region">
+        <MappingFragment StoreEntitySet="Regions">
+          <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+          <ScalarProperty Name="IsDetete" ColumnName="IsDetete" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="NotesEn" ColumnName="NotesEn" />
+          <ScalarProperty Name="NotesAr" ColumnName="NotesAr" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="CityID" ColumnName="CityID" />
+          <ScalarProperty Name="RegionAr" ColumnName="RegionAr" />
+          <ScalarProperty Name="RegionEn" ColumnName="RegionEn" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RestaurantAppointments">
+      <EntityTypeMapping TypeName="TakeawayModel.RestaurantAppointment">
+        <MappingFragment StoreEntitySet="RestaurantAppointment">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="CloseTime" ColumnName="CloseTime" />
+          <ScalarProperty Name="OpeningTime" ColumnName="OpeningTime" />
+          <ScalarProperty Name="Day" ColumnName="Day" />
+          <ScalarProperty Name="RestaurantID" ColumnName="RestaurantID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Restaurants">
+      <EntityTypeMapping TypeName="TakeawayModel.Restaurant">
+        <MappingFragment StoreEntitySet="Restaurants">
+          <ScalarProperty Name="OneMachine" ColumnName="OneMachine" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Region_Id" ColumnName="Region_Id" />
+          <ScalarProperty Name="City_Id" ColumnName="City_Id" />
+          <ScalarProperty Name="Country_Id" ColumnName="Country_Id" />
+          <ScalarProperty Name="Stars" ColumnName="Stars" />
+          <ScalarProperty Name="Logo" ColumnName="Logo" />
+          <ScalarProperty Name="MapLongitude" ColumnName="MapLongitude" />
+          <ScalarProperty Name="MapLatitude" ColumnName="MapLatitude" />
+          <ScalarProperty Name="MembershipExpired" ColumnName="MembershipExpired" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Date_modified" ColumnName="Date_modified" />
+          <ScalarProperty Name="Date_Created" ColumnName="Date_Created" />
+          <ScalarProperty Name="RestaurantStatus" ColumnName="RestaurantStatus" />
+          <ScalarProperty Name="DeliveryWayID" ColumnName="DeliveryWayID" />
+          <ScalarProperty Name="ChainRestaurants_id" ColumnName="ChainRestaurants_id" />
+          <ScalarProperty Name="RestaurantPhone" ColumnName="RestaurantPhone" />
+          <ScalarProperty Name="RestaurantDescrptionEn" ColumnName="RestaurantDescrptionEn" />
+          <ScalarProperty Name="RestaurantDescrption" ColumnName="RestaurantDescrption" />
+          <ScalarProperty Name="RestaurantName" ColumnName="RestaurantName" />
+          <ScalarProperty Name="RestaurantNameEn" ColumnName="RestaurantNameEn" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RestaurantStatus">
+      <EntityTypeMapping TypeName="TakeawayModel.RestaurantStatu">
+        <MappingFragment StoreEntitySet="RestaurantStatus">
+          <ScalarProperty Name="IsDetete" ColumnName="IsDetete" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="DescriptionEn" ColumnName="DescriptionEn" />
+          <ScalarProperty Name="DescriptionAr" ColumnName="DescriptionAr" />
+          <ScalarProperty Name="RestaurantStatusEn" ColumnName="RestaurantStatusEn" />
+          <ScalarProperty Name="RestaurantStatusAr" ColumnName="RestaurantStatusAr" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sizes">
+      <EntityTypeMapping TypeName="TakeawayModel.Size">
+        <MappingFragment StoreEntitySet="Size">
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="SizeAR" ColumnName="SizeAR" />
+          <ScalarProperty Name="SizeEN" ColumnName="SizeEN" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="TakeawayModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="DeviceID" ColumnName="DeviceID" />
+          <ScalarProperty Name="IsDetete" ColumnName="IsDetete" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="UserCategory" ColumnName="UserCategory" />
+          <ScalarProperty Name="LastLogin" ColumnName="LastLogin" />
+          <ScalarProperty Name="RegisterDate" ColumnName="RegisterDate" />
+          <ScalarProperty Name="IP_Address" ColumnName="IP_Address" />
+          <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+          <ScalarProperty Name="ContactEmail" ColumnName="ContactEmail" />
+          <ScalarProperty Name="ContactPhone" ColumnName="ContactPhone" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserComments">
+      <EntityTypeMapping TypeName="TakeawayModel.UserComment">
+        <MappingFragment StoreEntitySet="UserComment">
+          <ScalarProperty Name="IsDetete" ColumnName="IsDetete" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="RestaurantID" ColumnName="RestaurantID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserDatas">
+      <EntityTypeMapping TypeName="TakeawayModel.UserData">
+        <MappingFragment StoreEntitySet="UserData">
+          <ScalarProperty Name="IsDetete" ColumnName="IsDetete" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="MapLongitude" ColumnName="MapLongitude" />
+          <ScalarProperty Name="MapLatitude" ColumnName="MapLatitude" />
+          <ScalarProperty Name="Region_id" ColumnName="Region_id" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MinDistancePrices">
+      <EntityTypeMapping TypeName="TakeawayModel.MinDistancePrice">
+        <MappingFragment StoreEntitySet="MinDistancePrice">
+          <ScalarProperty Name="RestaurantDataID" ColumnName="RestaurantDataID" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedUser" ColumnName="CreatedUser" />
+          <ScalarProperty Name="deliveryFeeValue" ColumnName="deliveryFeeValue" />
+          <ScalarProperty Name="minPrice" ColumnName="minPrice" />
+          <ScalarProperty Name="RegionID" ColumnName="RegionID" />
+          <ScalarProperty Name="RestaurantID" ColumnName="RestaurantID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RestaurantRates">
+      <EntityTypeMapping TypeName="TakeawayModel.RestaurantRate">
+        <MappingFragment StoreEntitySet="RestaurantRate">
+          <ScalarProperty Name="IsDetete" ColumnName="IsDetete" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="RateType" ColumnName="RateType" />
+          <ScalarProperty Name="UserRate" ColumnName="UserRate" />
+          <ScalarProperty Name="RestaurantID" ColumnName="RestaurantID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RestaurantDatas">
+      <EntityTypeMapping TypeName="TakeawayModel.RestaurantData">
+        <MappingFragment StoreEntitySet="RestaurantData">
+          <ScalarProperty Name="IsDetete" ColumnName="IsDetete" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="MapLongitude" ColumnName="MapLongitude" />
+          <ScalarProperty Name="MapLatitude" ColumnName="MapLatitude" />
+          <ScalarProperty Name="Region_id" ColumnName="Region_id" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="RestaurantID" ColumnName="RestaurantID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Offers">
+      <EntityTypeMapping TypeName="TakeawayModel.Offer">
+        <MappingFragment StoreEntitySet="Offer">
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="FeeValue" ColumnName="FeeValue" />
+          <ScalarProperty Name="FeeType" ColumnName="FeeType" />
+          <ScalarProperty Name="OfferType" ColumnName="OfferType" />
+          <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="TakeawayModel.Order">
+        <MappingFragment StoreEntitySet="Order">
+          <ScalarProperty Name="OneMachine" ColumnName="OneMachine" />
+          <ScalarProperty Name="IsSent" ColumnName="IsSent" />
+          <ScalarProperty Name="RestOfferID" ColumnName="RestOfferID" />
+          <ScalarProperty Name="IsDetete" ColumnName="IsDetete" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Delivery_estimation" ColumnName="Delivery_estimation" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="FeeValue" ColumnName="FeeValue" />
+          <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+          <ScalarProperty Name="OrderStatusID" ColumnName="OrderStatusID" />
+          <ScalarProperty Name="RestaurantDataID" ColumnName="RestaurantDataID" />
+          <ScalarProperty Name="DeliveryUserID" ColumnName="DeliveryUserID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderDetails">
+      <EntityTypeMapping TypeName="TakeawayModel.OrderDetail">
+        <MappingFragment StoreEntitySet="OrderDetails">
+          <ScalarProperty Name="ItemOfferID" ColumnName="ItemOfferID" />
+          <ScalarProperty Name="IsDetete" ColumnName="IsDetete" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ItemCount" ColumnName="ItemCount" />
+          <ScalarProperty Name="ItemPrice" ColumnName="ItemPrice" />
+          <ScalarProperty Name="CookingCatID" ColumnName="CookingCatID" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="ItemFoodParentID" ColumnName="ItemFoodParentID" />
+          <ScalarProperty Name="ItemFoodID" ColumnName="ItemFoodID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

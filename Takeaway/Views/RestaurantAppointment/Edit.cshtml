@@ -1,0 +1,371 @@
+﻿@model Takeaway.Models.RestaurantAppointmentVM
+@{
+    ViewBag.Title = "Edit";
+}
+
+<div class="page-content" style="min-height: 1119px">
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="~/Home/index">الرئيسية</a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+            <li>
+                <a href="/RestaurantAppointment/Index"> مواعيد المطاعم</a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+            <li>
+                تعديل مواعيد المطعم
+            </li>
+        </ul>
+    </div>
+    <div id="divMsg">@Html.Raw(ViewBag.Msg)</div>
+    <div class="row">
+        <div class="col-md-12">
+            @*<div id="bootstrap_alerts_demo">
+            </div>*@
+            <div class="portlet box grey-salsa">
+                <div class="portlet-title">
+                    <div class="caption">
+                        تعديل مواعيد المطعم
+                    </div>
+                    <div class="tools">
+                        <a href="javascript:;" class="collapse" data-original-title="" title=""></a>
+                    </div>
+                </div>
+                <div class="portlet-body form">
+
+                    <!-- BEGIN FORM-->
+                    @using (Html.BeginForm())
+                    {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(false, "", new { @class = "Metronic-alerts alert alert-danger fade in" })
+
+                    <div class="row">
+                        <div class="col-md-10 ">
+                            <div class="form-body">
+
+
+                                <div id="RestaurantDiv" class="form-group">
+                                    @Html.Label(" المطعم", " المطعم", new { @class = "col-md-2 control-label " })
+                                    <div class="input-group col-md-4">
+                                        @Html.DropDownList("RestaurantID", ViewBag.RestaurantID as List<SelectListItem>
+                                            , " إختار المطعم", new { @class = "form-control select2me" })
+                                            <span class="input-group-addon input-circle-right">
+                                                @*@Html.ValidationMessageFor(model => model.SubjectID, null, new { @class = "text-danger" })*@
+                                            </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.HiddenFor(model => model.ID1)
+                                    @Html.HiddenFor(model => model.Saturday)
+                                    @Html.LabelFor(model => model.Saturday, htmlAttributes: new { @class = "col-md-2 control-label" })
+                                    <div class="input-group col-md-8">
+
+                                        @Html.EditorFor(model => model.From1, new { htmlAttributes = new { placeholder = "من ", @class = "form-control timepicker" } })
+                                        <span class="input-group-addon input-circle-right">
+                                            من
+                                            @*@Html.ValidationMessageFor(model => model.deliveryFeeValue1, "", new { @class = "text-danger" })*@
+
+                                        </span>
+
+                                        @Html.EditorFor(model => model.to1, new { htmlAttributes = new { placeholder = "الى ", @class = "form-control timepicker" } })
+                                        <span class="input-group-addon input-circle-right">
+                                            الى
+                                            @* @Html.ValidationMessageFor(model => model.minPrice1, "", new { @class = "text-danger" })*@
+
+                                        </span>
+
+                                        @Html.EditorFor(model => model.From12, new { htmlAttributes = new { placeholder = "من ", @class = "form-control timepicker" } })
+                                        <span class="input-group-addon input-circle-right">
+                                            من
+                                            @*@Html.ValidationMessageFor(model => model.deliveryFeeValue1, "", new { @class = "text-danger" })*@
+
+                                        </span>
+
+                                        @Html.EditorFor(model => model.to12, new { htmlAttributes = new { placeholder = "الى ", @class = "form-control timepicker" } })
+                                        <span class="input-group-addon input-circle-right">
+                                            الى
+                                            @* @Html.ValidationMessageFor(model => model.minPrice1, "", new { @class = "text-danger" })*@
+
+                                        </span>
+                                    </div>
+                                    <div class="input-group col-md-3">
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.HiddenFor(model => model.ID2)
+                                    @Html.HiddenFor(model => model.Sunday)
+                                    @Html.LabelFor(model => model.Sunday, htmlAttributes: new { @class = "col-md-2 control-label" })
+                                    <div class="input-group col-md-8">
+
+                                        @Html.EditorFor(model => model.From2, new { htmlAttributes = new { placeholder = "من ", @class = "form-control timepicker" } })
+                                        <span class="input-group-addon input-circle-right">
+                                            من
+                                            @*@Html.ValidationMessageFor(model => model.deliveryFeeValue1, "", new { @class = "text-danger" })*@
+
+                                        </span>
+
+                                        @Html.EditorFor(model => model.to2, new { htmlAttributes = new { placeholder = "الى ", @class = "form-control timepicker" } })
+                                        <span class="input-group-addon input-circle-right">
+                                            الى
+                                            @* @Html.ValidationMessageFor(model => model.minPrice1, "", new { @class = "text-danger" })*@
+
+                                        </span>
+
+                                        @Html.EditorFor(model => model.From22, new { htmlAttributes = new { placeholder = "من ", @class = "form-control timepicker" } })
+                                        <span class="input-group-addon input-circle-right">
+                                            من
+                                            @*@Html.ValidationMessageFor(model => model.deliveryFeeValue1, "", new { @class = "text-danger" })*@
+
+                                        </span>
+
+                                        @Html.EditorFor(model => model.to22, new { htmlAttributes = new { placeholder = "الى ", @class = "form-control timepicker" } })
+                                        <span class="input-group-addon input-circle-right">
+                                            الى
+                                            @* @Html.ValidationMessageFor(model => model.minPrice1, "", new { @class = "text-danger" })*@
+
+                                        </span>
+
+
+                                    </div>
+                                    <div class="input-group col-md-3">
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.HiddenFor(model => model.ID3)
+                                    @Html.HiddenFor(model => model.Monday)
+                                    @Html.LabelFor(model => model.Monday, htmlAttributes: new { @class = "col-md-2 control-label" })
+                                    <div class="input-group col-md-8">
+
+                                        @Html.EditorFor(model => model.From3, new { htmlAttributes = new { placeholder = "من ", @class = "form-control timepicker" } })
+                                        <span class="input-group-addon input-circle-right">
+                                            من
+                                            @*@Html.ValidationMessageFor(model => model.deliveryFeeValue1, "", new { @class = "text-danger" })*@
+
+                                        </span>
+
+                                        @Html.EditorFor(model => model.to3, new { htmlAttributes = new { placeholder = "الى ", @class = "form-control timepicker" } })
+                                        <span class="input-group-addon input-circle-right">
+                                            الى
+                                            @* @Html.ValidationMessageFor(model => model.minPrice1, "", new { @class = "text-danger" })*@
+
+                                        </span>
+
+                                        @Html.EditorFor(model => model.From32, new { htmlAttributes = new { placeholder = "من ", @class = "form-control timepicker" } })
+                                        <span class="input-group-addon input-circle-right">
+                                            من
+                                            @*@Html.ValidationMessageFor(model => model.deliveryFeeValue1, "", new { @class = "text-danger" })*@
+
+                                        </span>
+
+                                        @Html.EditorFor(model => model.to32, new { htmlAttributes = new { placeholder = "الى ", @class = "form-control timepicker" } })
+                                        <span class="input-group-addon input-circle-right">
+                                            الى
+                                            @* @Html.ValidationMessageFor(model => model.minPrice1, "", new { @class = "text-danger" })*@
+
+                                        </span>
+
+
+                                    </div>
+                                    <div class="input-group col-md-3">
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.HiddenFor(model => model.ID4)
+                                    @Html.HiddenFor(model => model.Tuesday)
+                                    @Html.LabelFor(model => model.Tuesday, htmlAttributes: new { @class = "col-md-2 control-label" })
+                                    <div class="input-group col-md-8">
+
+                                        @Html.EditorFor(model => model.From4, new { htmlAttributes = new { placeholder = "من ", @class = "form-control timepicker" } })
+                                        <span class="input-group-addon input-circle-right">
+                                            من
+                                            @*@Html.ValidationMessageFor(model => model.deliveryFeeValue1, "", new { @class = "text-danger" })*@
+
+                                        </span>
+
+                                        @Html.EditorFor(model => model.to4, new { htmlAttributes = new { placeholder = "الى ", @class = "form-control timepicker" } })
+                                        <span class="input-group-addon input-circle-right">
+                                            الى
+                                            @* @Html.ValidationMessageFor(model => model.minPrice1, "", new { @class = "text-danger" })*@
+
+                                        </span>
+                                        @Html.EditorFor(model => model.From42, new { htmlAttributes = new { placeholder = "من ", @class = "form-control timepicker" } })
+                                        <span class="input-group-addon input-circle-right">
+                                            من
+                                            @*@Html.ValidationMessageFor(model => model.deliveryFeeValue1, "", new { @class = "text-danger" })*@
+
+                                        </span>
+
+                                        @Html.EditorFor(model => model.to42, new { htmlAttributes = new { placeholder = "الى ", @class = "form-control timepicker" } })
+                                        <span class="input-group-addon input-circle-right">
+                                            الى
+                                            @* @Html.ValidationMessageFor(model => model.minPrice1, "", new { @class = "text-danger" })*@
+
+                                        </span>
+
+                                    </div>
+                                    <div class="input-group col-md-3">
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.HiddenFor(model => model.ID5)
+                                    @Html.HiddenFor(model => model.Wednesday)
+                                    @Html.LabelFor(model => model.Wednesday, htmlAttributes: new { @class = "col-md-2 control-label" })
+                                    <div class="input-group col-md-8">
+
+                                        @Html.EditorFor(model => model.From5, new { htmlAttributes = new { placeholder = "من ", @class = "form-control timepicker" } })
+                                        <span class="input-group-addon input-circle-right">
+                                            من
+                                            @*@Html.ValidationMessageFor(model => model.deliveryFeeValue1, "", new { @class = "text-danger" })*@
+
+                                        </span>
+
+                                        @Html.EditorFor(model => model.to5, new { htmlAttributes = new { placeholder = "الى ", @class = "form-control timepicker" } })
+                                        <span class="input-group-addon input-circle-right">
+                                            الى
+                                            @* @Html.ValidationMessageFor(model => model.minPrice1, "", new { @class = "text-danger" })*@
+
+                                        </span>
+
+                                        @Html.EditorFor(model => model.From52, new { htmlAttributes = new { placeholder = "من ", @class = "form-control timepicker" } })
+                                        <span class="input-group-addon input-circle-right">
+                                            من
+                                            @*@Html.ValidationMessageFor(model => model.deliveryFeeValue1, "", new { @class = "text-danger" })*@
+
+                                        </span>
+
+                                        @Html.EditorFor(model => model.to52, new { htmlAttributes = new { placeholder = "الى ", @class = "form-control timepicker" } })
+                                        <span class="input-group-addon input-circle-right">
+                                            الى
+                                            @* @Html.ValidationMessageFor(model => model.minPrice1, "", new { @class = "text-danger" })*@
+
+                                        </span>
+
+
+                                    </div>
+                                    <div class="input-group col-md-3">
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.HiddenFor(model => model.ID6)
+                                    @Html.HiddenFor(model => model.Thursday)
+                                    @Html.LabelFor(model => model.Thursday, htmlAttributes: new { @class = "col-md-2 control-label" })
+                                    <div class="input-group col-md-8">
+
+                                        @Html.EditorFor(model => model.From6, new { htmlAttributes = new { placeholder = "من ", @class = "form-control timepicker" } })
+                                        <span class="input-group-addon input-circle-right">
+                                            من
+                                            @*@Html.ValidationMessageFor(model => model.deliveryFeeValue1, "", new { @class = "text-danger" })*@
+
+                                        </span>
+
+                                        @Html.EditorFor(model => model.to6, new { htmlAttributes = new { placeholder = "الى ", @class = "form-control timepicker" } })
+                                        <span class="input-group-addon input-circle-right">
+                                            الى
+                                            @* @Html.ValidationMessageFor(model => model.minPrice1, "", new { @class = "text-danger" })*@
+
+                                        </span>
+                                        @Html.EditorFor(model => model.From62, new { htmlAttributes = new { placeholder = "من ", @class = "form-control timepicker" } })
+                                        <span class="input-group-addon input-circle-right">
+                                            من
+                                            @*@Html.ValidationMessageFor(model => model.deliveryFeeValue1, "", new { @class = "text-danger" })*@
+
+                                        </span>
+
+                                        @Html.EditorFor(model => model.to62, new { htmlAttributes = new { placeholder = "الى ", @class = "form-control timepicker" } })
+                                        <span class="input-group-addon input-circle-right">
+                                            الى
+                                            @* @Html.ValidationMessageFor(model => model.minPrice1, "", new { @class = "text-danger" })*@
+
+                                        </span>
+
+                                    </div>
+                                    <div class="input-group col-md-3">
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.HiddenFor(model => model.ID7)
+                                    @Html.HiddenFor(model => model.Friday)
+                                    @Html.LabelFor(model => model.Friday, htmlAttributes: new { @class = "col-md-2 control-label" })
+                                    <div class="input-group col-md-8">
+
+                                        @Html.EditorFor(model => model.From7, new { htmlAttributes = new { placeholder = "من ", @class = "form-control timepicker" } })
+                                        <span class="input-group-addon input-circle-right">من
+                                            @*@Html.ValidationMessageFor(model => model.deliveryFeeValue1, "", new { @class = "text-danger" })*@
+
+                                        </span>
+
+                                        @Html.EditorFor(model => model.to7, new { htmlAttributes = new { placeholder = "الى ", @class = "form-control timepicker" } })
+                                        <span class="input-group-addon input-circle-right">الى
+                                            @* @Html.ValidationMessageFor(model => model.minPrice1, "", new { @class = "text-danger" })*@
+
+                                        </span>
+                                        @Html.EditorFor(model => model.From72, new { htmlAttributes = new { placeholder = "من ", @class = "form-control timepicker" } })
+                                        <span class="input-group-addon input-circle-right">من
+                                            @*@Html.ValidationMessageFor(model => model.deliveryFeeValue1, "", new { @class = "text-danger" })*@
+
+                                        </span>
+
+                                        @Html.EditorFor(model => model.to72, new { htmlAttributes = new { placeholder = "الى ", @class = "form-control timepicker" } })
+                                        <span class="input-group-addon input-circle-right">الى
+                                            @* @Html.ValidationMessageFor(model => model.minPrice1, "", new { @class = "text-danger" })*@
+
+                                        </span>
+
+                                    </div>
+                                    <div class="input-group col-md-3">
+
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="form-actions fluid">
+                        <div class="row">
+                            <div class="col-md-offset-3 col-md-9">
+                                <input type="submit" value="حفظ" class="btn green " />
+                                <a href="/RestaurantAppointment/Index" class="btn default">للخلف</a>
+
+                            </div>
+                        </div>
+                    </div>
+                    }
+
+                    <!-- END FORM-->
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+
+<script>
+  
+   
+</script>
+}
+
+
